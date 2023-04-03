@@ -1,0 +1,86 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.yarn-integrity
+.yarn-metadata.json
+.yarnrc
+.yarn-cache/
+.npm/
+.pnpm-cache/
+.pnpm/
+.eslintcache
+.cache
+.next/
+out/
+.next-server/
+serverless/
+dist/
+*.pem
+
+# Spring Boot
+HELP.md
+target/
+*.class
+*.log
+*.bak
+*.swp
+*.hprof
+*.heapdump
+*.dat
+*.releaseBackup
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+.mvn/
+.log
+.m2/
+*.iml
+.idea/
+*.ipr
+*.iws
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.xpi
+*.snupkg
+*.rar
+*.p12
+*.pfx
+*.pub
+*.der
+*.cer
+*.crt
+*.csr
+*.pem
+*.jks
+*.keystore
+
+# IntelliJ
+out/
+*.iml
+*.iws
+*.ipr
+.idea/
+!src/main/resources/.keep
+
+# Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+.springBeans
+
+# NetBeans
+nb-configuration.xml
+
