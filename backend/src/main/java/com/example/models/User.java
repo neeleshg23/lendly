@@ -7,6 +7,8 @@ public class User {
     private String password;
     private String location;
     private double rating;
+    private String connection;
+    private boolean emailVerified;
     
     public long getUserId() {
         return userId;
@@ -44,6 +46,16 @@ public class User {
     public void setRating(double rating) {
         this.rating = rating;
     }
-    
-    
+    public String getConnection() {
+        return connection;
+    }
+    public void setConnection(String connection) {
+        this.connection = connection;
+    }
+    public boolean isEmailVerified() {
+        return emailVerified;
+    }
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
 }
