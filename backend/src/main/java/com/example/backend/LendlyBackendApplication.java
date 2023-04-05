@@ -2,7 +2,9 @@ package com.example.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -13,9 +15,20 @@ public class LendlyBackendApplication {
         SpringApplication.run(LendlyBackendApplication.class, args);
     }
 
-    @GetMapping("/api/hello")
-    public String helloLendly() {
-        return "Hello, Lendly!";
+    @PostMapping(value = "/api/hello", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    public String helloLendly(@RequestBody NameRequest request) {
+        return "Hi " + request.getName() + "!";
+    }
+    
+    static class NameRequest {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
-
