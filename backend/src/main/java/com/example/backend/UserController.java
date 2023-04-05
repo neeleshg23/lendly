@@ -1,15 +1,14 @@
 package com.example.backend;
 
+import com.auth0.json.mgmt.users.User;
+import com.auth0.net.Request;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.models.User;
-
-import com.auth0.client.auth.AuthAPI;
+import com.example.models.ApplicationUser;
 import com.auth0.client.mgmt.ManagementAPI;
 import com.auth0.exception.APIException;
 import com.auth0.exception.Auth0Exception;
@@ -33,14 +32,16 @@ public class UserController {
         auth0User.setEmailVerified(false);
 
         try {
-            User createdUser = managementAPI.users().create(auth0User).execute();
+            Request<User> request = managementAPI.users().create(auth0User);
+            User createdUser = request.execute();
+
             // Save the createdUser or any additional information to your application's database if needed
 
             // Map the Auth0 user to your ApplicationUser object
-            User registeredUser = new User();
-            registeredUser.setUserId(createdUser.getUserId());
-            registeredUser.setUserEmail(createdUser.getUserEmail());
-            registeredUser.setUserName(createdUser.getUserName());
+            ApplicationUser registeredUser = new ApplicationUser();
+            registeredUser.setUserId(createdUser.getId());
+            registeredUser.setEmail(createdUser.getEmail());
+            // Add any other properties from Auth0 User to ApplicationUser as needed
 
             return ResponseEntity.ok(registeredUser);
         } catch (APIException exception) {

@@ -1,7 +1,7 @@
 package com.example.models;
 
 public class User {
-    private long userId;
+    private String userId;
     private String userEmail;
     private String userName;
     private String password;
@@ -9,11 +9,15 @@ public class User {
     private double rating;
     private String connection;
     private boolean emailVerified;
+
+    public User() {
+
+    }
     
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
-    public void setUserId(long userId) {
+    public void setUser(String userId) {
         this.userId = userId;
     }
     public String getUserEmail() {
