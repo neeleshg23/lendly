@@ -1,6 +1,8 @@
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.auth0.client.auth.AuthAPI;
+import com.auth0.client.mgmt.ManagementAPI;
 
 @Configuration
 public class Auth0Config {

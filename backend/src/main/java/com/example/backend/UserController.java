@@ -3,10 +3,16 @@ package com.example.backend;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.models.User;
+
+import com.auth0.client.auth.AuthAPI;
+import com.auth0.client.mgmt.ManagementAPI;
+import com.auth0.exception.APIException;
+import com.auth0.exception.Auth0Exception;
 
 @RestController
 @RequestMapping("/api/users")
