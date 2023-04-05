@@ -1,27 +1,12 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
 import './../App.css';
 
 const Profile = ({ user }) => {
     return (
-        <><>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Profile</Link>
-                    </li>
-                    <li>
-                        <Link to="/market">Market</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                </ul>
-            </nav>
-            <Outlet />
-        </>
-        <h1>Here is your profile info</h1>
-        </>
+        <div className="home">
+            <h1>This is your profile page!</h1>
+            <h2>You will be able to see your data and your items here</h2>
+        </div>
     )
 }
 
