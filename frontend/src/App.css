@@ -3,3 +3,91 @@
   background-color: #61dafb;
   font-family: 'IBM Plex Mono', monospace;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.rating {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.username {
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+.location {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tab-button {
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  border-bottom-color: #4CAF50;
+}
+
+.create-listing {
+  font-size: 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -10px;
+}
+
+.item {
+  width: 20%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 5px #ddd;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: bold;
+}
