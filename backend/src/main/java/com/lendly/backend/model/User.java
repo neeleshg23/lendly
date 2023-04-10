@@ -1,4 +1,4 @@
-package com.example.backend.model;
+package com.lendly.backend.model;
 
 public class User {
 

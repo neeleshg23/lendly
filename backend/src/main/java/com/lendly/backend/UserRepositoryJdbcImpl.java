@@ -1,4 +1,4 @@
-package com.example.backend;
+package com.lendly.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.example.backend.model.User;
+import com.lendly.backend.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,9 +1,9 @@
-package com.example.backend;
+package com.lendly.backend;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.backend.model.User;
+import com.lendly.backend.model.User;
 
 public interface UserRepository {
     List<User> findAll();
