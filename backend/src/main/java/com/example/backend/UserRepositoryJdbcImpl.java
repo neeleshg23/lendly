@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.example.backend.model.User;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -46,5 +48,36 @@ public class UserRepositoryJdbcImpl implements UserRepository {
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public User save(User user) {
+        if (user.getId() == null) {
+            // Insert new user
+            String sql = "INSERT INTO Users (email, password, displayname, location, rating) VALUES (?, ?, ?, ?, ?)";
+            jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), user.getDisplayName(), user.getLocation(), user.getRating());
+        } else {
+            // Update existing user
+            String sql = "UPDATE Users SET email = ?, password = ?, displayname = ?, location = ?, rating = ? WHERE UserID = ?";
+            jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), user.getDisplayName(), user.getLocation(), user.getRating(), user.getId());
+        }
+        return findByEmail(user.getEmail()).orElse(null);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        String sql = "SELECT * FROM Users WHERE UserID = ?";
+        try {
+            User user = jdbcTemplate.queryForObject(sql, USER_ROW_MAPPER, id);
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        String sql = "DELETE FROM Users WHERE UserID = ?";
+        jdbcTemplate.update(sql, id);
     }
 }

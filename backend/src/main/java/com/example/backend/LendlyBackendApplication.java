@@ -1,18 +1,24 @@
 package com.example.backend;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
+
+import com.example.backend.model.User;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @ComponentScan({"com.example.backend"})
 @EnableJdbcRepositories("com.example.backend")
 public class LendlyBackendApplication {
-    @Autowired
-    private static UserRepository userRepository;
+    // Test DB Connection
+    // @Autowired
+    // private static UserRepository userRepository;
     // public static void main(String[] args) {
     //     ConfigurableApplicationContext context = SpringApplication.run(LendlyBackendApplication.class, args);
     
