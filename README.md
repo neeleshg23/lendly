@@ -20,7 +20,7 @@ Database connection:
 Postman API testing:
 - Install [Postman](https://www.postman.com/downloads/).
 - Launch Postman and click on the 'Import' button in the top left corner.
-- Select the `Lendly.postman_collection.json` file located in the `postman` folder.
+- Select the `Lendly.postman_collection.json` file located in the `backend/postman` folder.
 - After importing, you'll see the 'Lendly' collection in the left sidebar. Click on the collection and start testing the API endpoints.
 
 
