@@ -46,7 +46,16 @@ public class User {
     public void setRating(double rating) {
         this.rating = rating;
     }
-    public String toString(){
-        return this.displayName;
+    
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", location='" + location + '\'' +
+                ", rating=" + rating +
+                '}';
     }
+    
 }
