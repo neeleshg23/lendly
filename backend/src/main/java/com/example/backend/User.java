@@ -8,6 +8,8 @@ public class User {
     private String displayName;
     private String location;
     private double rating;
+
+    // Getters, setters, and toString method
     public Long getId() {
         return id;
     }
@@ -44,8 +46,7 @@ public class User {
     public void setRating(double rating) {
         this.rating = rating;
     }
-
-    // Getters, setters, and toString method
-
-    // ...
+    public String toString(){
+        return this.displayName;
+    }
 }
