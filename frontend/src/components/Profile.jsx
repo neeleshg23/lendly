@@ -5,9 +5,9 @@ const Profile = ({ user }) => {
     return (
         <div>
             <div class="row">
-                <div style="display: flex; align-items: center;">
+                <div class = "profile">
                     <div class="profile-pic"></div>
-                    <div style="margin-left: 20px;">
+                    <div class = "userinfo">
                         <div class="username">Username</div>
                         <div class="location">Location</div>
                     </div>
