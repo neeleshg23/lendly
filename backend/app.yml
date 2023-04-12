@@ -1,0 +1,4 @@
+# runtime: java17
+# service: backend
+# entrypoint: 'java -jar -Dserver.port=$8080 target/lendly-backend-1.jar'
+# instance_class: F2

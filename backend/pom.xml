@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>lendly-backend</artifactId>
+	<version>1</version>
 	<name>demo</name>
 	<description>Lendly Backend</description>
 	<properties>
