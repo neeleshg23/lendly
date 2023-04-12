@@ -29,7 +29,7 @@ public class LendlyBackendApplication {
     //         System.out.println(user);
     //     }
     // }
-
+    
     public static void main(String[] args) {
         SpringApplication.run(LendlyBackendApplication.class, args);
     }
