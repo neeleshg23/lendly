@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/lendly
-    username: neel
-    password: kombucha
+    url: jdbc:mysql://34.94.103.198:3306/lendly?useSSL=false&serverTimezone=UTC
+    username: root
+    password: csci201
   jpa:
     hibernate:
       ddl-auto: update

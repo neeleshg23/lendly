@@ -24,11 +24,11 @@ public class UserRepositoryJdbcImpl implements UserRepository {
         public User mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             User user = new User();
             user.setId(resultSet.getLong("UserID"));
-            user.setEmail(resultSet.getString("email"));
-            user.setPassword(resultSet.getString("password"));
-            user.setDisplayName(resultSet.getString("displayname"));
-            user.setLocation(resultSet.getString("location"));
-            user.setRating(resultSet.getDouble("rating"));
+            user.setEmail(resultSet.getString("Email"));
+            user.setPassword(resultSet.getString("Password"));
+            user.setDisplayName(resultSet.getString("Username"));
+            user.setLocation(resultSet.getString("Location"));
+            user.setRating(resultSet.getDouble("Rating"));
             return user;
         }
     };
@@ -41,7 +41,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 
     @Override
     public Optional<User> findByEmail(String email) {
-        String sql = "SELECT * FROM Users WHERE email = ?";
+        String sql = "SELECT * FROM Users WHERE Email = ?";
         try {
             User user = jdbcTemplate.queryForObject(sql, USER_ROW_MAPPER, email);
             return Optional.ofNullable(user);
@@ -54,11 +54,11 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     public User save(User user) {
         if (user.getId() == null) {
             // Insert new user
-            String sql = "INSERT INTO Users (email, password, displayname, location, rating) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Users (Email, Password, Username, Location, Rating) VALUES (?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), user.getDisplayName(), user.getLocation(), user.getRating());
         } else {
             // Update existing user
-            String sql = "UPDATE Users SET email = ?, password = ?, displayname = ?, location = ?, rating = ? WHERE UserID = ?";
+            String sql = "UPDATE Users SET Email = ?, Password = ?, Username = ?, Location = ?, Rating = ? WHERE UserID = ?";
             jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), user.getDisplayName(), user.getLocation(), user.getRating(), user.getId());
         }
         return findByEmail(user.getEmail()).orElse(null);

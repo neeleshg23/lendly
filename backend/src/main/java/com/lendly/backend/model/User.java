@@ -1,7 +1,6 @@
 package com.lendly.backend.model;
 
 public class User {
-
     private Long id;
     private String email;
     private String password;
@@ -9,7 +8,10 @@ public class User {
     private String location;
     private double rating;
 
-    // Getters, setters, and toString method
+    public User() {
+
+    }
+
     public Long getId() {
         return id;
     }
