@@ -7,6 +7,7 @@ public class Item {
     private boolean status;
     private long ownerId;
     private long borrowerId;
+    private String name;
 
     public Item(){
 
@@ -47,5 +48,11 @@ public class Item {
     }
     public void setBorrowerId(long borrowerId) {
         this.borrowerId = borrowerId;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }
