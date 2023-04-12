@@ -55,7 +55,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/users/u6@example.com",
+							"raw": "localhost:8080/api/users/4/owned-items",
 							"host": [
 								"localhost"
 							],
@@ -63,7 +63,8 @@
 							"path": [
 								"api",
 								"users",
-								"u6@example.com"
+								"4",
+								"owned-items"
 							]
 						}
 					},
@@ -75,7 +76,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/users/u6@example.com",
+							"raw": "localhost:8080/api/users/5/borrowed-items",
 							"host": [
 								"localhost"
 							],
@@ -83,7 +84,8 @@
 							"path": [
 								"api",
 								"users",
-								"u6@example.com"
+								"5",
+								"borrowed-items"
 							]
 						}
 					},
