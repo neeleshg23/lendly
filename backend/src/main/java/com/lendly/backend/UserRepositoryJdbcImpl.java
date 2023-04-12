@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.lendly.backend.model.Item;
 import com.lendly.backend.model.User;
 
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final RowMapper<User> USER_ROW_MAPPER = new RowMapper<User>() {
+    static final RowMapper<User> USER_ROW_MAPPER = new RowMapper<User>() {
         @Override
         public User mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             User user = new User();
@@ -79,5 +80,17 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     public void deleteById(Long id) {
         String sql = "DELETE FROM Users WHERE UserID = ?";
         jdbcTemplate.update(sql, id);
+    }
+
+    @Override
+    public List<Item> findOwnedItems(Long id) {
+        String sql = "SELECT * FROM Items WHERE OwnerID = ?";
+        return jdbcTemplate.query(sql, ItemRepositoryJdbcImpl.ITEM_ROW_MAPPER, id);
+    }
+
+    @Override
+    public List<Item> findBorrowedItems(Long id) {
+        String sql = "SELECT * FROM Items WHERE BorrowerID = ?";
+        return jdbcTemplate.query(sql, ItemRepositoryJdbcImpl.ITEM_ROW_MAPPER, id);
     }
 }
