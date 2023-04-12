@@ -1,9 +1,11 @@
 import React from "react";
 import './../App.css';
+import NavBar from "./NavBar";
 
 const Profile = ({ user }) => {
     return (
         <div>
+            <NavBar user={user} />
             <div class="row">
                 <div class = "profile">
                     <div class="profile-pic"></div>
@@ -26,6 +28,11 @@ const Profile = ({ user }) => {
             </div>
 
             <div class="gallery">
+
+                {/* Will use these item components passing in 
+                API GET request later. Remove div's once we reach this state
+                
+                <Item></Item> */}
                 <div class="item">
                     <img src = "item1.jpg" alt="Item 1"/>
                         <div class="item-name">Item 1 Name</div>

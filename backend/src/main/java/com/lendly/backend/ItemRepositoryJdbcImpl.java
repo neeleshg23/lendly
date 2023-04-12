@@ -3,10 +3,7 @@ package com.lendly.backend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.lendly.backend.model.Item;
@@ -22,7 +19,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final RowMapper<Item> ITEM_ROW_MAPPER = new RowMapper<Item>() {
+    static final RowMapper<Item> ITEM_ROW_MAPPER = new RowMapper<Item>() {
         @Override
         public Item mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Item item = new Item();

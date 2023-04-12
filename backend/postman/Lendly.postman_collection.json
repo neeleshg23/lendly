@@ -50,6 +50,48 @@
 					"response": []
 				},
 				{
+					"name": "Get All Owned Items By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/4/owned-items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"4",
+								"owned-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Borrowed Items By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/5/borrowed-items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"5",
+								"borrowed-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create New User",
 					"request": {
 						"method": "POST",
@@ -78,7 +120,7 @@
 					"response": []
 				},
 				{
-					"name": "Update User",
+					"name": "Update User By ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -107,7 +149,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete User",
+					"name": "Delete User By ID",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -160,7 +202,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Item By Id",
+					"name": "Get Item By ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -208,7 +250,7 @@
 					"response": []
 				},
 				{
-					"name": "Update item",
+					"name": "Update Item By ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -237,7 +279,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Item",
+					"name": "Delete Item By ID",
 					"request": {
 						"method": "DELETE",
 						"header": [],
