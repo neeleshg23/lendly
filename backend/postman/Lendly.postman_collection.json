@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"poo@test.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Frank\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 0.5\n}\n",
+							"raw": "{\n    \"email\": \"hi@bye.com\",\n    \"password\": \"password\",\n    \"displayName\": \"YourMom\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 4.20\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -121,7 +121,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/users/9",
+							"raw": "localhost:8080/api/users/14",
 							"host": [
 								"localhost"
 							],
@@ -129,7 +129,7 @@
 							"path": [
 								"api",
 								"users",
-								"9"
+								"14"
 							]
 						}
 					},
@@ -165,7 +165,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/items/8",
+							"raw": "localhost:8080/api/items/7",
 							"host": [
 								"localhost"
 							],
@@ -173,7 +173,7 @@
 							"path": [
 								"api",
 								"items",
-								"8"
+								"7"
 							]
 						}
 					},
@@ -186,7 +186,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Books\",\n    \"insurancePrice\": 5.0,\n    \"status\": false,\n    \"ownerId\": 3,\n    \"borrowerId\": 0\n}\n",
+							"raw": "{\n    \"category\": \"Shoes\",\n    \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,7 +214,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Furnture\",\n    \"insurancePrice\": 5.0,\n    \"status\": true,\n    \"ownerId\": 3,\n    \"borrowerId\": 1\n}\n",
+							"raw": "{\n    \"category\": \"Appliances\",\n    \"insurancePrice\": 75.0,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": 0,\n    \"name\": \"Stove\"\n}   \n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,7 +222,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/items/2",
+							"raw": "localhost:8080/api/items/7",
 							"host": [
 								"localhost"
 							],
@@ -230,7 +230,7 @@
 							"path": [
 								"api",
 								"items",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -251,7 +251,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/items/2",
+							"raw": "localhost:8080/api/items/9",
 							"host": [
 								"localhost"
 							],
@@ -259,7 +259,7 @@
 							"path": [
 								"api",
 								"items",
-								"2"
+								"9"
 							]
 						}
 					},

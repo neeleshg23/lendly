@@ -13,9 +13,9 @@ In a second terminal:
 - `npm start`
 
 Database connection:
-- Ensure a MySQL database `lendly` at port 3306 with tables `Users` and `Items` is enabled and started.
-- In `backend/src/main/resources/application.properties`, update your `spring.datasource.username` as well as your `spring.datasource.password` with the user credentials granted to your DB.
-- In `backend/src/main/resources/application.yml`, update your `username` and `password` with these same credentials.
+- Ensure Google Cloud SQL instance is on.
+- Ensure your device's IP address has been added to the list of authorized hosts in [Google Cloud Dashboard](https://console.cloud.google.com).
+- Advanced settings: Google Cloud Shell or `gcloud sql connect lendly-db --user=root`
 
 Postman API testing:
 - Install [Postman](https://www.postman.com/downloads/).
