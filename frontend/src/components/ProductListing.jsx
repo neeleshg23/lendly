@@ -30,7 +30,7 @@ function ProductListingPage() {
     setImages(imagesArray);
   };
 
-  // Define function to handle form submission
+  // Submit event handler 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Send the product data to the backend using a POST request
@@ -40,7 +40,7 @@ function ProductListingPage() {
   return (
     <div className="product-listing-page">
       <div className = "head">
-        <h1>List a Product!</h1>
+        <h1>List an Item!</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div>
