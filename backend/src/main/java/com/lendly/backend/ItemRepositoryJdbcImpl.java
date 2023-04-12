@@ -58,13 +58,13 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
 
     @Override
     public Item save(Item item) {
-        if (item.getId() != 0) {
+        if (item.getId() == null) {
             // Update existing item
-            String sql = "UPDATE Items SET Category = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ? WHERE ItemID = ?";
-            jdbcTemplate.update(sql, item.getCategory(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getId());
+            String sql = "UPDATE Items SET Category = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ?, Name = ? WHERE ItemID = ?";
+            jdbcTemplate.update(sql, item.getCategory(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getId(), item.getName());
         } else {
             // Insert new item
-            String sql = "INSERT INTO Items (Category, InsurancePrice, Status, OwnerID, BorrowerID) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Items (Category, InsurancePrice, Status, OwnerID, BorrowerID, Name) VALUES (?, ?, ?, ?, ?, ?)";
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(new PreparedStatementCreator() {
                 @Override
@@ -79,6 +79,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
                     } else {
                         ps.setNull(5, java.sql.Types.BIGINT);
                     }
+                    ps.setString(6, item.getName());
                     return ps;
                 }
             }, keyHolder);
