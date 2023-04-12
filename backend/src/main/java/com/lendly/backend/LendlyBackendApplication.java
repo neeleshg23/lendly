@@ -18,25 +18,25 @@ import com.lendly.backend.model.User;
 public class LendlyBackendApplication {
 
     // Test DB Connection
-    @Autowired
-    private static UserRepository userRepository;
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(LendlyBackendApplication.class, args);
-
-        // Get the UserRepository bean from the Spring context
-        UserRepository userRepository = context.getBean(UserRepository.class);
-    
-        // Retrieve all users from the repository
-        List<User> users = userRepository.findAll();
-    
-        // Print the users
-        System.out.println("Users from the database:");
-        for (User user : users) {
-            System.out.println(user);
-        }
-    }
-
+    // @Autowired
+    // private static UserRepository userRepository;
     // public static void main(String[] args) {
-    //     SpringApplication.run(LendlyBackendApplication.class, args);
+    //     ConfigurableApplicationContext context = SpringApplication.run(LendlyBackendApplication.class, args);
+
+    //     // Get the UserRepository bean from the Spring context
+    //     UserRepository userRepository = context.getBean(UserRepository.class);
+    
+    //     // Retrieve all users from the repository
+    //     List<User> users = userRepository.findAll();
+    
+    //     // Print the users
+    //     System.out.println("Users from the database:");
+    //     for (User user : users) {
+    //         System.out.println(user);
+    //     }
     // }
+
+    public static void main(String[] args) {
+        SpringApplication.run(LendlyBackendApplication.class, args);
+    }
 }
