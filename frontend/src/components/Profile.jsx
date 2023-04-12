@@ -5,9 +5,9 @@ const Profile = ({ user }) => {
     return (
         <div>
             <div class="row">
-                <div style="display: flex; align-items: center;">
+                <div class = "profile">
                     <div class="profile-pic"></div>
-                    <div style="margin-left: 20px;">
+                    <div class = "userinfo">
                         <div class="username">Username</div>
                         <div class="location">Location</div>
                     </div>
@@ -26,6 +26,11 @@ const Profile = ({ user }) => {
             </div>
 
             <div class="gallery">
+
+                {/* Will use these item components passing in 
+                API GET request later. Remove div's once we reach this state
+                
+                <Item></Item> */}
                 <div class="item">
                     <img src = "item1.jpg" alt="Item 1"/>
                         <div class="item-name">Item 1 Name</div>

@@ -12,6 +12,15 @@
   margin-bottom: 20px;
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo {
+  margin-left: 20px;
+}
+
 .profile-pic {
   width: 100px;
   height: 100px;
