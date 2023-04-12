@@ -35,7 +35,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/users/u1@test.com",
+							"raw": "localhost:8080/api/users/u6@example.com",
 							"host": [
 								"localhost"
 							],
@@ -43,7 +43,7 @@
 							"path": [
 								"api",
 								"users",
-								"u1@test.com"
+								"u6@example.com"
 							]
 						}
 					},
@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"newuser@example.com\",\n    \"password\": \"password\",\n    \"displayName\": \"New User\",\n    \"location\": \"New York\",\n    \"rating\": 4.5\n}\n",
+							"raw": "{\n    \"email\": \"poo@test.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Frank\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 0.5\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"newuser@example.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Jimothy\",\n    \"location\": \"Detroit\",\n    \"rating\": 4.1\n}\n",
+							"raw": "{\n    \"email\": \"poop@test.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Frank\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 1.0\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -92,7 +92,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/users/6",
+							"raw": "localhost:8080/api/users/9",
 							"host": [
 								"localhost"
 							],
@@ -100,7 +100,7 @@
 							"path": [
 								"api",
 								"users",
-								"6"
+								"9"
 							]
 						}
 					},
@@ -121,7 +121,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/users/6",
+							"raw": "localhost:8080/api/users/9",
 							"host": [
 								"localhost"
 							],
@@ -129,7 +129,137 @@
 							"path": [
 								"api",
 								"users",
-								"6"
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/items/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Books\",\n    \"insurancePrice\": 5.0,\n    \"status\": false,\n    \"ownerId\": 3,\n    \"borrowerId\": 0\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Furnture\",\n    \"insurancePrice\": 5.0,\n    \"status\": true,\n    \"ownerId\": 3,\n    \"borrowerId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/items/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"newuser@example.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Jimothy\",\n    \"location\": \"Detroit\",\n    \"rating\": 4.1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/items/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"2"
 							]
 						}
 					},
