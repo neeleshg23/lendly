@@ -89,8 +89,6 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
         return findById(item.getId()).orElse(null);
     }
 
-
-
     @Override
     public void deleteById(Long id) {
         String sql = "DELETE FROM Items WHERE ItemID = ?";
