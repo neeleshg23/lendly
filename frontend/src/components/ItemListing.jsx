@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./ProductListing.css";
+import NavBar from "./NavBar";
+import "./ItemListing.css";
 
 function ProductListingPage() {
   // Define state variables to hold the product data
@@ -39,6 +40,7 @@ function ProductListingPage() {
 
   return (
     <div className="product-listing-page">
+      <NavBar user={user} />
       <div className = "head">
         <h1>List an Item!</h1>
       </div>
