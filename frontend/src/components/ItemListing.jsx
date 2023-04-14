@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
-import "./ItemListing.css";
+import "../ItemListing.css";
 
-function ProductListingPage() {
+function ProductListingPage({user}) {
   // Define state variables to hold the product data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
