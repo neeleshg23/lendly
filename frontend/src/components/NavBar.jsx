@@ -22,6 +22,9 @@ const NavBar = ({ user }) => {
                     <li>
                         <Link to="/register">Register</Link>
                     </li>
+                    <li>
+                        <Link to="/listing">Listing</Link>
+                    </li>
                 </ul>
             </nav>
             <Outlet />
