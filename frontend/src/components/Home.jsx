@@ -7,6 +7,7 @@ import About from "./About";
 import Market from "./Market";
 import Login from "./Login";
 import Register from "./Register";
+import ItemListing from "./ItemListing"
 
 const Home = ({ user }) => {
   return (
@@ -17,6 +18,7 @@ const Home = ({ user }) => {
         <Route path="/about" element={<About user={user} />} />
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
+        <Route path="/listing" element={<ItemListing />} />
       </Routes>
     </Router>
   );
