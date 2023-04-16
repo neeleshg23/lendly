@@ -1,0 +1,29 @@
+[
+    {
+        "id": 5,
+        "category": "Appliances",
+        "insurancePrice": 75.0,
+        "status": false,
+        "ownerId": 4,
+        "borrowerId": 0,
+        "name": "Lamp"
+    },
+    {
+        "id": 7,
+        "category": "Appliances",
+        "insurancePrice": 75.0,
+        "status": false,
+        "ownerId": 4,
+        "borrowerId": 0,
+        "name": "Stove"
+    },
+    {
+        "id": 10,
+        "category": "Furniture",
+        "insurancePrice": 20.0,
+        "status": true,
+        "ownerId": 4,
+        "borrowerId": 5,
+        "name": "Chair"
+    }
+]
