@@ -1,0 +1,9 @@
+runtime: nodejs14
+service: frontend
+handlers:
+  - url: /(.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
+    static_files: \1
+    upload: .*\.((css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
+  - url: /.*
+    static_files: index.html
+    upload: index.html
