@@ -33,7 +33,7 @@ target/
 
 # Gradle
 .gradle/
-# build/
+## build/
 
 # Maven
 # .mvn/ for wrapper class
