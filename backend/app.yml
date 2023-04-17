@@ -6,8 +6,8 @@ handlers:
   - url: /api/.*
     script: auto
   - url: /(.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
-    static_files: static/\1
-    upload: static/.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html)$
+    static_files: static/build/\1
+    upload: static/build/.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html)$
   - url: /.*
-    static_files: static/index.html
-    upload: static/index.html
+    static_files: static/build/index.html
+    upload: static/build/index.html
