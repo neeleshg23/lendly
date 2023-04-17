@@ -50,6 +50,12 @@ jobs:
           npm run build
           cp -r build ../backend/src/main/resources/static
 
+      - name: Set up Google Cloud SDK and authenticate
+          uses: google-github-actions/setup-gcloud@v0.3.0
+          with:
+            service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+            project_id: lendly-383321
+
       - name: Deploy
         run: |
           cd backend
