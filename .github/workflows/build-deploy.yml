@@ -48,7 +48,6 @@ jobs:
           cd frontend
           npm install .
           npm run build
-          cp -r build ../backend/src/main/resources/static
 
       - name: Set up Google Cloud SDK and authenticate
         uses: google-github-actions/setup-gcloud@v0.3.0
@@ -56,7 +55,12 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
           project_id: lendly-383321
 
-      - name: Deploy
+      - name: Deploy frontend
+        run: |
+          cd frontend/build
+          gcloud app deploy app.yaml --quiet
+
+      - name: Deploy backend
         run: |
           cd backend
-          gcloud app deploy app.yml --quiet
+          gcloud app deploy app.yaml --quiet
