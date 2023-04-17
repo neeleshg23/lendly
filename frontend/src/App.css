@@ -209,6 +209,16 @@ input[type=text] {
   box-sizing: border-box;
 }
 
+input[type=password] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
 input[type=submit] {
   width: 100%;
   background-color: #5EC2B7;
