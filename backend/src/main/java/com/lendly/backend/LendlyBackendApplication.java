@@ -31,6 +31,7 @@ public class LendlyBackendApplication {
     //         System.out.println(user);
     //     }
     // }
+    
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
