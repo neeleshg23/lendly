@@ -58,7 +58,18 @@ jobs:
       - name: Deploy frontend
         run: |
           cd frontend/build
+          echo "runtime: nodejs14" > app.yaml
+          echo "service: frontend" >> app.yaml
+          echo "handlers:" >> app.yaml
+          echo "- url: /(.*\\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$" >> app.yaml
+          echo "  static_files: \\1" >> app.yaml
+          echo "  upload: .*\\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html)$" >> app.yaml
+          echo "- url: /.*" >> app.yaml
+          echo "  static_files: index.html" >> app.yaml
+          echo "  upload: index.html" >> app.yaml
+          cat app.yaml
           gcloud app deploy app.yaml --quiet
+
 
       - name: Deploy backend
         run: |
