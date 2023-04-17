@@ -1,4 +1,13 @@
-# runtime: java17
-# service: backend
-# entrypoint: 'java -jar -Dserver.port=$8080 target/lendly-backend-1.jar'
-# instance_class: F2
+runtime: java17
+service: default
+entrypoint: 'java -jar -Dserver.port=$8080 target/lendly-backend-1.jar'
+instance_class: F2
+handlers:
+  - url: /api/.*
+    script: auto
+  - url: /(.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
+    static_files: static/\1
+    upload: static/.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html)$
+  - url: /.*
+    static_files: static/index.html
+    upload: static/index.html

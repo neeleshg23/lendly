@@ -12,16 +12,30 @@ In a second terminal:
 - `npm install .`
 - `npm start`
 
-Database connection:
-- Ensure your device's IP address has been added to the list of authorized hosts in [Google Cloud Dashboard](https://console.cloud.google.com).
-- Either start it from [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy ALWAYS`
-- Stop it in the [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy NEVER`
-- Advanced settings: Google Cloud Shell or `gcloud sql connect lendly-db --user=root`
-
 Postman API testing:
 - Install [Postman](https://www.postman.com/downloads/).
 - Launch Postman and click on the 'Import' button in the top left corner.
 - Select the `Lendly.postman_collection.json` file located in the `backend/postman` folder.
 - After importing, you'll see the 'Lendly' collection in the left sidebar. Click on the collection and start testing the API endpoints.
 
+Database connection:
+- Ensure your device's IP address has been added to the list of authorized hosts in [Google Cloud Dashboard](https://console.cloud.google.com).
+- Either start it from [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy ALWAYS`
+- Stop it in the [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy NEVER`
+- Advanced settings: Google Cloud Shell or `gcloud sql connect lendly-db --user=root`
+
+Deployment steps:
+- Start App Engine instance in [App Engine Settings within Google Cloud Dashboard](https://console.cloud.google.com/appengine/settings)
+- Validate credentials as well as Project ID:
+  - `gcloud auth login` 
+  - Confirm terminal output: `Your current project is [lendly-383321].` 
+  - Otherwise, `gcloud config set project lendly-383321`
+- Build a static frontend
+  - `cd frontend`
+  - `npm install .`
+  - `npm run build`
+  - `cp -r build ../backend/src/main/resources/static`
+- Deploy backend
+  - `cd backend`
+  - `gcloud app deploy app.yml --quiet`
 

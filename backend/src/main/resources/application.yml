@@ -9,3 +9,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+  resources:
+    static-locations: classpath:/static
+  mvc:
+    view:
+      prefix: /static
+      suffix: .html

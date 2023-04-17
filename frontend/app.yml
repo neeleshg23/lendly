@@ -1,3 +1,0 @@
-runtime: nodejs14
-service: frontend
-entrypoint: node server.js
