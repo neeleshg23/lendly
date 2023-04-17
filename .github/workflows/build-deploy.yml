@@ -1,10 +1,42 @@
-- name: Build frontend with React
-  run: |
-    cd frontend
-    npm install .
-    npm run build
-    cp -r build ../backend/src/main/resources/static
-- name: Deploy
-  run: |
-    cd backend
-    gcloud app deploy app.yml --quiet
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - dev_neel
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Add your existing steps for building the backend, e.g., setting up JDK and Maven, and building with Maven
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node
+
+      - name: Build frontend with React
+        if: github.ref == 'refs/heads/dev_neel'
+        run: |
+          cd frontend
+          npm install .
+          npm run build
+          cp -r build ../backend/src/main/resources/static
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/dev_neel'
+        run: |
+          cd backend
+          gcloud app deploy app.yml --quiet
