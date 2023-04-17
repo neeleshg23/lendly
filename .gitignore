@@ -36,7 +36,7 @@ target/
 build/
 
 # Maven
-.mvn/
+# .mvn/ for wrapper class
 .log
 .m2/
 *.iml
@@ -44,6 +44,7 @@ build/
 *.ipr
 *.iws
 *.jar
+!backend/.mvn/wrapper/maven-wrapper.jar
 *.war
 *.ear
 *.nar

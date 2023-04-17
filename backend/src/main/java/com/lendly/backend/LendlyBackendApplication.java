@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableJdbcRepositories("com.lendly.backend")
 public class LendlyBackendApplication {
 
-    //
     // Test DB Connection
     // @Autowired
     // private static UserRepository userRepository;
