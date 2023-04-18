@@ -57,11 +57,11 @@ jobs:
 
       - name: Deploy frontend
         run: |
-          cd frontend/build
+          cd ${{ github.workspace }}/frontend/build
           gcloud app deploy app.yml --quiet
 
 
       - name: Deploy backend
         run: |
-          cd backend
+          cd ${{ github.workspace }}/backend
           gcloud app deploy app.yml --quiet
