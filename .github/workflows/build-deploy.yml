@@ -55,6 +55,16 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
           project_id: lendly-383321
 
+      - name: List frontend contents
+        run: |
+          cd ${{ github.workspace }}/frontend
+          ls -la
+
+      - name: List build contents
+        run: |
+          cd ${{ github.workspace }}/frontend/build
+          ls -la
+
       - name: Deploy frontend
         run: |
           cd ${{ github.workspace }}/frontend/build
