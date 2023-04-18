@@ -50,13 +50,55 @@
 					"response": []
 				},
 				{
+					"name": "Get All Owned Items By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/4/owned-items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"4",
+								"owned-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Borrowed Items By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/5/borrowed-items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"5",
+								"borrowed-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create New User",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"poo@test.com\",\n    \"password\": \"password\",\n    \"displayName\": \"Frank\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 0.5\n}\n",
+							"raw": "{\n    \"email\": \"hi@bye.com\",\n    \"password\": \"password\",\n    \"displayName\": \"YourMom\",\n    \"location\": \"Los Angeles\",\n    \"rating\": 4.20\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +120,7 @@
 					"response": []
 				},
 				{
-					"name": "Update User",
+					"name": "Update User By ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -107,7 +149,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete User",
+					"name": "Delete User By ID",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -121,7 +163,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/users/9",
+							"raw": "localhost:8080/api/users/14",
 							"host": [
 								"localhost"
 							],
@@ -129,7 +171,7 @@
 							"path": [
 								"api",
 								"users",
-								"9"
+								"14"
 							]
 						}
 					},
@@ -160,12 +202,12 @@
 					"response": []
 				},
 				{
-					"name": "Get Item By Id",
+					"name": "Get Item By ID",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/items/8",
+							"raw": "localhost:8080/api/items/7",
 							"host": [
 								"localhost"
 							],
@@ -173,7 +215,7 @@
 							"path": [
 								"api",
 								"items",
-								"8"
+								"7"
 							]
 						}
 					},
@@ -186,7 +228,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Books\",\n    \"insurancePrice\": 5.0,\n    \"status\": false,\n    \"ownerId\": 3,\n    \"borrowerId\": 0\n}\n",
+							"raw": "{\n    \"category\": \"Shoes\",\n    \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,13 +250,13 @@
 					"response": []
 				},
 				{
-					"name": "Update item",
+					"name": "Update Item By ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Furnture\",\n    \"insurancePrice\": 5.0,\n    \"status\": true,\n    \"ownerId\": 3,\n    \"borrowerId\": 1\n}\n",
+							"raw": "{\n    \"category\": \"Appliances\",\n    \"insurancePrice\": 75.0,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": 0,\n    \"name\": \"Stove\"\n}   \n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,7 +264,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/items/2",
+							"raw": "localhost:8080/api/items/7",
 							"host": [
 								"localhost"
 							],
@@ -230,14 +272,14 @@
 							"path": [
 								"api",
 								"items",
-								"2"
+								"7"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Item",
+					"name": "Delete Item By ID",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -251,7 +293,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/items/2",
+							"raw": "localhost:8080/api/items/9",
 							"host": [
 								"localhost"
 							],
@@ -259,7 +301,7 @@
 							"path": [
 								"api",
 								"items",
-								"2"
+								"9"
 							]
 						}
 					},
