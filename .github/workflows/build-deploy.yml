@@ -73,5 +73,4 @@ jobs:
 
       - name: Deploy backend
         run: |
-          cd backend
           gcloud app deploy app.yaml --quiet
