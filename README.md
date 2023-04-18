@@ -38,4 +38,3 @@ Deployment steps:
 - Deploy backend
   - `cd backend`
   - `gcloud app deploy app.yml --quiet`
-
