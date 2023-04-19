@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - dev_neel
 
 jobs:
   build_and_deploy:
@@ -43,13 +43,38 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node
 
-      - name: Build frontend with React
-        run: |
-          cd frontend
-          npm install .
-          npm run build
+      # - name: Set up Google Cloud SDK and authenticate
+      #   uses: google-github-actions/setup-gcloud@v0.3.0
+      #   with:
+      #     service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+      #     project_id: lendly-383321
 
-      # Add steps to deploy the built application, e.g., to a hosting provider or server
-      - name: Deploy
+      # - name: Start Cloud SQL Proxy
+      #   uses: ahmadnassri/action-google-cloud-sql-proxy@v1
+      #   with:
+      #     key: ${{ secrets.CLOUD_SQL_CLIENT_KEY }}
+      #     connection: lendly-383321:us-west2:lendly-db
+      #     port: 3306
+
+      # - name: Build frontend with React
+      #   run: |
+      #     cd frontend
+      #     npm install .
+      #     npm run build
+
+      # - name: Deploy frontend
+      #   run: |
+      #     cd ${{ github.workspace }}/frontend
+      #     gcloud app deploy app.yml --quiet
+
+      - name: Check backend
         run: |
-          echo "Add your deployment steps here."
+          cd ${{ github.workspace }}/backend
+          ls -la ../backend
+
+      - name: Check backend/target
+        run: |
+          cd ${{ github.workspace }}/backend/target
+          ls -la ../target
+
+    

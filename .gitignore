@@ -36,7 +36,7 @@ target/
 build/
 
 # Maven
-.mvn/
+# .mvn/ for wrapper class
 .log
 .m2/
 *.iml
@@ -86,7 +86,7 @@ nb-configuration.xml
 
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 

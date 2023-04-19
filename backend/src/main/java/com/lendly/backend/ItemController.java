@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/items")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://frontend-dot-lendly-383321.wl.r.appspot.com")
 public class ItemController {
 
     @Autowired

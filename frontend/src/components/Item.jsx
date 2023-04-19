@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './../App.css';
-import data from "./test.json";
 
 const Item = ({ itemName, itemPrice }) => {
     return (
