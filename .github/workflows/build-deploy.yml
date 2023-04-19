@@ -62,12 +62,14 @@ jobs:
           npm install .
           npm run build
 
-      - name: Deploy frontend
-        run: |
-          cd ${{ github.workspace }}/frontend
-          gcloud app deploy app.yml --quiet
+      # - name: Deploy frontend
+      #   run: |
+      #     cd ${{ github.workspace }}/frontend
+      #     gcloud app deploy app.yml --quiet
 
-      - name: Deploy backend
+      - name: Check backend
         run: |
           cd ${{ github.workspace }}/backend
-          gcloud app deploy app.yml --quiet
+          ls -la ../backend
+
+    
