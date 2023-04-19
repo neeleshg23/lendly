@@ -21,7 +21,7 @@ const Login = () => {
                     <input type="text" id="user" name="username" placeholder="Username"></input>
                     <input type="text" id="password" name="password" placeholder="Password"></input>
                     <input type="submit" value="Login"></input>
-                    <p>Don't have an account?<a href="register">Register</a>or<a href="">Guest Login</a></p>
+                    <p>Don't have an account?<a href="register">Register</a>or<a href="market">Guest Login</a></p>
                 </div>
             </div>
         </div>
