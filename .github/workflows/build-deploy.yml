@@ -50,11 +50,11 @@ jobs:
           project_id: lendly-383321
 
       - name: Start Cloud SQL Proxy
-        uses: google-github-actions/cloud-sql-proxy@v0.1.0
+        uses: ahmadnassri/action-google-cloud-sql-proxy@v1
         with:
-          credentials: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
-          instances: lendly-383321:us-west2:lendly-db=tcp:3306
-
+          key: ${{ secrets.CLOUD_SQL_CLIENT_KEY }}
+          connection: lendly-383321:us-west2:lendly-db
+          port: 3306
 
       - name: Build frontend with React
         run: |
