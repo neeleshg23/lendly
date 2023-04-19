@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql:///lendly?cloudSqlInstance=lendly-383321:us-west2:lendly-db&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://34.94.103.198:3306/lendly?useSSL=false&serverTimezone=UTC
     username: root
     password: csci201
   jpa:
