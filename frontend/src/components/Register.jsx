@@ -38,6 +38,9 @@ const Register = () => {
       body: JSON.stringify(user),
     });
 
+    const responseData = await response.json();
+    console.log('Server response:', responseData);
+
     if (response.ok) {
       console.log('User created successfully');
       navigate('/market');
