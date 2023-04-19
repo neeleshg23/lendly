@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import "../ItemListing.css";
 import CurrencyInput from "react-currency-input-field";
-import { CurrencyInputProps, CurrencyInputOnChangeValues } from 'react-currency-input-field';
+// import { useHistory } from 'react-router-dom';
 
 function ProductListingPage({user}) {
 
@@ -13,6 +13,10 @@ function ProductListingPage({user}) {
   const [images, setImages] = useState([]);
   const prefix = '$';
   const [value, setValue] = useState(0);
+
+  // const history = useHistory(); for userHistory
+
+  // const userID = user['id']; // verify this works 
 
   // Define event handlers for form inputs
   const handleNameChange = (event) => {
@@ -49,23 +53,39 @@ function ProductListingPage({user}) {
   // Submit event handler 
   const handleSubmit = async(event) => {
     event.preventDefault();
+    // Create the item 
+    const item = {
+      category: name,
+      insurancePrice: Number(value),
+      status: false,
+      ownerId: user.id, // Use the user ID from the props
+      borrowerId: null,
+      name: name
+    };
     // Send the product data to the backend using a POST request
     // Clear the form inputs and display a success message
-    // const response = await fetch('http://localhost:8080/api/items', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(user),
-    // });
+    const response = await fetch('http://localhost:8080/api/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    });
 
-    // if (response.ok) {
-    //   console.log('Listing created successfully');
-    //   navigate('/market');
-    // } else {
-    //   console.error('Error creating item');
+    if (response.ok) {
+      console.log('Listing created successfully');
+      // navigate('/market');
+      // history.push('/market'); worry ab ts later 
+    } else {
       // Show an error message
-    // }
+      console.error('Error creating item');
+    }
+
+    setName("");
+    setDescription("");
+    setCondition("");
+    setImages([]);
+    setValue(0);
 
     // example of shit 
     //     "id": 8,
@@ -85,32 +105,34 @@ function ProductListingPage({user}) {
            {/* <input type="text" id="keyword" name="keyword" required> */}
            <select id="category" value={name} onChange={handleNameChange}>
              <option value="">Select a category</option>
-             <option value="furniture">Furniture</option>
-             <option value="clothing">Clothing</option>
+             <option value="appliances">Appliances</option>
              <option value="books">Books</option>
+             <option value="clothing">Clothing</option>
              <option value="electronics">Electronics</option>
+             <option value="furniture">Furniture</option>
+             <option value="kitchenware">Kitchenware</option>
+             <option value="shoes">Shoes</option>
+             <option value="tools">Tools</option>
            </select>
 
+           <label for="location">Name:</label>
+           <input value={name} onChange={handleNameChange} style={{width: "497px"}}/>
 
            <label for="location">Insurance:</label>
-           <CurrencyInput
+           <CurrencyInput className="currency"
             prefix={prefix}
             name="currencyInput"
             id="currencyInput"
             data-number-to-fixed="2"
-            data-number-stepfactor="100"
+            data-number-stepfactor="1"
             value={value}
             placeholder=""
             onChange={handleChange}
             onBlur={handleOnBlur}
             allowDecimals
             decimalsLimit="2"
-            disableAbbreviations
-          />
-           {/* <input value={name} onChange={handleNameChange} /> */}
-  
-           <label for="location">Name:</label>
-           <input value={name} onChange={handleNameChange} />
+            disableAbbreviations />
+          
 
            <label for="location">Images:</label>
            <input type="file" multiple onChange={handleImageChange} />

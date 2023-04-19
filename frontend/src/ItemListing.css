@@ -31,9 +31,12 @@ div:not(:last-child) {
 }
 
 form {
-    display: inline-block;
-    vertical-align: top;
-    margin: 50px;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 60px;
+    background-color: #404040;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 label {
     display: block;
@@ -59,3 +62,17 @@ input[type="submit"] {
     color: white;
     cursor: pointer;
 }
+
+.currency {
+    height: 10px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+
+/* CSS COLOR WAY 
+5EC2B7
+Hover color 2CA6A4
+*/
