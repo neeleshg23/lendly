@@ -24,12 +24,12 @@ const ItemWithData = () => {
 
     return (
         <div>
-            {data.map((item) => (
+            {/* {data.map((item) => (
                 <Item
                     itemName={item.name}
                     itemPrice={item.insurancePrice}
                 />
-            ))}
+            ))} */}
         </div>
     );
 };
