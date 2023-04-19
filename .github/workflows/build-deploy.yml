@@ -56,11 +56,11 @@ jobs:
           connection: lendly-383321:us-west2:lendly-db
           port: 3306
 
-      - name: Build frontend with React
-        run: |
-          cd frontend
-          npm install .
-          npm run build
+      # - name: Build frontend with React
+      #   run: |
+      #     cd frontend
+      #     npm install .
+      #     npm run build
 
       # - name: Deploy frontend
       #   run: |
