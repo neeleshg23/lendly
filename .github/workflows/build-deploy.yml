@@ -67,14 +67,9 @@ jobs:
           cd ${{ github.workspace }}/frontend
           gcloud app deploy app.yml --quiet
 
-      - name: Check backend
+      - name: Deploy backend
         run: |
           cd ${{ github.workspace }}/backend
-          ls -la ../backend
-
-      - name: Check backend/target
-        run: |
-          cd ${{ github.workspace }}/backend/target
-          ls -la ../target
+          gcloud app deploy app.yml --quiet`
 
     
