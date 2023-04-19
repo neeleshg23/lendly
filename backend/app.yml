@@ -3,4 +3,6 @@ service: backend
 entrypoint: 'java -jar -Dserver.port=$8080 target/lendly-backend-1.jar'
 instance_class: F2
 handlers:
-  - script: auto
+  - url: /.*
+    redirect_http_respose_code: 404
+    script: auto
