@@ -43,6 +43,17 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node
 
+      - name: Start Cloud SQL Proxy
+        run: |
+          echo ${{ secrets.CLOUD_SQL_CLIENT_KEY }} | base64 --decode > client_key.json
+          sudo apt-get update
+          sudo apt-get install -y google-cloud-sdk
+          gcloud auth activate-service-account --key-file client_key.json
+          gcloud config set project lendly-383321
+          gcloud components install cloud_sql_proxy
+          gcloud sql instances describe lendly-db
+          cloud_sql_proxy -instances=lendly-383321:us-west2:lendly-db=tcp:3306 &
+
       - name: Build frontend with React
         run: |
           cd frontend
