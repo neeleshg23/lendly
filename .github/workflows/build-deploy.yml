@@ -70,6 +70,6 @@ jobs:
       - name: Deploy backend
         run: |
           cd ${{ github.workspace }}/backend
-          gcloud app deploy app.yml --quiet`
+          gcloud app deploy app.yml --quiet
 
     
