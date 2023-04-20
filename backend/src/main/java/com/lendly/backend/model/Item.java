@@ -55,4 +55,15 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+    public String toString() {
+        return "Item {" +
+            "id=" + id +
+            ", category='" + category + '\'' +
+            ", insurancePrice=" + insurancePrice +
+            ", status=" + status +
+            ", ownerId=" + ownerId +
+            ", borrowerId=" + borrowerId +
+            ", name='" + name + '\'' +
+            '}';
+    }    
 }
