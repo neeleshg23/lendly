@@ -4,7 +4,7 @@ import './../Rachel.css';
 import NavBar from "./NavBar";
 import image from "./../images/rollerblades.jpg"
 
-const Market = ({ user }) => {
+const Market = ({ user, setUser }) => {
 
     const location = useLocation();
 
