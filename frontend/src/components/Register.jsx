@@ -40,6 +40,10 @@ const Register = () => {
       },
       body: JSON.stringify(user),
     });
+
+    const responseData = await response.json();
+    console.log('Server response:', responseData);
+  
   
     const contentType = response.headers.get('content-type');
     if (contentType && contentType.indexOf('application/json') !== -1) {
