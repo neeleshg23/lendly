@@ -31,7 +31,7 @@ const Register = ({setUser}) => {
       rating,
     };
   
-    const response = await fetch('/api/users', {
+    const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
