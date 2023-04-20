@@ -4,6 +4,6 @@ handlers:
   - url: /(.*\.(css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
     static_files: build/\1
     upload: build/.*\.((css|js|ico|json|png|jpg|jpeg|gif|txt|woff|woff2|ttf|svg|map|html))$
-  - url: /.*
+  - url: /.
     static_files: build/index.html
     upload: build/index.html
