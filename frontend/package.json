@@ -40,6 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://backend.lendly-383321.wl.r.appspot.com"
+  }
 }
