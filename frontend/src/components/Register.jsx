@@ -41,11 +41,9 @@ const Register = () => {
       body: JSON.stringify(user),
     });
 
-    const responseData = await response.json();
-    console.log('Server response:', responseData);
-  
   
     const contentType = response.headers.get('content-type');
+    console.log("contentType:"+contentType)
     if (contentType && contentType.indexOf('application/json') !== -1) {
       const responseData = await response.json();
       console.log('Server response:', responseData);
