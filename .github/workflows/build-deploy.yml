@@ -48,6 +48,11 @@ jobs:
         with:
           service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
           project_id: lendly-383321
+
+      - name: Deploy backend
+        run: |
+          cd ${{ github.workspace }}/backend
+          gcloud app deploy app.yml --quiet
     
       - name: Build frontend with React
         run: |
@@ -58,11 +63,6 @@ jobs:
       - name: Deploy frontend
         run: |
           cd ${{ github.workspace }}/frontend
-          gcloud app deploy app.yml --quiet
-
-      - name: Deploy backend
-        run: |
-          cd ${{ github.workspace }}/backend
           gcloud app deploy app.yml --quiet
 
     
