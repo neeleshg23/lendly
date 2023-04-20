@@ -31,10 +31,11 @@ const Register = () => {
       rating,
     };
 
-    const response = await fetch('https://backend.lendly-383321.wl.r.appspot.com/api/users', {
+    const response = await fetch('/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(user),
     });
