@@ -37,7 +37,6 @@ const Register = ({setUser}) => {
         'Content-Type': 'application/json',
         // Remove the following line, as it should not be set on the client-side
         'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*', 
       },
       body: JSON.stringify(user),
     });
