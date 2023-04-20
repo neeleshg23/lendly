@@ -12,19 +12,19 @@ const Item = ({ itemName, itemPrice }) => {
 };
 
 const ItemWithData = () => {
-    // const [itemData, setItemData] = useState([]);
-    // useEffect(() => {
-    //     const fetchItemData = async () => {
-    //         const response = await fetch("http://localhost:8080/api/items");
-    //         const data = await response.json();
-    //         setItemData(data);
-    //     };
-    //     fetchItemData();
-    // }, []);
+    const [itemData, setItemData] = useState([]);
+    useEffect(() => {
+        const fetchItemData = async () => {
+            const response = await fetch("http://localhost:8080/api/items");
+            const data = await response.json();
+            setItemData(data);
+        };
+        fetchItemData();
+    }, []);
 
     return (
         <div>
-            {/* {data.map((item) => (
+            {data.map((item) => (
                 <Item
                     itemName={item.name}
                     itemPrice={item.insurancePrice}

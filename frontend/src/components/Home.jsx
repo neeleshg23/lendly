@@ -1,27 +1,42 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./../App.css";
-import NavBar from "./NavBar";
-import Profile from "./Profile";
-import About from "./About";
-import Market from "./Market";
-import Login from "./Login";
-import Register from "./Register";
-import ItemListing from "./ItemListing"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './../Rachel.css';
+import image from "./../images/rollerblades.jpg"
 
-const Home = ({ user }) => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Profile user={user} />} />
-        <Route path="/market" element={<Market />} />
-        <Route path="/about" element={<About user={user} />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/listing" element={<ItemListing />} />
-      </Routes>
-    </Router>
-  );
-};
+const Home = () => {
+
+    const navigate = useNavigate();
+
+    const login = () => {
+        navigate("/login");
+    };
+
+    const register = () => {
+        navigate("/register");
+    };
+
+    return (
+        <div>
+            <div>
+                <h1>lend.ly</h1>
+            </div>
+
+            <div class="two-colored-box">
+                <div class="left-column">
+                    {/* content for the left column goes here */}
+                    <img src={image}/>
+                    <h3>trade, lend, wear, share.</h3>
+                </div>
+                <div class="right-column">
+                    {/* content for the right column goes here */}
+                    <h2>Welcome!</h2>
+                    <button onClick={login}>Login</button>
+                    <button onClick={register}>Register</button>
+                    <p>Just want to browse?<a href="market">Guest Login</a></p>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 export default Home;

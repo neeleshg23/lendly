@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Home from './components/Home';
+import RouterLinks from './components/RouterLinks';
 //import Profile from './components/Profile';
 //import Login from './components/Login';
 
@@ -32,7 +32,7 @@ function App() {
   
   return (
     <div className="App">
-      <Home user={user}/>
+      <RouterLinks user={user}/>
     </div>
   );
 
