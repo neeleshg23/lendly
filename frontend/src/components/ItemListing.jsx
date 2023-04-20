@@ -19,8 +19,6 @@ function ProductListingPage({user}) {
   // for navigation to next page
   const navigate = useNavigate();
 
-  
-
   // Define event handlers for form inputs
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -42,8 +40,6 @@ function ProductListingPage({user}) {
     }
     setImages(imagesArray);
   };
-
-  
 
   // Handler for currency input
   const handleChange = (e) => {
@@ -85,7 +81,7 @@ function ProductListingPage({user}) {
       },
       body: JSON.stringify(item),
     });
-
+    
     if (response.ok) {
       console.log('Listing created successfully');
       navigate('/market');

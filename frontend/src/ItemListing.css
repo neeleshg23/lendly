@@ -1,10 +1,14 @@
-body, h1 {
+body {
     color: black;
     font-family: Calibri;
 }
 
 body {
     background: linear-gradient(to right, #5EC2B7 50%, #DAF0ED 50%);
+}
+
+h1 {
+    color: whitesmoke;
 }
 
 .search {
