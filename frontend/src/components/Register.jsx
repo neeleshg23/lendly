@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/jacket.jpg"
 
-const Register = ({setUser}) => {
+const Register = ({ setUser }) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -31,13 +31,11 @@ const Register = ({setUser}) => {
       rating,
     };
   
-    const response = await fetch('/api/users', {
+    const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Remove the following line, as it should not be set on the client-side
         'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*', 
       },
       body: JSON.stringify(user),
     });
@@ -81,32 +79,36 @@ const Register = ({setUser}) => {
               <h2>Register</h2>
               <form onSubmit={handleSubmit}>
                   <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={state.email}
-                  onChange={handleChange}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={state.email}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={state.password}
-                  onChange={handleChange}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={state.password}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="text"
-                  name="displayName"
-                  placeholder="Display Name"
-                  value={state.displayName}
-                  onChange={handleChange}
+                    type="text"
+                    name="displayName"
+                    placeholder="Display Name"
+                    value={state.displayName}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="text"
-                  name="location"
-                  placeholder="Location"
-                  value={state.location}
-                  onChange={handleChange}
+                    type="text"
+                    name="location"
+                    placeholder="Location"
+                    value={state.location}
+                    onChange={handleChange}
+                    required
                   />
                   <input type="submit" value="Register" />
               </form>
