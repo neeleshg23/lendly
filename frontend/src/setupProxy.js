@@ -6,6 +6,9 @@ module.exports = function (app) {
     createProxyMiddleware({
       target: 'http://backend.lendly-383321.wl.r.appspot.com',
       changeOrigin: true,
+      pathRewrite: {
+        '^/api': '', // Remove '/api' from the forwarded request path
+      },
     })
   );
 };
