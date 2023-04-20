@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/jacket.jpg"
 
-const Register = () => {
+const Register = ({setUser}) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -41,18 +41,17 @@ const Register = () => {
       body: JSON.stringify(user),
     });
 
-    const responseData = await response.json();
-    console.log('Server response:', responseData);
-  
   
     const contentType = response.headers.get('content-type');
+    console.log("contentType:"+contentType)
     if (contentType && contentType.indexOf('application/json') !== -1) {
       const responseData = await response.json();
       console.log('Server response:', responseData);
   
       if (response.ok) {
         console.log('User created successfully');
-        navigate('/market');
+        setUser(user);
+        navigate('/profile');
       } else {
         console.error('Error creating user');
         // Show an error message
