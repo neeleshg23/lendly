@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar";
 import "../ItemListing.css";
 import CurrencyInput from "react-currency-input-field";
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useDropzone } from "react-dropzone";
 
 function ProductListingPage({user}) {
 
   // Define state variables to hold the product data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [condition, setCondition] = useState("");
+  const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
   const prefix = '$';
   const [value, setValue] = useState(0);
+  const [files, setFiles] = useState([]);
 
-  // const history = useHistory(); for userHistory
+  // for navigation to next page
+  const navigate = useNavigate();
 
-  // const userID = user['id']; // verify this works 
+  
 
   // Define event handlers for form inputs
   const handleNameChange = (event) => {
@@ -27,8 +30,8 @@ function ProductListingPage({user}) {
     setDescription(event.target.value);
   };
 
-  const handleConditionChange = (event) => {
-    setCondition(event.target.value);
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
   };
 
   const handleImageChange = (event) => {
@@ -40,6 +43,8 @@ function ProductListingPage({user}) {
     setImages(imagesArray);
   };
 
+  
+
   // Handler for currency input
   const handleChange = (e) => {
     e.preventDefault();
@@ -49,6 +54,15 @@ function ProductListingPage({user}) {
   };
   // Needed function for currency
   const handleOnBlur = () => setValue(Number(value).toFixed(2));
+
+  // For multiple images and preview 
+  const onDrop = useCallback((acceptedFiles) => {
+    setFiles([...files, ...acceptedFiles.map((file) => Object.assign(file, {
+      preview: URL.createObjectURL(file)
+    }))]);
+  }, [files]);
+  // for image drop zone
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
 
   // Submit event handler 
   const handleSubmit = async(event) => {
@@ -74,7 +88,7 @@ function ProductListingPage({user}) {
 
     if (response.ok) {
       console.log('Listing created successfully');
-      // navigate('/market');
+      navigate('/market');
       // history.push('/market'); worry ab ts later 
     } else {
       // Show an error message
@@ -83,7 +97,7 @@ function ProductListingPage({user}) {
 
     setName("");
     setDescription("");
-    setCondition("");
+    setCategory("");
     setImages([]);
     setValue(0);
 
@@ -103,7 +117,7 @@ function ProductListingPage({user}) {
            <h1>Post an Item!</h1>
            <label for="keyword">Category:</label>
            {/* <input type="text" id="keyword" name="keyword" required> */}
-           <select id="category" value={name} onChange={handleNameChange}>
+           <select id="category" value={category} onChange={handleCategoryChange}>
              <option value="">Select a category</option>
              <option value="appliances">Appliances</option>
              <option value="books">Books</option>
@@ -134,8 +148,26 @@ function ProductListingPage({user}) {
             disableAbbreviations />
           
 
-           <label for="location">Images:</label>
-           <input type="file" multiple onChange={handleImageChange} />
+           {/* <label for="location">Images:</label>
+           <input type="file" multiple onChange={handleImageChange} /> */}
+
+           {/* This is a test for multiple preview images */}
+           <div className="dropzone-container" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop it like its hot (; </p>
+            ) : (
+              <p>Drag and drop some files here, or click to select files</p>
+            )}
+            <div>
+              {files.map((file) => (
+                <div key={file.name}>
+                  <img src={file.preview} alt="preview" />
+                  <div>{file.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
   
            <button type="submit">Submit</button>
        </form>

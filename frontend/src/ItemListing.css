@@ -1,7 +1,14 @@
-body {
-    background-color: #3aa7a3;
+body, h1 {
     color: black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: Calibri;
+}
+
+body {
+    background: linear-gradient(to right, #5EC2B7 50%, #DAF0ED 50%);
+}
+
+.search {
+    background: linear-gradient(to right, #5EC2B7 50%, #DAF0ED 50%);
 }
 
 .head {
@@ -27,14 +34,14 @@ div:not(:last-child) {
 
 .text {
     color: black;
-
+    font-family: Calibri;
 }
 
 form {
     margin: 0 auto;
     max-width: 500px;
     padding: 60px;
-    background-color: #404040;
+    background-color: #2CA6A4;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -70,6 +77,12 @@ input[type="submit"] {
 input {
     border-radius: 5px;
 }
+
+.dropzone-container {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 
 
 /* CSS COLOR WAY 
