@@ -40,6 +40,7 @@ Deployment steps:
   - `gcloud app deploy app.yml --quiet`
 
 
+
 ```
 lendly
 ├─ .git
@@ -60,53 +61,27 @@ lendly
 │  ├─ postman
 │  │  └─ Lendly.postman_collection.json
 │  └─ src
-│     ├─ main
-│     │  ├─ java
-│     │  │  └─ com
-│     │  │     └─ lendly
-│     │  │        └─ backend
-│     │  │           ├─ ItemController.java
-│     │  │           ├─ ItemRepository.java
-│     │  │           ├─ ItemRepositoryJdbcImpl.java
-│     │  │           ├─ LendlyBackendApplication.java
-│     │  │           ├─ UserController.java
-│     │  │           ├─ UserRepository.java
-│     │  │           ├─ UserRepositoryJdbcImpl.java
-│     │  │           └─ model
-│     │  │              ├─ Item.java
-│     │  │              └─ User.java
-│     │  └─ resources
-│     │     ├─ application.properties
-│     │     ├─ application.yml
-│     │     ├─ static
-│     │     └─ templates
-│     └─ test
-│        └─ java
-│           └─ com
-│              └─ lendly
-│                 └─ backend
+│     └─ main
+│        ├─ java
+│        │  └─ com
+│        │     └─ lendly
+│        │        └─ backend
+│        │           ├─ ItemController.java
+│        │           ├─ ItemRepository.java
+│        │           ├─ ItemRepositoryJdbcImpl.java
+│        │           ├─ LendlyBackendApplication.java
+│        │           ├─ UserController.java
+│        │           ├─ UserRepository.java
+│        │           ├─ UserRepositoryJdbcImpl.java
+│        │           └─ model
+│        │              ├─ Item.java
+│        │              └─ User.java
+│        └─ resources
+│           └─ application.properties
 └─ frontend
    ├─ .gcloudignore
    ├─ README.md
-   ├─ build
-   │  ├─ app.yml
-   │  ├─ asset-manifest.json
-   │  ├─ favicon.ico
-   │  ├─ index.html
-   │  ├─ logo192.png
-   │  ├─ logo512.png
-   │  ├─ manifest.json
-   │  ├─ robots.txt
-   │  └─ static
-   │     ├─ css
-   │     │  ├─ main.63b41206.css
-   │     │  └─ main.63b41206.css.map
-   │     └─ js
-   │        ├─ 787.cda612ba.chunk.js
-   │        ├─ 787.cda612ba.chunk.js.map
-   │        ├─ main.026b142d.js
-   │        ├─ main.026b142d.js.LICENSE.txt
-   │        └─ main.026b142d.js.map
+   ├─ app.yml
    ├─ package-lock.json
    ├─ package.json
    ├─ public
@@ -121,6 +96,7 @@ lendly
       ├─ App.js
       ├─ App.test.js
       ├─ ItemListing.css
+      ├─ Rachel.css
       ├─ components
       │  ├─ About.jsx
       │  ├─ Home.jsx
@@ -131,7 +107,11 @@ lendly
       │  ├─ NavBar.jsx
       │  ├─ Profile.jsx
       │  ├─ Register.jsx
-      │  └─ test.json
+      │  └─ RouterLinks.jsx
+      ├─ images
+      │  ├─ jacket.jpg
+      │  ├─ rollerblades.jpg
+      │  └─ snowboots.jpg
       ├─ index.css
       ├─ index.js
       ├─ reportWebVitals.js

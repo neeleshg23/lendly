@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/jacket.jpg"
 
-const Register = () => {
+const Register = ({setUser}) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -50,7 +50,8 @@ const Register = () => {
   
       if (response.ok) {
         console.log('User created successfully');
-        navigate('/market');
+        setUser(user);
+        navigate('/profile');
       } else {
         console.error('Error creating user');
         // Show an error message
