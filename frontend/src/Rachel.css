@@ -58,6 +58,8 @@ img {
 /************** INPUTS ***************/
 
 input[type=text],
+input[type=password],
+input[type=email],
 button {
   width: 100%;
   padding: 12px;
@@ -66,7 +68,9 @@ button {
   border-radius: 10px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password],
+input[type=email] {
   display: inline-block;
   box-sizing: border-box;
 }

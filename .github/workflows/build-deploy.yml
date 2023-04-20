@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - dev_neel
 
 jobs:
   build_and_deploy:
@@ -43,13 +43,24 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node
 
+      - name: Set up Google Cloud SDK and authenticate
+        uses: google-github-actions/setup-gcloud@v0.3.0
+        with:
+          service_account_key: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+          project_id: lendly-383321
+
       - name: Build frontend with React
         run: |
           cd frontend
           npm install .
           npm run build
 
-      # Add steps to deploy the built application, e.g., to a hosting provider or server
-      - name: Deploy
+      - name: Deploy frontend
         run: |
-          echo "Add your deployment steps here."
+          cd ${{ github.workspace }}/frontend
+          gcloud app deploy app.yml --quiet
+
+      - name: Deploy backend
+        run: |
+          cd ${{ github.workspace }}/backend
+          gcloud app deploy app.yml --quiet
