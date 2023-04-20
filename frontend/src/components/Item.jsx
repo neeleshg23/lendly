@@ -24,7 +24,7 @@ const ItemWithData = () => {
 
     return (
         <div>
-            {data.map((item) => (
+            {itemData.map((item) => (
                 <Item
                     itemName={item.name}
                     itemPrice={item.insurancePrice}
