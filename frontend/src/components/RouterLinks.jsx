@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./../App.css";
 import Home from "./Home";
@@ -9,7 +9,9 @@ import Login from "./Login";
 import Register from "./Register";
 import ItemListing from "./ItemListing"
 
-const RouterLinks = ({ user }) => {
+const RouterLinks = () => {
+  const [user, setUser] = useState(null);
+
   return (
     <Router>
       <Routes>
@@ -17,7 +19,7 @@ const RouterLinks = ({ user }) => {
         <Route path="/market" element={<Market />} />
         <Route path="/about" element={<About user={user} />} />
         <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
+        <Route path="/register" element={<Register setUser={setUser}/>}/>
         <Route path="/listing" element={<ItemListing />} />
         <Route path="/profile" element={<Profile user={user} />} />
       </Routes>

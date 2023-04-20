@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import ItemWithData from "./Item.jsx";
 
 const Profile = ({ user }) => {
+    console.log("hi", user);
     return (
         <div>
             <NavBar user={user} />
@@ -11,7 +12,7 @@ const Profile = ({ user }) => {
                 <div className = "profile">
                     <div className="profile-pic"></div>
                     <div className = "userinfo">
-                        <div className="username">Username</div>
+                        <div className="username">user.displayName</div>
                         <div className="location">Location</div>
                     </div>
                     <div className="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -20,7 +21,7 @@ const Profile = ({ user }) => {
 
             <div className="row">
                 <div>
-                    <button className="tab-button active">Listings</button>
+                    <button className="tab-button active">Owned Items</button>
                     <button className="tab-button">Borrowed Items</button>
                 </div>
                 <div>
@@ -29,7 +30,7 @@ const Profile = ({ user }) => {
             </div>
 
             <div className="gallery">
-                <ItemWithData></ItemWithData>
+                <ItemWithData user={user}/>
             </div>
         </div>
     )
