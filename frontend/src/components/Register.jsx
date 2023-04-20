@@ -35,7 +35,6 @@ const Register = ({setUser}) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Remove the following line, as it should not be set on the client-side
         'Accept': 'application/json',
       },
       body: JSON.stringify(user),
