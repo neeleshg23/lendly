@@ -56,7 +56,7 @@ public class Item {
         this.name = name;
     }
     public String toString() {
-        return "Item{" +
+        return "Item {" +
             "id=" + id +
             ", category='" + category + '\'' +
             ", insurancePrice=" + insurancePrice +

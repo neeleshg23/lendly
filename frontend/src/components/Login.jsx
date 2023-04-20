@@ -1,5 +1,6 @@
 import React from 'react';
 import './../App.css';
+import image from "./../images/snowboots.jpg"
 
 const Login = () => {
     return (
@@ -11,7 +12,7 @@ const Login = () => {
             <div class="two-colored-box">
                 <div class="left-column">
                 {/* content for the left column goes here */}
-                    <img src="snowboots.jpg"/>
+                    <img src={image}/>
                     <h3>trade, lend, wear, share.</h3>
                 </div>
                 <div class="right-column">
@@ -20,7 +21,7 @@ const Login = () => {
                     <input type="text" id="user" name="username" placeholder="Username"></input>
                     <input type="text" id="password" name="password" placeholder="Password"></input>
                     <input type="submit" value="Login"></input>
-                    <p>Don't have an account?<a href="register">Register</a>or<a href="">Guest Login</a></p>
+                    <p>Don't have an account?<a href="register">Register</a>or<a href="market">Guest Login</a></p>
                 </div>
             </div>
         </div>

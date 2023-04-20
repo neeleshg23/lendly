@@ -1,7 +1,9 @@
 runtime: java17
 service: backend
-entrypoint: 'java -jar -Dserver.port=$8080 target/lendly-backend-1.jar'
+entrypoint: 'java -jar -Dserver.port=$PORT target/lendly-backend-1.jar'
 instance_class: F2
+env_variables:
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
 handlers:
   - url: /api/.*
     script: auto

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../App.css';
+import image from "./../images/jacket.jpg"
 
 const Register = () => {
   const [state, setState] = useState({
@@ -30,13 +31,16 @@ const Register = () => {
       rating,
     };
 
-    const response = await fetch('http://backend.lendly-383321.wl.r.appspot.com/api/users', {
+    const response = await fetch('/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     });
+
+    const responseData = await response.json();
+    console.log('Server response:', responseData);
 
     if (response.ok) {
       console.log('User created successfully');
@@ -56,7 +60,7 @@ const Register = () => {
       <div class="two-colored-box">
           <div class="left-column">
           {/* content for the left column goes here */}
-              <img src="rollerblades.jpg"/>
+              <img src={image}/>
               <h3>trade, lend, wear, share.</h3>
           </div>
           <div className="right-column">
