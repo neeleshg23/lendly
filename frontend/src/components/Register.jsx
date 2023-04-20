@@ -20,9 +20,9 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const { email, password, displayName, location, rating } = state;
-
+  
     const user = {
       email,
       password,
@@ -30,27 +30,36 @@ const Register = () => {
       location,
       rating,
     };
-
+  
     const response = await fetch('/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        // Remove the following line, as it should not be set on the client-side
+        //'Access-Control-Allow-Origin': '*', 
       },
       body: JSON.stringify(user),
     });
-
-    const responseData = await response.json();
-    console.log('Server response:', responseData);
-
-    if (response.ok) {
-      console.log('User created successfully');
-      navigate('/market');
+  
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.indexOf('application/json') !== -1) {
+      const responseData = await response.json();
+      console.log('Server response:', responseData);
+  
+      if (response.ok) {
+        console.log('User created successfully');
+        navigate('/market');
+      } else {
+        console.error('Error creating user');
+        // Show an error message
+      }
     } else {
-      console.error('Error creating user');
-      // Show an error message
+      const textResponse = await response.text();
+      console.error('Server response is not JSON:', textResponse);
+      // Handle non-JSON response here
     }
   };
+  
 
   return (
     <div>
