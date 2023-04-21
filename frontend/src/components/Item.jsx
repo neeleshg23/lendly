@@ -15,7 +15,7 @@ const ItemWithData = () => {
     const [itemData, setItemData] = useState([]);
     useEffect(() => {
         const fetchItemData = async () => {
-            const response = await fetch("http://backend.lendly-383321.wl.r.appspot.com/api/items");
+            const response = await fetch("https://backend.lendly-383321.wl.r.appspot.com/api/items");
             const itemData = await response.json();
             setItemData(itemData);
         };
