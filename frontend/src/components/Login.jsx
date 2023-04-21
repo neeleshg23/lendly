@@ -21,11 +21,10 @@ const Login = ({ setUser }) => {
         const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/users/${state.email}`, {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-                'accept': 'application/json'
+                'Access-Control-Allow-Origin': '*'
             },
           });
+          response = JSON.parse(response);
 
         // Check if user exists in database
         if (response.ok) {
