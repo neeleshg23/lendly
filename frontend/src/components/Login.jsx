@@ -18,7 +18,7 @@ const Login = ({ setUser }) => {
       const handleSubmit = async (event) => {
         event.preventDefault();
     
-        const response = await fetch(`http://backend-dot-lendly-383321.wl.r.appspot.com/api/users${state.email}`, {
+        const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users${state.email}`, {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*'
