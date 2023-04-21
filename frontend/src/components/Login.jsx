@@ -21,7 +21,7 @@ const Login = ({ setUser }) => {
         const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/users/${state.email}`, {
             method: 'GET',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
               'Content-Type': 'application/json',
             },
           });
