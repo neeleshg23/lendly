@@ -38,7 +38,7 @@ public class LendlyBackendApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
+                registry.addMapping("/***")
                         .allowedOrigins("http://frontend.lendly-383321.wl.r.appspot.com", "https://frontend.lendly-383321.wl.r.appspot.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
                         .allowedHeaders("*")
