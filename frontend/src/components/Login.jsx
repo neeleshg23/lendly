@@ -18,7 +18,7 @@ const Login = ({ setUser }) => {
       const handleSubmit = async (event) => {
         event.preventDefault();
     
-        const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/users/${state.email}`, {
+        const response = await fetch(`http://backend.lendly-383321.wl.r.appspot.com/api/users/${state.email}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
