@@ -22,7 +22,8 @@ const Login = ({ setUser }) => {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                'accept': 'application/json'
             },
           });
 
