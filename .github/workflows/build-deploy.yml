@@ -3,7 +3,11 @@ name: Build and Deploy
 on:
   push:
     branches:
+<<<<<<< HEAD
       - dev_edgar
+=======
+      - dev_blake
+>>>>>>> 6ffd95904eead49896d599e567a72bcdc5b35c81
 
 jobs:
   build_and_deploy:
