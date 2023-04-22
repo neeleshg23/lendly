@@ -25,10 +25,11 @@ const Profile = ({ user }) => {
                 </div>
             </div>
 
-            <h3></h3>
+            <h3>Owned Items</h3>
             <div className="gallery">
                 <ItemWithData user={user} itemtype="OWN"/>
             </div>
+            <h3>Borrowed Items</h3>
             <div className="gallery">
                 <ItemWithData user={user} itemtype="BORROW"/>
             </div>
