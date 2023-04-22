@@ -40,11 +40,20 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
         return jdbcTemplate.query(sql, ITEM_ROW_MAPPER);
     }
 
-    //test
-
     @Override
     public Optional<Item> findById(Long id) {
         String sql = "SELECT * FROM Items WHERE ItemID = ?";
+        try {
+            Item item = jdbcTemplate.queryForObject(sql, ITEM_ROW_MAPPER, id);
+            return Optional.ofNullable(item);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<Item> findByName(String id){
+        String sql = "SELECT * FROM Items WHERE name LIKE '%?%'";
         try {
             Item item = jdbcTemplate.queryForObject(sql, ITEM_ROW_MAPPER, id);
             return Optional.ofNullable(item);
