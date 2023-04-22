@@ -25,7 +25,6 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
             Item item = new Item();
             item.setId(resultSet.getLong("ItemID"));
             item.setCategory(resultSet.getString("Category"));
-            item.setDescription(resultSet.getString("Description"));
             item.setInsurancePrice(resultSet.getDouble("InsurancePrice"));
             item.setStatus(resultSet.getBoolean("Status"));
             item.setOwnerId(resultSet.getLong("OwnerID"));
@@ -67,12 +66,12 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     public Item save(Item item) {
         if (item.getId() == null) {
             // Update existing item
-            String sql = "INSERT INTO Items (Category, Description, InsurancePrice, Status, OwnerID, BorrowerID, Name) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Items (Category, InsurancePrice, Status, OwnerID, BorrowerID, Name) VALUES (?, ?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, item.getCategory(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName());
         } else {
             // Insert new item
-            String sql = "UPDATE Items SET Category = ?, Description = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ?, Name = ? WHERE ItemID = ?";
-            jdbcTemplate.update(sql, item.getCategory(), item.getDescription(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName(), item.getId());
+            String sql = "UPDATE Items SET Category = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ?, Name = ? WHERE ItemID = ?";
+            jdbcTemplate.update(sql, item.getCategory(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName(), item.getId());
         }
         return findById(item.getId()).orElse(null);
     }
