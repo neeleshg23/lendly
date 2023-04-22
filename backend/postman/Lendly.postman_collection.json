@@ -248,7 +248,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Shoes\",\n    \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
+							"raw": "{\n    \"category\": \"Shoes\",\n  \"description\": \"Test Description\",\n  \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
