@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/jacket.jpg"
+import RouterLinks from "./RouterLinks";
 
-const Register = ({setUser}) => {
+const Register = () => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -20,9 +21,9 @@ const Register = ({setUser}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const { email, password, displayName, location, rating } = state;
-
+  
     const user = {
       email,
       password,
@@ -30,24 +31,25 @@ const Register = ({setUser}) => {
       location,
       rating,
     };
-
-    const response = await fetch('http://localhost:8080/api/users', {
+  
+    const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify(user),
     });
 
     if (response.ok) {
       console.log('User created successfully');
-      setUser(user);
-      navigate('/profile');
+      navigate('/market');
     } else {
       console.error('Error creating user');
       // Show an error message
     }
   };
+  
 
   return (
     <div>
@@ -65,32 +67,36 @@ const Register = ({setUser}) => {
               <h2>Register</h2>
               <form onSubmit={handleSubmit}>
                   <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={state.email}
-                  onChange={handleChange}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={state.email}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={state.password}
-                  onChange={handleChange}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={state.password}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="text"
-                  name="displayName"
-                  placeholder="Display Name"
-                  value={state.displayName}
-                  onChange={handleChange}
+                    type="text"
+                    name="displayName"
+                    placeholder="Display Name"
+                    value={state.displayName}
+                    onChange={handleChange}
+                    required
                   />
                   <input
-                  type="text"
-                  name="location"
-                  placeholder="Location"
-                  value={state.location}
-                  onChange={handleChange}
+                    type="text"
+                    name="location"
+                    placeholder="Location"
+                    value={state.location}
+                    onChange={handleChange}
+                    required
                   />
                   <input type="submit" value="Register" />
               </form>

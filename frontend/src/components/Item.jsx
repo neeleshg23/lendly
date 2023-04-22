@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './../App.css';
-// import data from "./test.json";
 
 const Item = ({ itemName, itemPrice }) => {
     return (
@@ -12,13 +11,17 @@ const Item = ({ itemName, itemPrice }) => {
     );
 };
 
-const ItemWithData = () => {
+const ItemWithData = ({user}) => {
     const [itemData, setItemData] = useState([]);
     useEffect(() => {
         const fetchItemData = async () => {
-            const response = await fetch("http://localhost:8080/api/items");
-            const data = await response.json();
-            setItemData(data);
+            console.log(user)
+            console.log(user.email)
+            const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
+            console.log(userID)
+            const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+userID+"/items");
+            const itemData = await response.json();
+            setItemData(itemData);
         };
         fetchItemData();
     }, []);

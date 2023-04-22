@@ -61,7 +61,7 @@ function ProductListingPage({user}) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
 
   // Submit event handler 
-  const handleSubmit = async(event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     // Create the item 
     const item = {
@@ -73,6 +73,7 @@ function ProductListingPage({user}) {
       name: name
     };
     // Send the product data to the backend using a POST request
+
     // Clear the form inputs and display a success message
     const response = await fetch('http://localhost:8080/api/items', {
       method: 'POST',
