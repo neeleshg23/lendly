@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/jacket.jpg"
+import RouterLinks from "./RouterLinks";
 
 const Register = ({ setUser }) => {
   const [state, setState] = useState({

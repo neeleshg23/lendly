@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './../App.css';
 
 const Item = ({ itemName, itemPrice }) => {
@@ -11,7 +11,7 @@ const Item = ({ itemName, itemPrice }) => {
     );
 };
 
-const ItemWithData = () => {
+const ItemWithData = ({user}) => {
     const [itemData, setItemData] = useState([]);
     useEffect(() => {
         const fetchItemData = async () => {
