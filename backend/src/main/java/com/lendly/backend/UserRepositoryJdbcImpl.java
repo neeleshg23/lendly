@@ -89,7 +89,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 
     @Override
     public int findUserIdByEmail(String email) {
-        String sql = "SELECT id FROM Users WHERE Email = ?";
+        String sql = "SELECT UserID FROM Users WHERE Email = ?";
         return jdbcTemplate.queryForObject(sql, Integer.class, email);
     }
 
