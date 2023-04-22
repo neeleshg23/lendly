@@ -15,10 +15,10 @@ const ItemWithData = ({user}) => {
     const [itemData, setItemData] = useState([]);
     useEffect(() => {
         const fetchItemData = async () => {
-            console.log(user)
-            console.log(user.email)
-            const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
-            console.log(userID)
+            console.log("hey user ", user)
+            console.log("hey email ", user.email)
+            const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email).id;
+            console.log("hey userid ", userID)
             const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+userID+"/items");
             const itemData = await response.json();
             setItemData(itemData);
