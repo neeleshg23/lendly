@@ -11,17 +11,15 @@ import Market from "./Market";
 const RouterLinks = () => {
   const [user, setUser] = useState(null);
 
-const RouterLinks = ({ user }) => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/market" element={<Market />} />
-        <Route path="/about" element={<About user={user} />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/listing" element={<ItemListing />} />
-        <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/login" element={<Login setUser={setUser}/>}/>
+        <Route path="/register" element={<Register setUser={setUser}/>}/>
+        <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
+        <Route path="/listing" element={<ItemListing user={user} setUser={setUser}/>} />
+        <Route path="/market" element={<Market user={user} setUser={setUser}/>} />
       </Routes>
     </Router>
   );

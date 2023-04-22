@@ -61,7 +61,7 @@ function ProductListingPage({user}) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
 
   // Submit event handler 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Create the item 
     const item = {
