@@ -1,7 +1,5 @@
 package com.lendly.backend;
 
-import com.google.gson.Gson;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,40 +19,44 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = {"http://frontend-dot-lendly-383321.wl.r.appspot.com", "https://frontend-dot-lendly-383321.wl.r.appspot.com"})
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    private final Gson gson = new Gson();
-
-    @GetMapping(produces = "application/json")
-    public String getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return gson.toJson(users);
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    @GetMapping(value = "/{email}", produces = "application/json")
-    public ResponseEntity<String> getUserByEmail(@PathVariable String email) {
+    @GetMapping("/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return userRepository.findByEmail(email)
-                .map(user -> ResponseEntity.ok(gson.toJson(user)))
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> createUser(@RequestBody User user) {
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(gson.toJson(savedUser));
+    @GetMapping("/userid/{email}")
+    public int getUserIdByEmail(String email) {
+        return userRepository.findUserIdByEmail(email);
+                // .map(ResponseEntity::ok)
+                // .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User user) {
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.ok(savedUser);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         return userRepository.findById(id)
                 .map(existingUser -> {
                     user.setId(existingUser.getId());
                     User updatedUser = userRepository.save(user);
-                    return ResponseEntity.ok(gson.toJson(updatedUser));
+                    return ResponseEntity.ok(updatedUser);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -69,22 +71,22 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping(value = "/{id}/owned-items", produces = "application/json")
-    public ResponseEntity<String> getOwnedItemsByUserId(@PathVariable Long id) {
+    @GetMapping("/{id}/owned-items")
+    public ResponseEntity<List<Item>> getOwnedItemsByUserId(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(user -> {
                     List<Item> ownedItems = userRepository.findOwnedItems(id);
-                    return ResponseEntity.ok(gson.toJson(ownedItems));
+                    return ResponseEntity.ok(ownedItems);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping(value = "/{id}/borrowed-items", produces = "application/json")
-    public ResponseEntity<String> getBorrowedItemsByUserId(@PathVariable Long id) {
+    @GetMapping("/{id}/borrowed-items")
+    public ResponseEntity<List<Item>> getBorrowedItemsByUserId(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(user -> {
                     List<Item> borrowedItems = userRepository.findBorrowedItems(id);
-                    return ResponseEntity.ok(gson.toJson(borrowedItems));
+                    return ResponseEntity.ok(borrowedItems);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
