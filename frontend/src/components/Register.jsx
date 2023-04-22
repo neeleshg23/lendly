@@ -4,7 +4,7 @@ import './../App.css';
 import image from "./../images/jacket.jpg"
 import RouterLinks from "./RouterLinks";
 
-const Register = () => {
+const Register = ({ setUser }) => {
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -21,9 +21,9 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const { email, password, displayName, location, rating } = state;
-  
+
     const user = {
       email,
       password,
@@ -31,7 +31,7 @@ const Register = () => {
       location,
       rating,
     };
-  
+
     const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
@@ -41,12 +41,25 @@ const Register = () => {
       body: JSON.stringify(user),
     });
 
-    if (response.ok) {
-      console.log('User created successfully');
-      navigate('/market');
+
+    const contentType = response.headers.get('content-type');
+    console.log("contentType:"+contentType)
+    if (contentType && contentType.indexOf('application/json') !== -1) {
+      const responseData = await response.json();
+      console.log('Server response:', responseData);
+
+      if (response.ok) {
+        console.log('User created successfully');
+        setUser(user);
+        navigate('/profile');
+      } else {
+        console.error('Error creating user');
+        // Show an error message
+      }
     } else {
-      console.error('Error creating user');
-      // Show an error message
+      const textResponse = await response.text();
+      console.error('Server response is not JSON:', textResponse);
+      // Handle non-JSON response here
     }
   };
   
