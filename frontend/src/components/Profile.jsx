@@ -12,8 +12,8 @@ const Profile = ({ user }) => {
                 <div className = "profile">
                     <div className="profile-pic"></div>
                     <div className = "userinfo">
-                        <div className="username">user.displayName</div>
-                        <div className="location">Location</div>
+                        <div className="username">{user.displayName}</div>
+                        <div className="location">{user.location}</div>
                     </div>
                     <div className="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
