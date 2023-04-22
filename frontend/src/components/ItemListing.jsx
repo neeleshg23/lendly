@@ -5,7 +5,7 @@ import CurrencyInput from "react-currency-input-field";
 import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
-function ProductListingPage({user}) {
+function ProductListingPage({user, setUser}) {
 
   // Define state variables to hold the product data
   const [name, setName] = useState("");
@@ -61,7 +61,7 @@ function ProductListingPage({user}) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
 
   // Submit event handler 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event, user) => {
     event.preventDefault();
 
     // Call the fetch for the data needed to make the post api call 
@@ -103,20 +103,11 @@ function ProductListingPage({user}) {
     setCategory("");
     setImages([]);
     setValue(0);
-
-    // example of shit 
-    //     "id": 8,
-    //     "category": "Kitchenware",
-    //     "insurancePrice": 25.0,
-    //     "status": false,
-    //     "ownerId": 10,
-    //     "borrowerId": 0,
-    //     "name": "Blender"
   };
 
   return (
     <div class="search">
-       <form onSubmit={handleSubmit}>
+       <form onSubmit={(e) => handleSubmit(e, user)}>
            <h1>Post an Item!</h1>
            <label for="keyword">Category:</label>
            {/* <input type="text" id="keyword" name="keyword" required> */}
@@ -149,10 +140,9 @@ function ProductListingPage({user}) {
             allowDecimals
             decimalsLimit="2"
             disableAbbreviations />
-          
 
-           {/* <label for="location">Images:</label>
-           <input type="file" multiple onChange={handleImageChange} /> */}
+           <label for="location">Description:</label>
+           <textarea value={description} onChange={handleDescriptionChange} />
 
            {/* This is a test for multiple preview images */}
            <div className="dropzone-container" {...getRootProps()}>
