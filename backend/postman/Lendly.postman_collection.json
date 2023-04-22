@@ -50,6 +50,27 @@
 					"response": []
 				},
 				{
+					"name": "Get User ID By Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/userid/u6@example.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"userid",
+								"u6@example.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get All Owned Items By ID",
 					"request": {
 						"method": "GET",

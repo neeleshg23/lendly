@@ -88,6 +88,12 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     // }
 
     @Override
+    public int findUserIdByEmail(String email) {
+        String sql = "SELECT id FROM Users WHERE Email = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, email);
+    }
+
+    @Override
     public void deleteById(Long id) {
         String sql = "DELETE FROM Users WHERE UserID = ?";
         jdbcTemplate.update(sql, id);
