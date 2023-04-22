@@ -30,6 +30,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    
     @GetMapping("/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return userRepository.findByEmail(email)
