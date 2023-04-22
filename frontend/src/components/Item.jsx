@@ -17,9 +17,10 @@ const ItemWithData = ({user}) => {
         const fetchItemData = async () => {
             console.log("hey user ", user)
             console.log("hey email ", user.email)
-            const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email).id;
-            console.log("hey userid ", userID)
-            const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+userID+"/owned-items");
+            const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
+            const userJson = await userID.json(); // assuming the response is JSON
+            const id = userJson.id; // accessing id value using dot notation
+            const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+id+"/owned-items");
             const itemData = await response.json();
             setItemData(itemData);
         };
