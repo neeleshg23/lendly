@@ -36,7 +36,7 @@ public class ItemController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/name/{id}")
     public List<Item> getItemsByName(@PathVariable String id) {
         return itemRepository.findItemsByName(id);
                 // .map(ResponseEntity::ok)
