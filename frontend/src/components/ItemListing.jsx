@@ -75,7 +75,7 @@ function ProductListingPage({user}) {
     // Send the product data to the backend using a POST request
 
     // Clear the form inputs and display a success message
-    const response = await fetch('http://localhost:8080/api/items', {
+    const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/items', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -86,7 +86,6 @@ function ProductListingPage({user}) {
     if (response.ok) {
       console.log('Listing created successfully');
       navigate('/market');
-      // history.push('/market'); worry ab ts later 
     } else {
       // Show an error message
       console.error('Error creating item');
