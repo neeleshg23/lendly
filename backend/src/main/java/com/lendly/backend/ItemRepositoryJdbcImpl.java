@@ -40,6 +40,8 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
         return jdbcTemplate.query(sql, ITEM_ROW_MAPPER);
     }
 
+    //test
+
     @Override
     public Optional<Item> findById(Long id) {
         String sql = "SELECT * FROM Items WHERE ItemID = ?";
