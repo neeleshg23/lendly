@@ -63,15 +63,22 @@ function ProductListingPage({user}) {
   // Submit event handler 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Call the fetch for the data needed to make the post api call 
+    const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
+    const userJson = await userFetch.json(); // userFetch response is JSON
+    const id = userJson.id; // accessing id value
+
     // Create the item 
     const item = {
-      category: name,
-      insurancePrice: Number(value),
-      status: false,
-      ownerId: user.id, // Use the user ID from the props
-      borrowerId: null,
-      name: name
+      category: category, // selected value from dropdown
+      insurancePrice: Number(value), // inputted by user
+      status: false, // borrowed status at time of posting is always false
+      ownerId: id, // Use the user ID to construct item
+      borrowerId: null, // no borrower so null
+      name: name // name of the listing 
     };
+
     // Send the product data to the backend using a POST request
 
     // Clear the form inputs and display a success message
