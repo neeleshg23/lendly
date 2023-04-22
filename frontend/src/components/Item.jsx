@@ -19,7 +19,7 @@ const ItemWithData = ({user}) => {
             console.log("hey email ", user.email)
             const userID = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email).id;
             console.log("hey userid ", userID)
-            const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+userID+"/items");
+            const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+userID+"/owned-items");
             const itemData = await response.json();
             setItemData(itemData);
         };
