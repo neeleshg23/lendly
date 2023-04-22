@@ -37,12 +37,12 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/userid/{email}")
-    public int getUserIdByEmail(String email) {
-        return userRepository.findUserIdByEmail(email);
-                // .map(ResponseEntity::ok)
-                // .orElse(ResponseEntity.notFound().build());
-    }
+    // @GetMapping("/userid/{email}")
+    // public int getUserIdByEmail(String email) {
+    //     return userRepository.findUserIdByEmail(email);
+    //             // .map(ResponseEntity::ok)
+    //             // .orElse(ResponseEntity.notFound().build());
+    // }
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
