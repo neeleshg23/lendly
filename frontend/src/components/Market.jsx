@@ -7,7 +7,7 @@ import image from "./../images/rollerblades.jpg"
 const Market = ({ user, setUser }) => {
 
     const location = useLocation();
-
+    
     var resultsText = "";
     var search = new URLSearchParams(location.search).get("q");
     

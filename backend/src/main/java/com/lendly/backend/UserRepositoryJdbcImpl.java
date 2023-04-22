@@ -55,7 +55,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     public User save(User user) {
         if (user.getId() == null) {
             // Insert new user
-            String sql = "INSERT INTO Users (Email, Password, Username, Location, Rating) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT IGNORE INTO Users (Email, Password, Username, Location, Rating) VALUES (?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, user.getEmail(), user.getPassword(), user.getDisplayName(), user.getLocation(), user.getRating());
         } else {
             // Update existing user
