@@ -227,7 +227,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/vehicle",
+							"raw": "localhost:8080/api/items/vehicle",
 							"host": [
 								"localhost"
 							],
