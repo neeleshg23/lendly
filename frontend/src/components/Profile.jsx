@@ -21,16 +21,17 @@ const Profile = ({ user }) => {
 
             <div className="row">
                 <div>
-                    <button className="tab-button active">Owned Items</button>
-                    <button className="tab-button">Borrowed Items</button>
-                </div>
-                <div>
                     <button className="create-listing">Create Item Listing</button>
                 </div>
             </div>
 
+            <h3>Owned Items</h3>
             <div className="gallery">
-                <ItemWithData user={user}/>
+                <ItemWithData user={user} itemtype="OWN"/>
+            </div>
+            <h3>Borrowed Items</h3>
+            <div className="gallery">
+                <ItemWithData user={user} itemtype="BORROW"/>
             </div>
         </div>
     )
