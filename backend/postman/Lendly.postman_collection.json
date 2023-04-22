@@ -222,6 +222,26 @@
 					"response": []
 				},
 				{
+					"name": "Get Items by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/items/vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create New Item",
 					"request": {
 						"method": "POST",

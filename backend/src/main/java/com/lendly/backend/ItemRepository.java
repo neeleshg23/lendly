@@ -8,6 +8,7 @@ import com.lendly.backend.model.Item;
 public interface ItemRepository {
     List<Item> findAll();
     Optional<Item> findById(Long id);
+    Optional<Item> getItemsByName(String passName);
     Item save(Item item);
     void deleteById(Long id);
 }

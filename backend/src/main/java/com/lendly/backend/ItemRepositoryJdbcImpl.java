@@ -52,6 +52,17 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     }
 
     @Override
+    public Optional<Item> getItemsByName(String passName){
+        String sql = "SELECT * FROM Items WHERE name LIKE '%?%'";
+        try {
+            Item item = jdbcTemplate.queryForObject(sql, ITEM_ROW_MAPPER, passName);
+            return Optional.ofNullable(item);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
     public Item save(Item item) {
         if (item.getId() == null) {
             // Update existing item

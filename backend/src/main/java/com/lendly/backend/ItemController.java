@@ -36,6 +36,13 @@ public class ItemController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItemsByName(@PathVariable String passName) {
+        return itemRepository.getItemsByName(passName)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         Item savedItem = itemRepository.save(item);
