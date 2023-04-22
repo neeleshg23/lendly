@@ -36,11 +36,19 @@ public class ItemController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+<<<<<<< HEAD
     @GetMapping("/name/{id}")
     public List<Item> getItemsByName(@PathVariable String id) {
         return itemRepository.findItemsByName(id);
                 // .map(ResponseEntity::ok)
                 // .orElse(ResponseEntity.notFound().build());
+=======
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItemsByName(@PathVariable String id) {
+        return itemRepository.getItemsByName(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+>>>>>>> d0114ee57e52aca3b36ea57fbe39b21cc00f762b
     }
 
     @PostMapping
