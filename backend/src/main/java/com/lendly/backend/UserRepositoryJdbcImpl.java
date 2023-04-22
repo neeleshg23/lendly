@@ -80,7 +80,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
     public int findUserIdByEmail(String email) {
         String sql = "SELECT id FROM Users WHERE UserID = ?";
         // try {
-            int userID = jdbcTemplate.queryForObject(sql, USER_ROW_MAPPER, email);
+            int userID = jdbcTemplate.query(sql, USER_ROW_MAPPER, email);
             return userID;
         // } catch (EmptyResultDataAccessException e) {
         //     return Optional.empty();
