@@ -52,7 +52,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     }
 
     @Override
-    public Optional<Item> findByName(String id){
+    public Optional<Item> getItemsByName(String id){
         String sql = "SELECT * FROM Items WHERE name LIKE '%?%'";
         try {
             Item item = jdbcTemplate.queryForObject(sql, ITEM_ROW_MAPPER, id);
