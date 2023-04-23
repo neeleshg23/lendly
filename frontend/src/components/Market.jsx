@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import './../Rachel.css';
 import NavBar from "./NavBar";
+import MarketItemWithData from "./MarketItem.jsx";
 
 const Market = ({ user, setUser }) => {
 
