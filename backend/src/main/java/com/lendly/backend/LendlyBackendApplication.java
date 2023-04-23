@@ -44,6 +44,7 @@ public class LendlyBackendApplication {
                         .allowedHeaders("*")
                         .allowCredentials(true)
                         .maxAge(3600);
+                        .exposedHeaders("Access-Control-Allow-Origin");
             }
         };
     }
