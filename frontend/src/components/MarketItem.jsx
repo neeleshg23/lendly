@@ -21,12 +21,13 @@ const MarketItem = ({ user, item }) => {
             const owner = await response.json(); 
             if (owner.id === user.id) return;
             setItemOwner(owner);
-            // test
-            console.log(itemOwner);
+            
         }
         else { console.error("Error retrieving owner."); }
     }
     fetchItemOwner();
+    // test
+    console.log(itemOwner);
 
     // Borrow item
     const borrowItem = async () => {
