@@ -36,7 +36,7 @@ const ItemWithData = ({user, itemtype}) => {
     }, []);
 
     return (
-        <div>
+        <div className="gallery">
             {itemData.map((item) => (
                 <Item
                     itemName={item.name}
