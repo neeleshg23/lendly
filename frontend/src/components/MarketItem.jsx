@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import './../App.css';
 import image from "./../images/rollerblades.jpg"
 
@@ -33,9 +34,14 @@ const MarketItem = ({ itemName, itemPrice, itemCategory }) => {
 
 
 const MarketItemWithData = ({ user, keyword }) => {
+    const location = useLocation();
     const [marketItemData, setMarketItemData] = useState([]);
+    console.log("Called Market Item Data");
     useEffect(() => {
+        console.log("Called useEffect");
+        if (keyword === "") return;
         const fetchMarketItemData = async () => {
+            console.log("Called fetch");
             const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/name/${keyword}`, {
                 method: 'GET',
                 headers: {
@@ -69,7 +75,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, []);
+    }, [location]);
 
     return (
         <div>

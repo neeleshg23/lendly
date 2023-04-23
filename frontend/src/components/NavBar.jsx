@@ -27,8 +27,8 @@ const NavBar = ({ user }) => {
     // Search
     const search = () => {
         console.log("Clicked: Search");
-        if (searchInput === "") navigate("/market");
-        else navigate(`/market?q=${searchInput}`);
+        if (searchInput === "") { navigate("/market"); }
+        else { navigate(`/market?q=${searchInput}`); }
     };
 
     return (

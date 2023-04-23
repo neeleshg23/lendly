@@ -5,13 +5,15 @@ import NavBar from "./NavBar";
 import MarketItemWithData from "./MarketItem.jsx";
 
 const Market = ({ user, setUser }) => {
-
     const location = useLocation();
     
     var resultsText = "";
     var search = new URLSearchParams(location.search).get("q");
     
-    if (!search) search = "";
+    if (!search) 
+    {
+        search = "";
+    }
     else {
         search = search.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@'"\+\?><\[\]]/g,"");
         search = search.replace(/\s{2,}/g," ");
@@ -21,6 +23,7 @@ const Market = ({ user, setUser }) => {
 
     const searchQuery = search.split(" ");
     const keyword = searchQuery[0];
+    console.log(keyword);
 
     /* Fetch items that match keyword, then add it to results array
     const results = new Array();
