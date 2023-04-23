@@ -4,6 +4,8 @@
   font-family: Calibri;
 }
 
+/********************************** ANDREA *************************************/
+
 .row {
   display: flex;
   flex-direction: row;
@@ -42,19 +44,6 @@
 .location {
   font-size: 18px;
   font-weight: bold;
-}
-
-.tab-button {
-  font-size: 24px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.tab-button.active {
-  border-bottom-color: #4CAF50;
 }
 
 .create-listing {
@@ -102,39 +91,49 @@
   font-weight: bold;
 }
 
-/*******************************/
-/* Login + Registration styles */
+/********************************** RACHEL *************************************/
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+body { 
+    background-color: white; 
+}
 
 h1 {
   color: #5EC2B7;
   text-align: center;
+  font-family: calibri;
   font-size: 50px;
 }
 
 h2 {
+  color: black;
   text-align: center;
   font-family: Arial Rounded MT Bold;
   font-size: 35px;
-  margin: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 h3 {
+  color: white;
   text-align: center;
   font-family: Arial Rounded MT Bold;
   font-size: 20px;
   margin: 8px;
-  color: white;
 }
 
 p {
+  color: black;
+  font-family: calibri;
   font-size: 14px;
-  margin: 5px;
+  text-align: left;
+  margin: 0px;
 }
 
 a {
-  color: #5EC2B7;
+  color: #2CA6A4;
   margin: 5px;
+  font-family: calibri;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
@@ -151,7 +150,38 @@ img {
   margin-bottom: 15px;
 }
 
-/* two-toned box */
+/* Inputs */
+
+input[type=text],
+input[type=password],
+input[type=email],
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px;
+  border: none;
+  border-radius: 10px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #5EC2B7;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+  
+button:hover {
+  background-color: #2CA6A4;
+}
+
+/* Login / Register */
 
 .two-colored-box {
   margin: auto;
@@ -163,10 +193,8 @@ img {
   align-items: stretch;
 }
 
-/* columns inside two-toned box */
-
-.left-column,
-.right-column {
+.two-colored-box .left-column,
+.two-colored-box .right-column {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -176,60 +204,115 @@ img {
   justify-content: center;
 }
 
-.left-column {
+.two-colored-box .left-column {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
 
-.right-column {
+.two-colored-box .right-column {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-/* form submission buttons */
+/* Navbar */
 
-.button {
-  width: 100%;
-  background-color: #5EC2B7;
-  color: white;
-  padding: 12px;
-  margin: 8px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.navbar {
+  border-radius: 15px;
+  background-color: #DAF0ED;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 750px;
+  height: auto;
+  display: flex;
+  align-items: stretch;
 }
 
-input[type=text] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px;
-  display: inline-block;
-  border: none;
-  border-radius: 10px;
-  box-sizing: border-box;
+.navbar button {
+  float: left;
+  width: 80px;
+  margin-right: 0px;
 }
 
-input[type=password] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px;
-  display: inline-block;
-  border: none;
-  border-radius: 10px;
-  box-sizing: border-box;
+.search {
+  width: 400px;
+  margin-left: auto;
+  display: flex;
+  margin-right: 8px;
+  align-self: right;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #5EC2B7;
-  color: white;
-  padding: 12px;
-  margin: 8px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.search input[type=text],
+.search button {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-input[type=submit]:hover {
-  background-color: #2CA6A4;
+.search input[type=text] {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.navbar .search button{
+  width: 45px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+/* Market Item */
+
+.market-item {
+  position: relative;
+  background-color: white;
+  border: 5px solid #DAF0ED;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 740px;
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.market-item img {
+  height: 190px;
+  object-fit: cover;
+  border: none;
+  margin: 0px;
+}
+
+.market-item button {
+  margin: 0px;
+  margin-top: 10px;
+  margin-left: auto;
+  width: 75px;
+  height: 30px;
+  padding: 0px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.market-item .left-column,
+.market-item .right-column {
+  margin: 15px;
+}
+
+.market-item .left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 27%;
+}
+
+.market-item .right-column {
+  width: 73%;
+  margin-left: 0px;
+}
+
+.market-item .row {
+  margin-bottom: 0px;
+  width: auto;
+  height: auto;
+  display: flex;
 }
