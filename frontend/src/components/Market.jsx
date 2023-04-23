@@ -41,9 +41,7 @@ const Market = ({ user, setUser }) => {
                 <p style={{fontSize: 30 + 'px', textAlign: 'center'}}>{resultsText}</p>
             </div>
 
-            <div className="gallery">
-                <MarketItemWithData user={user} keyword={keyword} />
-            </div>
+            <MarketItemWithData user={user} keyword={keyword} />
         </div>
     )
 }

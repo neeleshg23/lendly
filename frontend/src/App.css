@@ -155,6 +155,7 @@ img {
 input[type=text],
 input[type=password],
 input[type=email],
+input[type=submit],
 button {
   width: 100%;
   padding: 12px;
@@ -170,6 +171,7 @@ input[type=email] {
   box-sizing: border-box;
 }
 
+input[type=submit],
 button {
   background-color: #5EC2B7;
   color: white;

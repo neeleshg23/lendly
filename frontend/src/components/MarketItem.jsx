@@ -40,7 +40,7 @@ const MarketItemWithData = ({ user, keyword }) => {
     const [marketItemData, setMarketItemData] = useState([]);
     useEffect(() => {
         const fetchMarketItemData = async () => {
-            if (keyword === "") {}
+            if (keyword === "") { setMarketItemData([]); }
             else {
                 const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/name/${keyword}`, {
                     method: 'GET',
@@ -68,10 +68,12 @@ const MarketItemWithData = ({ user, keyword }) => {
                     }
                     else {
                         console.error('No results found');
+                        setMarketItemData([]);
                     }
                 }
                 else {
                     console.error('No results found');
+                    setMarketItemData([]);
                 }
             }
         };
