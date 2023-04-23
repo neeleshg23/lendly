@@ -21,7 +21,8 @@ const MarketItem = ({ user, item }) => {
             const owner = await response.json(); 
             if (owner.id === user.id) return;
             setItemOwner(owner);
-            console.log(itemOwner.displayName);
+            // test
+            console.log(itemOwner);
         }
         else { console.error("Error retrieving owner."); }
     }
