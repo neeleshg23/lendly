@@ -33,7 +33,8 @@ const MarketItem = ({ user, item }) => {
             status: true,
             ownerId: item.ownerId,
             borrowerId: user.id,
-            name: item.name
+            name: item.name,
+            description: "",
         }
 
         const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
@@ -45,7 +46,9 @@ const MarketItem = ({ user, item }) => {
             body: JSON.stringify(body),
         });
 
-        window.location.reload(false);
+        // Check if retrieval was successful
+        if (response.ok) { window.location.reload(false); }
+        else { console.error("Error retrieving owner."); }
     }
 
     return (
