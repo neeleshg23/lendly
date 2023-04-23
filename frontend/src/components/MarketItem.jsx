@@ -19,7 +19,7 @@ const MarketItem = ({ user, item }) => {
         // Check if retrieval was successful
         if (response.ok) { 
             const owner = await response.json(); 
-            // if (owner.id === user.id) return;
+            if (owner.id === user.id) return;
             setItemOwner(owner);
         }
         else { console.error("Error retrieving owner."); }
@@ -39,6 +39,7 @@ const MarketItem = ({ user, item }) => {
         }
 
         const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
+            host: 'backend-dot-lendly-383321.wl.r.appspot.com',
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
