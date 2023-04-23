@@ -8,6 +8,8 @@ const MarketItem = ({ user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState();
     const fetchItemOwner = async () => {
+        // test
+        console.log("item owner id:" + item.ownerId);
         const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
             method: 'GET',
             headers: {
