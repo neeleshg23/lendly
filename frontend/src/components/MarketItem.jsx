@@ -8,7 +8,7 @@ const MarketItem = ({ user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState();
     const fetchItemOwner = async () => {
-        const response = await fetch(`http://backend.lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
+        const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -36,7 +36,7 @@ const MarketItem = ({ user, item }) => {
             name: item.name
         }
 
-        const response = await fetch(`http://backend.lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
+        const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
