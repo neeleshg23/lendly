@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import './../Rachel.css';
 import NavBar from "./NavBar";
-import image from "./../images/rollerblades.jpg"
 
 const Market = ({ user, setUser }) => {
 
@@ -19,12 +18,14 @@ const Market = ({ user, setUser }) => {
         resultsText = "Results for: " + search;
     }
 
-    const results = new Array();
-
     const searchQuery = search.split(" ");
+    const keyword = searchQuery[0];
+
+    /* Fetch items that match keyword, then add it to results array
+    const results = new Array();
     searchQuery.forEach(searchItem => {
-        // Fetch items that match keyword, then add it to results array
     });
+    */
 
     return (
         <div>
@@ -36,28 +37,8 @@ const Market = ({ user, setUser }) => {
                 <p style={{fontSize: 30 + 'px', textAlign: 'center'}}>{resultsText}</p>
             </div>
 
-            <div class="item">
-                <div class="left-column">
-                    {/* content for the left column goes here */}
-                    <img src={image}/>
-                </div>
-                <div class="right-column">
-                    {/* content for the right column goes here */}
-                    <div class="row">
-                        <p style={{fontSize: 22 + 'px'}}>Item Name</p>
-                        <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>$$$</b></p>
-                    </div>
-                    <div class="row">
-                        <p><b>Display Name</b></p>
-                        <p><i class="fa fa-star" style={{color: '#fcca03', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
-                    </div>
-                    <div class="row">
-                        <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    </div>
-                    <div class="row">
-                        <button>Borrow</button>
-                    </div>
-                </div>
+            <div className="gallery">
+                <MarketItemWithData user={user} keyword={keyword} />
             </div>
         </div>
     )

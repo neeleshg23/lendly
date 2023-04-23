@@ -47,6 +47,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             // Check if any items match results
             if (response.ok) {
                 const marketItemData = await response.json();
+                console.log(marketItemData);
 
                 // Remove items that are already borrowed
                 marketItemData.forEach(marketItem => {
