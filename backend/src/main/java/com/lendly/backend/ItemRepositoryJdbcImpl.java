@@ -68,11 +68,11 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     public Item save(Item item) {
         if (item.getId() == null) {
             // Update existing item
-            String sql = "INSERT INTO Items (Category, ItemDescription, InsurancePrice, Status, OwnerID, BorrowerID, Name) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Items (Category, Description, InsurancePrice, Status, OwnerID, BorrowerID, Name) VALUES (?, ?, ?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, item.getCategory(), item.getItemDescription(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName());
         } else {
             // Insert new item
-            String sql = "UPDATE Items SET Category = ?, ItemDescription = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ?, Name = ? WHERE ItemID = ?";
+            String sql = "UPDATE Items SET Category = ?, Description = ?, InsurancePrice = ?, Status = ?, OwnerID = ?, BorrowerID = ?, Name = ? WHERE ItemID = ?";
             jdbcTemplate.update(sql, item.getCategory(), item.getItemDescription(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName(), item.getId());
         }
         return findById(item.getId()).orElse(null);
