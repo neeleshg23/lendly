@@ -12,8 +12,8 @@ const Profile = ({ user }) => {
                 <div className = "profile">
                     <div className="profile-pic"></div>
                     <div className = "userinfo">
-                        <div className="username">user.displayName</div>
-                        <div className="location">Location</div>
+                        <div className="username">{user.displayName}</div>
+                        <div className="location">{user.location}</div>
                     </div>
                     <div className="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 </div>
@@ -21,16 +21,17 @@ const Profile = ({ user }) => {
 
             <div className="row">
                 <div>
-                    <button className="tab-button active">Owned Items</button>
-                    <button className="tab-button">Borrowed Items</button>
-                </div>
-                <div>
                     <button className="create-listing">Create Item Listing</button>
                 </div>
             </div>
 
+            <h3>Owned Items</h3>
             <div className="gallery">
-                <ItemWithData user={user}/>
+                <ItemWithData user={user} itemtype="OWN"/>
+            </div>
+            <h3>Borrowed Items</h3>
+            <div className="gallery">
+                <ItemWithData user={user} itemtype="BORROW"/>
             </div>
         </div>
     )
