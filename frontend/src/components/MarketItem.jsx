@@ -6,6 +6,7 @@ import image from "./../images/rollerblades.jpg"
 
 const MarketItem = ({ user, item }) => {
     // Fetch item owner
+    /*
     const [itemOwner, setItemOwner] = useState();
     const fetchItemOwner = async () => {
         const response = await fetch(`https://backend.lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
@@ -24,6 +25,7 @@ const MarketItem = ({ user, item }) => {
         else { console.error("Error retrieving owner."); }
     }
     fetchItemOwner();
+    */
 
     // Borrow item
     const borrowItem = async () => {
@@ -64,8 +66,8 @@ const MarketItem = ({ user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>{itemOwner.name}</b></p>
-                    <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>{itemOwner.rating}</b></p>
+                    <p><b>Display Name</b></p>
+                    <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
                 </div>
                 <div className="row">
                     <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>
