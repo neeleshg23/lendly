@@ -17,6 +17,8 @@ const MarketItem = ({ user, item }) => {
                 'Content-Type': 'application/json',
             },
         });
+        // test
+        console.log("response:" + response);
         
         // Check if retrieval was successful
         if (response.ok) { 
