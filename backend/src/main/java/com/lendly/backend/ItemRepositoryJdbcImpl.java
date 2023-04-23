@@ -25,7 +25,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
             Item item = new Item();
             item.setId(resultSet.getLong("ItemID"));
             item.setCategory(resultSet.getString("Category"));
-            item.setItemDescription(resultSet.getString("ItemDescription"));
+            item.setItemDescription(resultSet.getString("Description"));
             item.setInsurancePrice(resultSet.getDouble("InsurancePrice"));
             item.setStatus(resultSet.getBoolean("Status"));
             item.setOwnerId(resultSet.getLong("OwnerID"));
