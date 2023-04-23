@@ -66,7 +66,7 @@ const MarketItem = ({ user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>{itemOwner.name}</b></p>
+                    <p><b>{itemOwner.displayName}</b></p>
                     <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
                 </div>
                 <div className="row">
