@@ -36,7 +36,7 @@ const MarketItem = ({ user, itemName, itemPrice, itemCategory }) => {
 
 
 const MarketItemWithData = ({ user, keyword }) => {
-    const location = useLocation();
+    const location = useLocation(); 
     const [marketItemData, setMarketItemData] = useState([]);
     useEffect(() => {
         const fetchMarketItemData = async () => {
