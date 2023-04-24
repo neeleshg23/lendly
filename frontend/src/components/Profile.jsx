@@ -3,9 +3,11 @@ import './../App.css';
 import NavBar from "./NavBar";
 import ItemWithData from "./Item.jsx";
 import image from "./../images/profile.png"
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ user, setUser }) => {
     console.log("hi", user);
+    const navigate = useNavigate();
     const listing = () => {
         console.log("Item listing create button clicked")
         setUser(user)
