@@ -11,7 +11,7 @@ const Item = ({ itemID, itemName, itemPrice, itemType }) => {
             method: "DELETE"
         });
 
-        if(response.ok) { window.location.reload(false); } 
+        if(response.ok) {} 
         else { console.error("Failed to return item with ID " + itemID); }
     }
     return (
@@ -47,7 +47,7 @@ const ItemWithData = ({ user, itemType }) => {
             }
         };
         fetchItemData();
-    }, []);
+    }, [user]);
 
     return (
         <div className="gallery">

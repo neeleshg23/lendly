@@ -59,7 +59,9 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { /* Re-render */ }
+        if (response.ok) { 
+            /* Re-render */ 
+        }
         else { console.error("Error retrieving owner."); }
     }
 
