@@ -64,6 +64,7 @@ function ProductListingPage({user, setUser}) {
   const handleSubmit = async (event, user) => {
     event.preventDefault();
 
+    console.log("item listing user: ", user)
     // Call the fetch for the data needed to make the post api call 
     const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
     const userJson = await userFetch.json(); // userFetch response is JSON
