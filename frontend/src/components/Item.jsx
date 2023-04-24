@@ -7,7 +7,8 @@ const Item = ({ itemName, itemPrice }) => {
         <div className="item">
             <img src={image}/>
             <p>{itemName}</p>
-            <p style={{marginBottom: 15 +'px'}}><b>${itemPrice}</b></p>
+            <p><b>${itemPrice}</b></p>
+            <button style={{marginBottom: 15 +'px'}}>Return Item</button>
         </div>
     );
 };

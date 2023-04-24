@@ -542,6 +542,15 @@ option:hover {
   word-break: break-word;
 }
 
+.item button {
+  margin: 0px;
+  margin-left: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 96px;
+  height: auto;
+}
+
 /* Listing */
 
 .listing{

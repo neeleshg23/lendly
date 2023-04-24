@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './../App.css';
 
-const NavBar = ({ user, setUser }) => {
+const NavBar = ({ user, onLogout }) => {
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,7 +22,7 @@ const NavBar = ({ user, setUser }) => {
     // Logout
     const logout = () => {
         console.log("Logged out");
-        setUser(null);
+        onLogout();
         navigate('/');
     };
 

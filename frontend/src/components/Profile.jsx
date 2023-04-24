@@ -5,19 +5,18 @@ import ItemWithData from "./Item.jsx";
 import image from "./../images/profile.png"
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({ user, setUser }) => {
-    console.log("hi", user);
+const Profile = ({ user, onLogout }) => {
+    console.log("Hi", user);
     const navigate = useNavigate();
     const listing = () => {
-        console.log("Item listing create button clicked")
-        setUser(user)
-        navigate('/listing', user)
+        console.log("Item listing create button clicked");
+        navigate('/listing');
     }
     return (
         <div>
             <h1>lend.ly</h1>
 
-            <NavBar user={user} setUser={setUser}/>
+            <NavBar user={user} onLogout={onLogout}/>
 
             <div className="profile">
 
@@ -30,7 +29,7 @@ const Profile = ({ user, setUser }) => {
                     {/* content for the right column goes here */}
                         <div className="row">
                             <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>
-                            <p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>
+                            {/*<p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>*/}
                         </div>
                         <div className="row">
                             <p><b>{user.location}</b></p>
