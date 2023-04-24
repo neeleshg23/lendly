@@ -3,7 +3,7 @@ import './../App.css';
 import image from "./../images/item_alt.png"
 import { useNavigate } from 'react-router-dom';
 
-const Item = ({ itemID, itemName, itemPrice, itemtype }) => {
+const Item = ({ itemID, itemName, itemPrice, itemType }) => {
     const navigate = useNavigate();
     const handleReturnItemClick = async () => {
         const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/" + itemID,
@@ -58,7 +58,7 @@ const ItemWithData = ({ user, itemtype }) => {
                 <Item
                     itemName={item.name}
                     itemPrice={item.insurancePrice}
-                    itemtype={itemtype}
+                    itemType={itemType}
                     itemID={item.id}
                 />
             ))}
