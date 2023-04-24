@@ -59,7 +59,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { window.location.reload(false); }
+        if (response.ok) { /* Re-render */ }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -93,7 +93,7 @@ const MarketItem = ({ user, item }) => {
 
 
 const MarketItemWithData = ({ user, keyword }) => {
-    //const location = useLocation(); 
+    const location = useLocation(); 
     const [marketItemData, setMarketItemData] = useState([]);
     useEffect(() => {
         const fetchMarketItemData = async () => {
@@ -174,7 +174,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, []);
+    }, [location]);
 
     return (
         
