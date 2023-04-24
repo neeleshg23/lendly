@@ -28,11 +28,11 @@ const Profile = ({ user, onLogout }) => {
                      <div className="right-column">
                     {/* content for the right column goes here */}
                         <div className="row">
-                            <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>
+                            {user && user.displayName && <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>}
                             {/*<p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>*/}
                         </div>
                         <div className="row">
-                            <p><b>{user.location}</b></p>
+                            {user && user.location && <p><b>{user.location}</b></p>}
                         </div>
                     </div>
                 </div>
