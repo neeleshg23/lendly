@@ -1,35 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import './../Rachel.css';
+import './../App.css';
 import image from "./../images/rollerblades.jpg"
 
 
 const MarketItem = ({ user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState();
-    const fetchItemOwner = async () => {
-        console.log("Item Owner ID:" + item.ownerId);
-        const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        });
-        console.log("Reponse: " + response);
-        
-        // Check if retrieval was successful
-        if (response.ok) { 
-            const owner = await response.json(); 
-            console.log(owner);
-            if (owner.id === user.id) return;
-            setItemOwner(owner);
+    useEffect(() => {
+        const fetchItemOwner = async () => {
+            const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            });
+            console.log("Reponse: " + JSON.stringify(response));
             
+            // Check if retrieval was successful
+            if (response.ok) { 
+                const owner = await response.json(); 
+                console.log(owner);
+                if (owner.id === user.id) return;
+                setItemOwner(owner);
+                console.log("Item Owner: " + JSON.stringify(itemOwner));
+            }
+            else { console.error("Error retrieving owner."); }
         }
-        else { console.error("Error retrieving owner."); }
-    }
-    fetchItemOwner();
-    console.log("Item Owner: " + itemOwner);
+        fetchItemOwner();
+    }, []);
 
     // Borrow item
     const borrowItem = async () => {
@@ -54,7 +54,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { window.location.reload(false); }
+        if (response.ok) { }
         else { console.error("Error retrieving owner."); }
     }
 
