@@ -70,8 +70,8 @@ const Register = ({ setUser }) => {
           <h1>lend.ly</h1>
       </div>
 
-      <div class="two-colored-box">
-          <div class="left-column">
+      <div className="two-colored-box">
+          <div className="left-column">
           {/* content for the left column goes here */}
               <img src={image}/>
               <h3>trade, lend, wear, share.</h3>

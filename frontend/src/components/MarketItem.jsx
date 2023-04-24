@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import './../App.css';
 import image from "./../images/rollerblades.jpg"
 
 
 const MarketItem = ({ user, item }) => {
     // Fetch item owner
-    const [itemOwner, setItemOwner] = useState();
+    const [itemOwner, setItemOwner] = useState({
+        id: '',
+        email:'',
+        password: '',
+        displayName: '',
+        location: '',
+        rating: 0,
+    });
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    var search = new URLSearchParams(location.search).get("q");
+    if (!search) 
+    { search = "";}
+    else {
+        search = search.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@'"\+\?><\[\]]/g,"");
+        search = search.replace(/\s{2,}/g," ");
+        search = search.toLowerCase();
+    }
+    const searchQuery = search.split(" ");
+
     useEffect(() => {
         const fetchItemOwner = async () => {
             const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
@@ -16,15 +36,13 @@ const MarketItem = ({ user, item }) => {
                     'Content-Type': 'application/json',
                 },
             });
-            console.log("Reponse: " + JSON.stringify(response));
             
             // Check if retrieval was successful
             if (response.ok) { 
                 const owner = await response.json(); 
-                console.log(owner);
                 if (owner.id === user.id) return;
                 setItemOwner(owner);
-                console.log("Item Owner: " + JSON.stringify(itemOwner));
+                console.log(owner);
             }
             else { console.error("Error retrieving owner."); }
         }
@@ -54,7 +72,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { }
+        if (response.ok) { navigate(`/market?q=${searchQuery[0]}`); }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -71,8 +89,7 @@ const MarketItem = ({ user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>Display Name</b></p>
-                    <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
+                    <p><b>{itemOwner.displayName}</b></p>
                 </div>
                 <div className="row">
                     <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>
