@@ -40,13 +40,12 @@ const MarketItem = ({ user, item }) => {
             // Check if retrieval was successful
             if (response.ok) { 
                 const owner = await response.json(); 
-                if (owner.id === user.id) return;
                 setItemOwner(owner);
                 console.log(owner);
             }
             else { console.error("Error retrieving owner."); }
         }
-        fetchItemOwner();
+        if (user) { fetchItemOwner(); }
     }, []);
 
     // Borrow item
@@ -123,9 +122,10 @@ const MarketItemWithData = ({ user, keyword }) => {
                 if (response.ok) {
                     const marketItemData = await response.json();
 
-                    // Remove items that are already borrowed
                     marketItemData.forEach(marketItem => {
-                        if (marketItem.status == true) {
+                        // Remove items that are already borrowed
+                        // AND items that are owned by the user
+                        if (marketItem.status == true || marketItem.ownerId == user.id) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
@@ -160,9 +160,10 @@ const MarketItemWithData = ({ user, keyword }) => {
                     const marketItemData = await response.json();
                     console.log(marketItemData);
 
-                    // Remove items that are already borrowed
                     marketItemData.forEach(marketItem => {
-                        if (marketItem.status == true) {
+                        // Remove items that are already borrowed
+                        // AND items that are owned by the user
+                        if (marketItem.status == true || marketItem.ownerId == user.id) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }

@@ -29,7 +29,7 @@ const Item = ({ itemID, itemName, itemPrice, itemType }) => {
     );
 };
 
-const ItemWithData = ({ user, itemtype }) => {
+const ItemWithData = ({ user, itemType }) => {
     const [itemData, setItemData] = useState([]);
     useEffect(() => {
         const fetchItemData = async () => {
@@ -38,7 +38,7 @@ const ItemWithData = ({ user, itemtype }) => {
                 const userJson = await userFetch.json(); // userFetch response is JSON
                 const id = userJson.id; // accessing id value
 
-                if (itemtype == "OWN") {
+                if (itemType == "OWN") {
                     const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + id + "/owned-items");
                     const itemData = await response.json();
                     setItemData(itemData);

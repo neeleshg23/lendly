@@ -47,7 +47,7 @@ const Profile = ({ user, onLogout }) => {
                 </div>
 
                 <div className="gallery">
-                    <ItemWithData user={user} itemtype="OWN"/>
+                    <ItemWithData user={user} itemType="OWN"/>
                 </div>
 
                 <div className="section" style={{justifyContent: 'stretch', marginBottom: 10 + 'px'}}>
@@ -57,7 +57,7 @@ const Profile = ({ user, onLogout }) => {
                 </div>
 
                 <div className="gallery" style={{marginBottom: 0 + 'px'}}>
-                    <ItemWithData user={user} itemtype="BORROW"/>
+                    <ItemWithData user={user} itemType="BORROW"/>
                 </div>
 
             </div>
