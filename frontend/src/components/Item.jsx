@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import './../App.css';
 import image from "./../images/item_alt.png"
 import { useNavigate } from 'react-router-dom';
-const navigate = useNavigate();
 
 const Item = ({ itemID, itemName, itemPrice, itemtype }) => {
+    const navigate = useNavigate();
     const handleReturnItemClick = async () => {
         const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/" + itemID,
         {
