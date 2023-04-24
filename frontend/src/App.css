@@ -267,13 +267,23 @@ input[type=text],
 input[type=password],
 input[type=email],
 input[type=submit],
-button {
+button,
+select,
+textarea {
   width: 100%;
   font-size: 14px;
   padding: 10px;
   margin: 8px;
   border: none;
   border-radius: 10px;
+}
+
+textarea {
+  resize: none;
+  width: 97%;
+  height: 100px;
+  font-family: calibri;
+  font-size: 16px;
 }
 
 input[type=text],
@@ -284,13 +294,16 @@ input[type=email] {
 }
 
 input[type=submit],
-button {
+button, 
+select {
   background-color: #5EC2B7;
   color: white;
   cursor: pointer;
 }
-  
-button:hover {
+
+input[type=submit]:hover,
+button:hover,
+option:hover {
   background-color: #2CA6A4;
 }
 
@@ -541,9 +554,24 @@ button:hover {
   height: auto;
 }
 
-.listing .form {
-  margin-bottom: 25px;
-  width: 100%;
+.listing form {
+  margin: auto;
+  margin-bottom: 5px;
+  width: 75%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.listing input,
+.listing button,
+.listing select, 
+.listing textarea{
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.listing label {
+  font-size: 20px;
+  align-self: left;
+  margin-bottom: 5px;
 }

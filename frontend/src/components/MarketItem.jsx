@@ -98,9 +98,11 @@ const MarketItem = ({ user, item }) => {
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                         nisi ut aliquip ex ea commodo consequat. </p>
                 </div>
+                {user &&
                 <div className="row">
                     <button onClick={borrowItem}>Borrow</button>
                 </div>
+                }
             </div>
         </div>
     );

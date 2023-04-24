@@ -108,67 +108,92 @@ function ProductListingPage({ user, setUser }) {
   };
 
   return (
-    <div class="search">
-      <form onSubmit={(e) => handleSubmit(e, user)}>
-        <h1>Post an Item!</h1>
-        <label for="keyword">Category:</label>
-        {/* <input type="text" id="keyword" name="keyword" required> */}
-        <select id="category" value={category} onChange={handleCategoryChange}>
-          <option value="">Select a category</option>
-          <option value="appliances">Appliances</option>
-          <option value="books">Books</option>
-          <option value="clothing">Clothing</option>
-          <option value="electronics">Electronics</option>
-          <option value="furniture">Furniture</option>
-          <option value="kitchenware">Kitchenware</option>
-          <option value="shoes">Shoes</option>
-          <option value="tools">Tools</option>
-        </select>
+    <div>
+      <h1>lend.ly</h1>
 
-        <label for="location">Name:</label>
-        <input value={name} onChange={handleNameChange} style={{ width: "497px" }} />
+      <NavBar user={user} setUser={setUser}/>
 
-        <label for="location">Insurance:</label>
-        <CurrencyInput className="currency"
-          prefix={prefix}
-          name="currencyInput"
-          id="currencyInput"
-          data-number-to-fixed="2"
-          data-number-stepfactor="1"
-          value={value}
-          placeholder=""
-          onChange={handleChange}
-          onBlur={handleOnBlur}
-          allowDecimals
-          decimalsLimit="2"
-          disableAbbreviations />
+      <div class="listing">
+      <p style={{fontSize: 22 + 'px', marginBottom: 20 + 'px', textAlign: 'center'}}><b>Add Listing</b></p>
+        <form onSubmit={(e) => handleSubmit(e, user)}>
+          <label for="name"><b>Item Name</b></label>
+          <input 
+            type="text" 
+            id="name" 
+            placeholder="Item Name"
+            value={name}
+            onChange={handleNameChange}
+            required
+          />
 
-        <label for="location">Description:</label>
-        <textarea value={description} onChange={handleDescriptionChange} />
+          <label for="keyword"><b>Item Category</b></label>
+          {/* <input type="text" id="keyword" name="keyword" required> */}
+          <select 
+            id="category" 
+            value={category} 
+            onChange={handleCategoryChange}
+            placeholder="Select a category"
+            required
+          >
+            <option value="" disabled selected>Select a category</option>
+            <option value="appliances">Appliances</option>
+            <option value="books">Books</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="furniture">Furniture</option>
+            <option value="kitchenware">Kitchenware</option>
+            <option value="shoes">Shoes</option>
+            <option value="tools">Tools</option>
+          </select>
 
+          <label for="currencyInput"><b>Item Insurance</b></label>
+          <CurrencyInput className="currency"
+            prefix={prefix}
+            name="currencyInput"
+            id="currencyInput"
+            data-number-to-fixed="2"
+            data-number-stepfactor="1"
+            value={value}
+            placeholder=""
+            onChange={handleChange}
+            onBlur={handleOnBlur}
+            allowDecimals
+            decimalsLimit="2"
+            disableAbbreviations 
+            required
+          />
 
-        {/* This is a test for multiple preview images */}
-        {/*
-        <div className="dropzone-container" {...getRootProps()}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop it like its hot (; </p>
-          ) : (
-            <p>Drag and drop some files here, or click to select files</p>
-          )}
-          <div>
-            {files.map((file) => (
-              <div key={file.name}>
-                <img src={file.preview} alt="preview" />
-                <div>{file.name}</div>
-              </div>
-            ))}
+          <label for="description"><b>Item Description</b></label>
+          <textarea 
+            value={description} 
+            onChange={handleDescriptionChange} 
+            placeholder="Insert description here..."
+            required
+          />
+
+          {/* This is a test for multiple preview images */}
+          {/*
+          <div className="dropzone-container" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop it like its hot (; </p>
+            ) : (
+              <p>Drag and drop some files here, or click to select files</p>
+            )}
+            <div>
+              {files.map((file) => (
+                <div key={file.name}>
+                  <img src={file.preview} alt="preview" />
+                  <div>{file.name}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-            */}
+          */}
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit" style={{marginBottom: 0 +'px'}}>Submit</button>
+        </form>
+      </div>
     </div>
   );
 }
