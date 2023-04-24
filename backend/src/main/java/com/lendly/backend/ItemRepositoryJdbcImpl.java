@@ -68,7 +68,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     public Item save(Item item) {
         if (item.getId() == null) {
             // Update existing item
-            String sql = "INSERT INTO Items (Category, InsurancePrice, Status, OwnerID, BorrowerID, Name, Description) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Items (Category, InsurancePrice, Status, OwnerID, BorrowerID, Name, Description) VALUES (?, ?, ?, ?, ?, ?, ?)";
             jdbcTemplate.update(sql, item.getCategory(), item.getInsurancePrice(), item.isStatus(), item.getOwnerId(), item.getBorrowerId(), item.getName(), item.getDescription());
         } else {
             // Insert new item
