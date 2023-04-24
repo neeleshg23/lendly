@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import image from "./../images/snowboots.jpg"
@@ -10,6 +10,14 @@ const Login = ({ setUser }) => {
       });
     
       const navigate = useNavigate();
+
+      useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+          setUser(user);
+          navigate('/profile');
+        }
+      }, []);
     
       const handleChange = (event) => {
         setState({ ...state, [event.target.id]: event.target.value });
@@ -33,6 +41,7 @@ const Login = ({ setUser }) => {
             // Check if password matches
             if (user.password === state.password) {
                 setUser(user);
+                localStorage.setItem('user', JSON.stringify(user));
                 navigate('/profile');
             } 
             else {

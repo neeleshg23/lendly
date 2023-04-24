@@ -12,11 +12,19 @@ const RouterLinks = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const userFromLocalStorage = localStorage.getItem('user');
+    if (userFromLocalStorage) {
+      setUser(JSON.parse(userFromLocalStorage));
     }
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('user');
+    }
+  }, [user]);
 
   const handleLogin = (newUser) => {
     setUser(newUser);
