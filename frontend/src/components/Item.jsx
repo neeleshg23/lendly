@@ -11,11 +11,8 @@ const Item = ({ itemID, itemName, itemPrice, itemType }) => {
             method: "DELETE"
         });
 
-        if(response.ok) {
-            navigate('/profile')
-        } else {
-            console.error("Failed to return item with ID " + itemID);
-        }
+        if(response.ok) { window.location.reload(false); } 
+        else { console.error("Failed to return item with ID " + itemID); }
     }
     return (
         <div className="item">

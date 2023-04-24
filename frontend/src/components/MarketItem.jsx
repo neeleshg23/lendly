@@ -15,18 +15,6 @@ const MarketItem = ({ user, item }) => {
         rating: 0,
     });
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    var search = new URLSearchParams(location.search).get("q");
-    if (!search) 
-    { search = "";}
-    else {
-        search = search.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@'"\+\?><\[\]]/g,"");
-        search = search.replace(/\s{2,}/g," ");
-        search = search.toLowerCase();
-    }
-    const searchQuery = search.split(" ");
-
     useEffect(() => {
         const fetchItemOwner = async () => {
             const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
@@ -71,7 +59,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { navigate(`/market?q=${searchQuery[0]}`); }
+        if (response.ok) { window.location.reload(false); }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -105,7 +93,7 @@ const MarketItem = ({ user, item }) => {
 
 
 const MarketItemWithData = ({ user, keyword }) => {
-    const location = useLocation(); 
+    //const location = useLocation(); 
     const [marketItemData, setMarketItemData] = useState([]);
     useEffect(() => {
         const fetchMarketItemData = async () => {
@@ -186,7 +174,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, [location]);
+    }, []);
 
     return (
         
