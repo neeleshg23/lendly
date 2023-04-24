@@ -6,6 +6,11 @@ import image from "./../images/profile.png"
 
 const Profile = ({ user, setUser }) => {
     console.log("hi", user);
+    const listing = () => {
+        console.log("Item listing create button clicked")
+        setUser(user)
+        navigate('/listing', user)
+    }
     return (
         <div>
             <h1>lend.ly</h1>
@@ -36,7 +41,7 @@ const Profile = ({ user, setUser }) => {
                 <div className="section" style={{justifyContent: 'stretch', marginBottom: 15 + 'px'}}>
                     <div className="row">
                         <p style={{fontSize: 22 + 'px', marginLeft: 5 + 'px'}}><b>Listings</b></p>
-                        <button>Create Item Listing</button>
+                        <button onClick={listing}>Create Item Listing</button>
                     </div>
                 </div>
 

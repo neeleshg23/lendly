@@ -93,7 +93,7 @@ function ProductListingPage({user, setUser}) {
     
     if (response.ok) {
       console.log('Listing created successfully');
-      navigate('/market');
+      navigate('/profile');
     } else {
       // Show an error message
       console.error('Error creating item');
