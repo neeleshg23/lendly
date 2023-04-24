@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import './../App.css';
 import image from "./../images/item_alt.png"
-import { useNavigate } from 'react-router-dom';
 
-const Item = ({ itemID, itemName, itemPrice, itemType }) => {
-    const navigate = useNavigate();
+const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
     const handleReturnItemClick = async () => {
         const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/" + itemID,
         {
             method: "DELETE"
         });
 
-        if(response.ok) {} 
+        if(response.ok) { setReturnedItem(true); } 
         else { console.error("Failed to return item with ID " + itemID); }
     }
     return (
@@ -28,9 +26,12 @@ const Item = ({ itemID, itemName, itemPrice, itemType }) => {
 
 const ItemWithData = ({ user, itemType }) => {
     const [itemData, setItemData] = useState([]);
+    const [returnedItem, setReturnedItem] = useState(false);
     useEffect(() => {
         const fetchItemData = async () => {
             if (user) {
+                setReturnedItem(false); // reset state
+
                 const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + user.email);
                 const userJson = await userFetch.json(); // userFetch response is JSON
                 const id = userJson.id; // accessing id value
@@ -47,12 +48,13 @@ const ItemWithData = ({ user, itemType }) => {
             }
         };
         fetchItemData();
-    }, [user]);
+    }, [returnedItem]);
 
     return (
         <div className="gallery">
             {itemData.map((item) => (
                 <Item
+                    setReturnedItem={setReturnedItem}
                     itemName={item.name}
                     itemPrice={item.insurancePrice}
                     itemType={itemType}
