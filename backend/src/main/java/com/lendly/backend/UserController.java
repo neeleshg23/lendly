@@ -18,6 +18,7 @@ import com.lendly.backend.model.Item;
 import com.lendly.backend.model.User;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @EnableAsync
@@ -30,83 +31,93 @@ public class UserController {
 
     @GetMapping
     @Async
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public CompletableFuture<List<User>> getAllUsers() {
+        return CompletableFuture.completedFuture(userRepository.findAll());
     }
 
-    
     @GetMapping("/{email}")
     @Async
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-        return userRepository.findByEmail(email)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<User>> getUserByEmail(@PathVariable String email) {
+        return CompletableFuture.completedFuture(
+                userRepository.findByEmail(email)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @GetMapping("/userid/{email}")
     @Async
-    public int getUserIdByEmail(@PathVariable String email) {
-        return userRepository.findUserIdByEmail(email);
+    public CompletableFuture<Integer> getUserIdByEmail(@PathVariable String email) {
+        return CompletableFuture.completedFuture(userRepository.findUserIdByEmail(email));
     }
 
     @GetMapping("/userbyid/{userID}")
     @Async
-    public ResponseEntity<User> getUserByID(@PathVariable Long userID) {
-        return userRepository.findById(userID)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
-        //return fetchedUser;
+    public CompletableFuture<ResponseEntity<User>> getUserByID(@PathVariable Long userID) {
+        return CompletableFuture.completedFuture(
+                userRepository.findById(userID)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @PostMapping
     @Async
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public CompletableFuture<ResponseEntity<User>> createUser(@RequestBody User user) {
         User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(savedUser);
+        return CompletableFuture.completedFuture(ResponseEntity.ok(savedUser));
     }
 
     @PutMapping("/{id}")
     @Async
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userRepository.findById(id)
-                .map(existingUser -> {
-                    user.setId(existingUser.getId());
-                    User updatedUser = userRepository.save(user);
-                    return ResponseEntity.ok(updatedUser);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<User>> updateUser(@PathVariable Long id, @RequestBody User user) {
+        return CompletableFuture.completedFuture(
+                userRepository.findById(id)
+                    .map(existingUser -> {
+                        user.setId(existingUser.getId());
+                        User updatedUser = userRepository.save(user);
+                        return ResponseEntity.ok(updatedUser);
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @DeleteMapping("/{id}")
     @Async
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
-        return userRepository.findById(id)
-                .map(existingUser -> {
-                    userRepository.deleteById(id);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<Object>> deleteUser(@PathVariable Long id) {
+        return CompletableFuture.completedFuture(
+                userRepository.findById(id)
+                    .map(existingUser -> {
+                        userRepository.deleteById(id);
+                        return ResponseEntity.noContent().build();
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @GetMapping("/{id}/owned-items")
     @Async
-    public ResponseEntity<List<Item>> getOwnedItemsByUserId(@PathVariable Long id) {
-        return userRepository.findById(id)
-                .map(user -> {
-                    List<Item> ownedItems = userRepository.findOwnedItems(id);
-                    return ResponseEntity.ok(ownedItems);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<List<Item>>> getOwnedItemsByUserId(@PathVariable Long id) {
+        return CompletableFuture.completedFuture(
+                userRepository.findById(id)
+                    .map(user -> {
+                        List<Item> ownedItems = userRepository.findOwnedItems(id);
+                        return ResponseEntity.ok(ownedItems);
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @GetMapping("/{id}/borrowed-items")
     @Async
-    public ResponseEntity<List<Item>> getBorrowedItemsByUserId(@PathVariable Long id) {
-        return userRepository.findById(id)
-                .map(user -> {
-                    List<Item> borrowedItems = userRepository.findBorrowedItems(id);
-                    return ResponseEntity.ok(borrowedItems);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<List<Item>>> getBorrowedItemsByUserId(@PathVariable Long id) {
+        return CompletableFuture.completedFuture(
+                userRepository.findById(id)
+                    .map(user -> {
+                        List<Item> borrowedItems = userRepository.findBorrowedItems(id);
+                        return ResponseEntity.ok(borrowedItems);
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 }

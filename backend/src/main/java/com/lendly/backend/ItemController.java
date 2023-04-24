@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lendly.backend.model.Item;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @EnableAsync
@@ -29,51 +30,57 @@ public class ItemController {
 
     @GetMapping
     @Async
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public CompletableFuture<List<Item>> getAllItems() {
+        return CompletableFuture.completedFuture(itemRepository.findAll());
     }
 
     @GetMapping("/{id}")
     @Async
-    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
-        return itemRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<Item>> getItemById(@PathVariable Long id) {
+        return CompletableFuture.completedFuture(
+                itemRepository.findById(id)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @GetMapping("/name/{id}")
     @Async
-    public List<Item> getItemsByName(@PathVariable String id) {
-        return itemRepository.findItemsByName(id);
+    public CompletableFuture<List<Item>> getItemsByName(@PathVariable String id) {
+        return CompletableFuture.completedFuture(itemRepository.findItemsByName(id));
     }
 
     @PostMapping
     @Async
-    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+    public CompletableFuture<ResponseEntity<Item>> createItem(@RequestBody Item item) {
         Item savedItem = itemRepository.save(item);
-        return ResponseEntity.ok(savedItem);
+        return CompletableFuture.completedFuture(ResponseEntity.ok(savedItem));
     }
 
     @PutMapping("/{id}")
     @Async
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item) {
-        return itemRepository.findById(id)
-                .map(existingItem -> {
-                    item.setId(existingItem.getId());
-                    Item updatedItem = itemRepository.save(item);
-                    return ResponseEntity.ok(updatedItem);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<Item>> updateItem(@PathVariable Long id, @RequestBody Item item) {
+        return CompletableFuture.completedFuture(
+                itemRepository.findById(id)
+                    .map(existingItem -> {
+                        item.setId(existingItem.getId());
+                        Item updatedItem = itemRepository.save(item);
+                        return ResponseEntity.ok(updatedItem);
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 
     @DeleteMapping("/{id}")
     @Async
-    public ResponseEntity<Object> deleteItem(@PathVariable Long id) {
-        return itemRepository.findById(id)
-                .map(existingItem -> {
-                    itemRepository.deleteById(id);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public CompletableFuture<ResponseEntity<Object>> deleteItem(@PathVariable Long id) {
+        return CompletableFuture.completedFuture(
+                itemRepository.findById(id)
+                    .map(existingItem -> {
+                        itemRepository.deleteById(id);
+                        return ResponseEntity.noContent().build();
+                    })
+                    .orElse(ResponseEntity.notFound().build())
+        );
     }
 }

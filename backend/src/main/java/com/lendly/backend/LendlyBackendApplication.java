@@ -6,40 +6,35 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.concurrent.Executor;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @ComponentScan({"com.lendly.backend"})
 @EnableJdbcRepositories("com.lendly.backend")
 public class LendlyBackendApplication {
 
-    // Test DB Connection
-    // @Autowired
-    // private static UserRepository userRepository;
-    // public static void main(String[] args) {
-    //     ConfigurableApplicationContext context = SpringApplication.run(LendlyBackendApplication.class, args);
-
-    //     // Get the UserRepository bean from the Spring context
-    //     UserRepository userRepository = context.getBean(UserRepository.class);
-    
-    //     // Retrieve all users from the repository
-    //     List<User> users = userRepository.findAll();
-    
-    //     // Print the users
-    //     System.out.println("Users from the database:");
-    //     for (User user : users) {
-    //         System.out.println(user);
-    //     }
-    // }
+    @Bean
+    public Executor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(2);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(500);
+        executor.setThreadNamePrefix("LendlyAsync-");
+        executor.initialize();
+        return executor;
+    }
     
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/***")
-                        .allowedOrigins("http://frontend.lendly-383321.wl.r.appspot.com", "https://frontend.lendly-383321.wl.r.appspot.com")
+                registry.addMapping("/**")
+                        .allowedOrigins("http://frontend-dot-lendly-383321.wl.r.appspot.com", "https://frontend-dot-lendly-383321.wl.r.appspot.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true)
