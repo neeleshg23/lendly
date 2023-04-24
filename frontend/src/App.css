@@ -540,15 +540,20 @@ option:hover {
   color: white;
   text-align: center;
   word-break: break-word;
+  margin-bottom: 5px;
 }
 
 .item button {
   margin: 0px;
-  margin-left: auto;
   padding-top: 6px;
   padding-bottom: 6px;
   width: 96px;
   height: auto;
+  background-color: #2CA6A4
+}
+
+.item button:hover {
+  background-color: #30919C
 }
 
 /* Listing */

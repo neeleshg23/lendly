@@ -73,12 +73,12 @@ function ProductListingPage({ user, onLogout }) {
     // Create the item 
     const item = {
       category: category, // selected value from dropdown
-      itemDescription: description,
       insurancePrice: Number(value), // inputted by user
       status: false, // borrowed status at time of posting is always false
       ownerId: id, // Use the user ID to construct item
       borrowerId: null, // no borrower so null
-      name: name // name of the listing  
+      name: name, // name of the listing  
+      description: description,
     };
 
     // Send the product data to the backend using a POST request
