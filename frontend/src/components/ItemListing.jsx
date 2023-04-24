@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar";
 import "../ItemListing.css";
+//import CurrencyInput from "react-currency-input-field";
+import { useNavigate } from "react-router-dom";
+//import { useDropzone } from "react-dropzone";
 
-function ProductListingPage({user}) {
+function ProductListingPage({user, setUser}) {
+
+  /*
   // Define state variables to hold the product data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [condition, setCondition] = useState("");
+  const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
+  const prefix = '$';
+  const [value, setValue] = useState(0);
+  const [files, setFiles] = useState([]);
+
+  // for navigation to next page
+  const navigate = useNavigate();
 
   // Define event handlers for form inputs
   const handleNameChange = (event) => {
@@ -18,8 +29,8 @@ function ProductListingPage({user}) {
     setDescription(event.target.value);
   };
 
-  const handleConditionChange = (event) => {
-    setCondition(event.target.value);
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
   };
 
   const handleImageChange = (event) => {
@@ -31,99 +42,138 @@ function ProductListingPage({user}) {
     setImages(imagesArray);
   };
 
+  // Handler for currency input
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { value = "" } = e.target;
+    const parsedValue = value.replace(/[^\d.]/gi, "");
+    setValue(parsedValue);
+  };
+  // Needed function for currency
+  const handleOnBlur = () => setValue(Number(value).toFixed(2));
+
+  // For multiple images and preview 
+  const onDrop = useCallback((acceptedFiles) => {
+    setFiles([...files, ...acceptedFiles.map((file) => Object.assign(file, {
+      preview: URL.createObjectURL(file)
+    }))]);
+  }, [files]);
+  // for image drop zone
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
+
   // Submit event handler 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event, user) => {
     event.preventDefault();
+
+    // Call the fetch for the data needed to make the post api call 
+    const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
+    const userJson = await userFetch.json(); // userFetch response is JSON
+    const id = userJson.id; // accessing id value
+
+    // Create the item 
+    const item = {
+      category: category, // selected value from dropdown
+      insurancePrice: Number(value), // inputted by user
+      status: false, // borrowed status at time of posting is always false
+      ownerId: id, // Use the user ID to construct item
+      borrowerId: null, // no borrower so null
+      name: name // name of the listing 
+    };
+
     // Send the product data to the backend using a POST request
 
     // Clear the form inputs and display a success message
+    const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    });
+    
+    if (response.ok) {
+      console.log('Listing created successfully');
+      navigate('/market');
+    } else {
+      // Show an error message
+      console.error('Error creating item');
+    }
 
-    // TODO
-    // const { name, description, condition, images } = state;
-  
-    // const item = {
-    //   name,
-    //   description,
-    //   condition,
-    //   images
-    // };
-  
-    // const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/items', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json',
-    //   },
-    //   body: JSON.stringify(item),
-    // });
-
-  
-    // const contentType = response.headers.get('content-type');
-    // console.log("contentType:"+contentType)
-    // if (contentType && contentType.indexOf('application/json') !== -1) {
-    //   const responseData = await response.json();
-    //   console.log('Server response:', responseData);
-  
-    //   if (response.ok) {
-    //     console.log('User created successfully');
-    //     setUser(user);
-    //     navigate('/profile');
-    //   } else {
-    //     console.error('Error creating user');
-    //     // Show an error message
-    //   }
-    // } else {
-    //   const textResponse = await response.text();
-    //   console.error('Server response is not JSON:', textResponse);
-    //   // Handle non-JSON response here
-    // }
+    setName("");
+    setDescription("");
+    setCategory("");
+    setImages([]);
+    setValue(0);
   };
+  */
 
-  return (
-    <div className="product-listing-page">
-      <NavBar user={user} />
-      <div className = "head">
-        <h1>List an Item!</h1>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
+  return;
+    {/*
+    <div class="search">
+       <form onSubmit={(e) => handleSubmit(e, user)}>
+           <h1>Post an Item!</h1>
+  <label for="keyword">Category:</label> */}
+           {/* <input type="text" id="keyword" name="keyword" required> */}
+           {/*}
+           <select id="category" value={category} onChange={handleCategoryChange}>
+             <option value="">Select a category</option>
+             <option value="appliances">Appliances</option>
+             <option value="books">Books</option>
+             <option value="clothing">Clothing</option>
+             <option value="electronics">Electronics</option>
+             <option value="furniture">Furniture</option>
+             <option value="kitchenware">Kitchenware</option>
+             <option value="shoes">Shoes</option>
+             <option value="tools">Tools</option>
+           </select>
+
+           <label for="location">Name:</label>
+           <input value={name} onChange={handleNameChange} style={{width: "497px"}}/>
+
+           <label for="location">Insurance:</label>
+           <CurrencyInput className="currency"
+            prefix={prefix}
+            name="currencyInput"
+            id="currencyInput"
+            data-number-to-fixed="2"
+            data-number-stepfactor="1"
+            value={value}
+            placeholder=""
+            onChange={handleChange}
+            onBlur={handleOnBlur}
+            allowDecimals
+            decimalsLimit="2"
+            disableAbbreviations />
+
+           <label for="location">Description:</label>
+<textarea value={description} onChange={handleDescriptionChange} /> */}
+
+           {/* This is a test for multiple preview images */}
+           {/*
+           <div className="dropzone-container" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop it like its hot (; </p>
+            ) : (
+              <p>Drag and drop some files here, or click to select files</p>
+            )}
             <div>
-              Name:
+              {files.map((file) => (
+                <div key={file.name}>
+                  <img src={file.preview} alt="preview" />
+                  <div>{file.name}</div>
+                </div>
+              ))}
             </div>
-          <input type="text" value={name} onChange={handleNameChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <div>
-              Description:
-            </div>
-          <textarea value={description} onChange={handleDescriptionChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <div>
-              Condition:
-            </div>
-          <input type="text" value={condition} onChange={handleConditionChange} />
-        </label>
-        </div>
-        <div className = "images">
-          <label>
-            <div>
-              Images:
-            </div>
-          <input type="file" multiple onChange={handleImageChange} />
-        </label>
-        </div>
-        <div className= "submitbttn">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+          </div>
+  
+           <button type="submit">Submit</button>
+       </form>
     </div>
-  );
+    */}
 }
 
 export default ProductListingPage;
+
+
+

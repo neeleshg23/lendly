@@ -1,3 +1,4 @@
+/*
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 body { 
@@ -57,6 +58,7 @@ img {
 
 /************** INPUTS ***************/
 
+/*
 input[type=text],
 input[type=password],
 input[type=email],
@@ -90,6 +92,7 @@ button:hover {
 
 /************** LOGIN / REGISTER ***************/
 
+/*
 .two-colored-box {
   margin: auto;
   width: 750px;
@@ -123,6 +126,7 @@ button:hover {
 
 /************** NAVBAR ***************/
 
+/*
 .navbar {
   border-radius: 15px;
   background-color: #DAF0ED;
@@ -167,7 +171,8 @@ button:hover {
 
 /************** ITEM (RESULT) ***************/
 
-.item {
+/*
+.market-item {
   position: relative;
   background-color: white;
   border: 5px solid #DAF0ED;
@@ -180,14 +185,14 @@ button:hover {
   align-items: stretch;
 }
 
-.item img {
+.market-item img {
   height: 190px;
   object-fit: cover;
   border: none;
   margin: 0px;
 }
 
-.item button {
+.market-item button {
   margin: 0px;
   margin-top: 10px;
   margin-left: auto;
@@ -199,12 +204,12 @@ button:hover {
   right: 15px;
 }
 
-.item .left-column,
-.item .right-column {
+.market-item .left-column,
+.market-item .right-column {
   margin: 15px;
 }
 
-.item .left-column {
+.market-item .left-column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,14 +217,15 @@ button:hover {
   width: 27%;
 }
 
-.item .right-column {
+.market-item .right-column {
   width: 73%;
   margin-left: 0px;
 }
 
-.item .row {
+.market-item .row {
   margin-bottom: 0px;
   width: auto;
   height: auto;
   display: flex;
 }
+*/

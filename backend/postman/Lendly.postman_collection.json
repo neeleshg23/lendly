@@ -55,6 +55,27 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "localhost:8080/api/users/userbyid/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"userbyid",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
 							"raw": "localhost:8080/api/users/userid/u6@example.com",
 							"host": [
 								"localhost"
@@ -269,7 +290,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Shoes\",\n  \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
+							"raw": "{\n    \"category\": \"Shoes\",\n \"itemDescription\": \"Test Description\",\n  \"insurancePrice\": 50,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": null,\n    \"name\": \"Vans\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -297,7 +318,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"category\": \"Appliances\",\n   \"insurancePrice\": 75.0,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": 0,\n    \"name\": \"Stove\"\n}   \n    ",
+							"raw": "{\n    \"category\": \"Appliances\",\n  \"itemDescription\": \"Test Description\",\n  \"insurancePrice\": 75.0,\n    \"status\": false,\n    \"ownerId\": 4,\n    \"borrowerId\": 0,\n    \"name\": \"Stove\"\n}   \n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -326,7 +347,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"newuser@example.com\",\n   \"password\": \"password\",\n    \"displayName\": \"Jimothy\",\n    \"location\": \"Detroit\",\n    \"rating\": 4.1\n}\n",
+							"raw": "{\n    \"email\": \"newuser@example.com\",\n \"itemDescription\": \"Test Description\",\n   \"password\": \"password\",\n    \"displayName\": \"Jimothy\",\n    \"location\": \"Detroit\",\n    \"rating\": 4.1\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"

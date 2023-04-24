@@ -35,7 +35,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
         }
     };
 
-    
+
     @Override
     public List<Item> findAll() {
         String sql = "SELECT * FROM Items";
