@@ -21,7 +21,7 @@ const Profile = ({ user }) => {
 
             <div className="row">
                 <div>
-                    <button className="create-listing">Create Item Listing</button>
+                    <button>Create Item Listing</button>
                 </div>
             </div>
 

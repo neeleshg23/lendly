@@ -33,10 +33,10 @@ const NavBar = ({ user }) => {
 
     return (
         <div>
-            <div class="navbar">
+            <div className="navbar">
                 <button style={{width: 45 + 'px'}} onClick={goHome}><i class="fa fa-home" style={{fontSize: 18 + 'px'}}></i></button>
                 <button onClick={logout}>Log Out</button>
-                <div class="search">
+                <div className="search">
                     <input type="text" placeholder="Search.." onChange={(e) => setSearchInput(e.target.value)} value={searchInput}></input>
                     <button onClick={search}><i class="fa fa-search"></i></button>
                 </div>
