@@ -8,7 +8,7 @@ const Item = ({ itemName, itemPrice, itemtype }) => {
             <img src={image} />
             <p>{itemName}</p>
             <p><b>${itemPrice}</b></p>
-            {itemtype === "OWN" && (
+            {itemtype !== "OWN" && (
                 <button style={{ marginBottom: 15 + "px" }}>Return Item</button>
             )}
         </div>
