@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import './../App.css';
 import image from "./../images/rollerblades.jpg"
+import { getUserFromLocalStorage } from "./User";
 
-
-const MarketItem = ({ user, item }) => {
+const MarketItem = ({ setBorrowedItem, user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState({
         id: '',
@@ -59,9 +59,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { 
-            /* Re-render */ 
-        }
+        if (response.ok) { setBorrowedItem(true); }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -97,8 +95,14 @@ const MarketItem = ({ user, item }) => {
 const MarketItemWithData = ({ user, keyword }) => {
     const location = useLocation(); 
     const [marketItemData, setMarketItemData] = useState([]);
+    const [borrowedItem, setBorrowedItem] = useState(false);
+
+    useEffect(() => { if (!user) { user = getUserFromLocalStorage(); } }, [user]);
+
     useEffect(() => {
         const fetchMarketItemData = async () => {
+            setBorrowedItem(false); // reset state
+
             if (keyword === "") { 
                 const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items`, {
                     method: 'GET',
@@ -176,13 +180,14 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, [location]);
+    }, [location, borrowedItem]);
 
     return (
         
         <div>
             {marketItemData.map((item) => (
                 <MarketItem
+                    setBorrowedItem={setBorrowedItem}
                     user={user}
                     item={item}
                 />
