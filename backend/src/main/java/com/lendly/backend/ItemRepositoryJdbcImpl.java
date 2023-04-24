@@ -56,12 +56,7 @@ public class ItemRepositoryJdbcImpl implements ItemRepository {
     @Override
     public List<Item> findItemsByName(String id){
         String sql = "SELECT * FROM Items WHERE name LIKE ?";
-        // try {
-            return jdbcTemplate.query(sql, ITEM_ROW_MAPPER, "%"+id+"%");
-            // return Optional.ofNullable(item);
-        // } catch (EmptyResultDataAccessException e) {
-        //     return Optional.empty();
-        // }
+        return jdbcTemplate.query(sql, ITEM_ROW_MAPPER, "%"+id+"%"); 
     }
 
     @Override
