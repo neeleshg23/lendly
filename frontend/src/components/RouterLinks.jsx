@@ -7,33 +7,38 @@ import Register from "./Register";
 import Profile from "./Profile";
 import ItemListing from "./ItemListing"
 import Market from "./Market";
+import {
+  getUserFromLocalStorage,
+  setUserToLocalStorage,
+  removeUserFromLocalStorage,
+} from "./User";
 
 const RouterLinks = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userFromLocalStorage = localStorage.getItem('user');
+    const userFromLocalStorage = getUserFromLocalStorage();
     if (userFromLocalStorage) {
-      setUser(JSON.parse(userFromLocalStorage));
+      setUser(userFromLocalStorage);
     }
   }, []);
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      setUserToLocalStorage(user);
     } else {
-      localStorage.removeItem('user');
+      removeUserFromLocalStorage();
     }
   }, [user]);
 
   const handleLogin = (newUser) => {
     setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
+    setUserToLocalStorage(newUser);
   };
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.clear();
+    removeUserFromLocalStorage();
   };
 
   return (
