@@ -8,8 +8,7 @@ const MarketItem = ({ user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState();
     const fetchItemOwner = async () => {
-        // test
-        console.log("item owner id:" + item.ownerId);
+        console.log("Item Owner ID:" + item.ownerId);
         const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/userbyid/${item.ownerId}`, {
             method: 'GET',
             headers: {
@@ -17,12 +16,12 @@ const MarketItem = ({ user, item }) => {
                 'Content-Type': 'application/json',
             },
         });
-        // test
-        console.log("response:" + response);
+        console.log("Reponse: " + response);
         
         // Check if retrieval was successful
         if (response.ok) { 
             const owner = await response.json(); 
+            console.log(owner);
             if (owner.id === user.id) return;
             setItemOwner(owner);
             
@@ -30,19 +29,18 @@ const MarketItem = ({ user, item }) => {
         else { console.error("Error retrieving owner."); }
     }
     fetchItemOwner();
-    // test
-    console.log(itemOwner);
+    console.log("Item Owner: " + itemOwner);
 
     // Borrow item
     const borrowItem = async () => {
         const body = {
             category: item.category,
+            itemDescription: "",
             insurancePrice: item.insurancePrice,
             status: true,
             ownerId: item.ownerId,
             borrowerId: user.id,
             name: item.name,
-            description: "",
         }
 
         const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
@@ -73,7 +71,7 @@ const MarketItem = ({ user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>{itemOwner.displayName}</b></p>
+                    <p><b>Display Name</b></p>
                     <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
                 </div>
                 <div className="row">
