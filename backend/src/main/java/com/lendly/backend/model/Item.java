@@ -3,12 +3,12 @@ package com.lendly.backend.model;
 public class Item {
     private Long id;
     private String category;
-    // private String itemDescription;
     private double insurancePrice;
     private boolean status;
     private long ownerId;
     private long borrowerId;
     private String name;
+    private String description;
 
     public Item(){
 
@@ -26,12 +26,6 @@ public class Item {
     public void setCategory(String category) {
         this.category = category;
     }
-    // public String getItemDescription() {
-    //     return itemDescription;
-    // }
-    // public void setItemDescription(String itemDescription) {
-    //     this.itemDescription = itemDescription;
-    // }
     public double getInsurancePrice() {
         return insurancePrice;
     }
@@ -62,16 +56,23 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+    public String getDescription(){
+        return description;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+
     public String toString() {
         return "Item {" +
             "id=" + id +
             ", category='" + category + '\'' +
-            // ", itemDescription='" + itemDescription + '\'' +
             ", insurancePrice=" + insurancePrice +
             ", status=" + status +
             ", ownerId=" + ownerId +
             ", borrowerId=" + borrowerId +
             ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
             '}';
     }    
 }
