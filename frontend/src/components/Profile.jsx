@@ -3,9 +3,16 @@ import './../App.css';
 import NavBar from "./NavBar";
 import ItemWithData from "./Item.jsx";
 import image from "./../images/profile.png"
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ user, setUser }) => {
     console.log("hi", user);
+    const navigate = useNavigate();
+    const listing = () => {
+        console.log("Item listing create button clicked")
+        setUser(user)
+        navigate('/listing', user)
+    }
     return (
         <div>
             <h1>lend.ly</h1>
@@ -22,11 +29,11 @@ const Profile = ({ user, setUser }) => {
                      <div className="right-column">
                     {/* content for the right column goes here */}
                         <div className="row">
-                            <p style={{fontSize: 22 + 'px'}}>Display Name</p>
+                            <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>
                             <p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>
                         </div>
                         <div className="row">
-                            <p><b>Location</b></p>
+                            <p><b>{user.location}</b></p>
                         </div>
                     </div>
                 </div>
@@ -36,7 +43,7 @@ const Profile = ({ user, setUser }) => {
                 <div className="section" style={{justifyContent: 'stretch', marginBottom: 15 + 'px'}}>
                     <div className="row">
                         <p style={{fontSize: 22 + 'px', marginLeft: 5 + 'px'}}><b>Listings</b></p>
-                        <button>Create Item Listing</button>
+                        <button onClick={listing}>Create Item Listing</button>
                     </div>
                 </div>
 
@@ -70,7 +77,7 @@ const Profile = ({ user, setUser }) => {
 
             <div className="row">
                 <div>
-                    <button className="create-listing">Create Item Listing</button>
+                    <button>Create Item Listing</button>
                 </div>
             </div>
 
