@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar";
-import "../ItemListing.css";
+import './../App.css';
 import CurrencyInput from "react-currency-input-field";
 import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
-function ProductListingPage({user, setUser}) {
+function ProductListingPage({ user, setUser }) {
 
   // Define state variables to hold the product data
   const [name, setName] = useState("");
@@ -66,18 +66,19 @@ function ProductListingPage({user, setUser}) {
 
     console.log("item listing user: ", user)
     // Call the fetch for the data needed to make the post api call 
-    const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/"+user.email);
+    const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + user.email);
     const userJson = await userFetch.json(); // userFetch response is JSON
     const id = userJson.id; // accessing id value
 
     // Create the item 
     const item = {
       category: category, // selected value from dropdown
+      itemDescription: description,
       insurancePrice: Number(value), // inputted by user
       status: false, // borrowed status at time of posting is always false
       ownerId: id, // Use the user ID to construct item
       borrowerId: null, // no borrower so null
-      name: name // name of the listing 
+      name: name // name of the listing  
     };
 
     // Send the product data to the backend using a POST request
@@ -90,7 +91,7 @@ function ProductListingPage({user, setUser}) {
       },
       body: JSON.stringify(item),
     });
-    
+
     if (response.ok) {
       console.log('Listing created successfully');
       navigate('/profile');
@@ -108,63 +109,63 @@ function ProductListingPage({user, setUser}) {
 
   return (
     <div class="search">
-       <form onSubmit={(e) => handleSubmit(e, user)}>
-           <h1>Post an Item!</h1>
-           <label for="keyword">Category:</label>
-           {/* <input type="text" id="keyword" name="keyword" required> */}
-           <select id="category" value={category} onChange={handleCategoryChange}>
-             <option value="">Select a category</option>
-             <option value="appliances">Appliances</option>
-             <option value="books">Books</option>
-             <option value="clothing">Clothing</option>
-             <option value="electronics">Electronics</option>
-             <option value="furniture">Furniture</option>
-             <option value="kitchenware">Kitchenware</option>
-             <option value="shoes">Shoes</option>
-             <option value="tools">Tools</option>
-           </select>
+      <form onSubmit={(e) => handleSubmit(e, user)}>
+        <h1>Post an Item!</h1>
+        <label for="keyword">Category:</label>
+        {/* <input type="text" id="keyword" name="keyword" required> */}
+        <select id="category" value={category} onChange={handleCategoryChange}>
+          <option value="">Select a category</option>
+          <option value="appliances">Appliances</option>
+          <option value="books">Books</option>
+          <option value="clothing">Clothing</option>
+          <option value="electronics">Electronics</option>
+          <option value="furniture">Furniture</option>
+          <option value="kitchenware">Kitchenware</option>
+          <option value="shoes">Shoes</option>
+          <option value="tools">Tools</option>
+        </select>
 
-           <label for="location">Name:</label>
-           <input value={name} onChange={handleNameChange} style={{width: "497px"}}/>
+        <label for="location">Name:</label>
+        <input value={name} onChange={handleNameChange} style={{ width: "497px" }} />
 
-           <label for="location">Insurance:</label>
-           <CurrencyInput className="currency"
-            prefix={prefix}
-            name="currencyInput"
-            id="currencyInput"
-            data-number-to-fixed="2"
-            data-number-stepfactor="1"
-            value={value}
-            placeholder=""
-            onChange={handleChange}
-            onBlur={handleOnBlur}
-            allowDecimals
-            decimalsLimit="2"
-            disableAbbreviations />
+        <label for="location">Insurance:</label>
+        <CurrencyInput className="currency"
+          prefix={prefix}
+          name="currencyInput"
+          id="currencyInput"
+          data-number-to-fixed="2"
+          data-number-stepfactor="1"
+          value={value}
+          placeholder=""
+          onChange={handleChange}
+          onBlur={handleOnBlur}
+          allowDecimals
+          decimalsLimit="2"
+          disableAbbreviations />
 
-           <label for="location">Description:</label>
-           <textarea value={description} onChange={handleDescriptionChange} />
+        <label for="location">Description:</label>
+        <textarea value={description} onChange={handleDescriptionChange} />
 
-           {/* This is a test for multiple preview images */}
-           <div className="dropzone-container" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? (
-              <p>Drop it like its hot (; </p>
-            ) : (
-              <p>Drag and drop some files here, or click to select files</p>
-            )}
-            <div>
-              {files.map((file) => (
-                <div key={file.name}>
-                  <img src={file.preview} alt="preview" />
-                  <div>{file.name}</div>
-                </div>
-              ))}
-            </div>
+        {/* This is a test for multiple preview images */}
+        <div className="dropzone-container" {...getRootProps()}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop it like its hot (; </p>
+          ) : (
+            <p>Drag and drop some files here, or click to select files</p>
+          )}
+          <div>
+            {files.map((file) => (
+              <div key={file.name}>
+                <img src={file.preview} alt="preview" />
+                <div>{file.name}</div>
+              </div>
+            ))}
           </div>
-  
-           <button type="submit">Submit</button>
-       </form>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }

@@ -29,11 +29,11 @@ const Profile = ({ user, setUser }) => {
                      <div className="right-column">
                     {/* content for the right column goes here */}
                         <div className="row">
-                            <p style={{fontSize: 22 + 'px'}}>Display Name</p>
+                            <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>
                             <p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>
                         </div>
                         <div className="row">
-                            <p><b>Location</b></p>
+                            <p><b>{user.location}</b></p>
                         </div>
                     </div>
                 </div>
