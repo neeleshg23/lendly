@@ -1,3 +1,4 @@
+/*
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 body { 
@@ -57,6 +58,7 @@ img {
 
 /************** INPUTS ***************/
 
+/*
 input[type=text],
 input[type=password],
 input[type=email],
@@ -90,6 +92,7 @@ button:hover {
 
 /************** LOGIN / REGISTER ***************/
 
+/*
 .two-colored-box {
   margin: auto;
   width: 750px;
@@ -123,6 +126,7 @@ button:hover {
 
 /************** NAVBAR ***************/
 
+/*
 .navbar {
   border-radius: 15px;
   background-color: #DAF0ED;
@@ -167,6 +171,7 @@ button:hover {
 
 /************** ITEM (RESULT) ***************/
 
+/*
 .market-item {
   position: relative;
   background-color: white;
@@ -223,3 +228,4 @@ button:hover {
   height: auto;
   display: flex;
 }
+*/

@@ -21,9 +21,9 @@ const Register = ({ setUser }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const { email, password, displayName, location, rating } = state;
-  
+
     const user = {
       email,
       password,
@@ -31,7 +31,7 @@ const Register = ({ setUser }) => {
       location,
       rating,
     };
-  
+
     const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
@@ -41,13 +41,13 @@ const Register = ({ setUser }) => {
       body: JSON.stringify(user),
     });
 
-  
+
     const contentType = response.headers.get('content-type');
     console.log("contentType:"+contentType)
     if (contentType && contentType.indexOf('application/json') !== -1) {
       const responseData = await response.json();
       console.log('Server response:', responseData);
-  
+
       if (response.ok) {
         console.log('User created successfully');
         setUser(user);

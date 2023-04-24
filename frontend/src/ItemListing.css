@@ -1,9 +1,22 @@
+/*
+
 body {
-    background-color: white;
-    color: white;
-    font-family: 'IBM Plex Sans', sans-serif;
+    color: black;
+    font-family: Calibri;
 }
-  
+
+body {
+    background: linear-gradient(to right, #5EC2B7 50%, #DAF0ED 50%);
+}
+
+h1 {
+    color: whitesmoke;
+}
+
+.search {
+    background: linear-gradient(to right, #5EC2B7 50%, #DAF0ED 50%);
+}
+
 .head {
     text-align: center;
 }
@@ -20,7 +33,65 @@ div:not(:last-child) {
     display: column;
     align-items: space-around;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     height: 100vh;
     column-gap: 20px;
 }
+
+.text {
+    color: black;
+    font-family: Calibri;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 60px;
+    background-color: #2CA6A4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFA500;
+    color: white;
+    cursor: pointer;
+}
+
+.currency {
+    height: 10px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+.dropzone-container {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+
+/* CSS COLOR WAY 
+5EC2B7
+Hover color 2CA6A4
+*/

@@ -44,6 +44,16 @@ public class UserController {
         return userRepository.findUserIdByEmail(email);
     }
 
+    // added new User findUserByID(int userID)
+
+    @GetMapping("/userbyid/{userID}")
+    public ResponseEntity<User> getUserByID(@PathVariable Long userID) {
+        return userRepository.findById(userID)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+        //return fetchedUser;
+    }
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = userRepository.save(user);

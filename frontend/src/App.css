@@ -1,11 +1,16 @@
 .App {
-  text-align: center;
+  justify-content: center;
   background-color: white;
   font-family: Calibri;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 /********************************** ANDREA *************************************/
 
+/*
 .row {
   display: flex;
   flex-direction: row;
@@ -90,6 +95,7 @@
   font-size: 16px;
   font-weight: bold;
 }
+*/
 
 /********************************** RACHEL *************************************/
 
@@ -145,19 +151,26 @@ a:hover {
 
 img {
   width: 100%;
-  border: 5px solid #DAF0ED;
+  border: 5px solid #DAF0ED; 
   border-radius: 10px;
   margin-bottom: 15px;
 }
 
 /* Inputs */
 
+form {
+  margin: 0px;
+  display: contents;
+}
+
 input[type=text],
 input[type=password],
 input[type=email],
+input[type=submit],
 button {
   width: 100%;
-  padding: 12px;
+  font-size: 14px;
+  padding: 10px;
   margin: 8px;
   border: none;
   border-radius: 10px;
@@ -170,11 +183,11 @@ input[type=email] {
   box-sizing: border-box;
 }
 
+input[type=submit],
 button {
   background-color: #5EC2B7;
   color: white;
   cursor: pointer;
-  font-size: 12px;
 }
   
 button:hover {
@@ -253,31 +266,22 @@ button:hover {
 }
 
 .navbar .search button{
-  width: 45px;
+  width: 40px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
 
-/* Market Item */
+/* Market */
 
 .market-item {
   position: relative;
-  background-color: white;
-  border: 5px solid #DAF0ED;
+  background-color: #e4f4f2;
   border-radius: 20px;
   margin: auto;
   margin-bottom: 20px;
-  width: 740px;
+  width: 750px;
   height: auto;
   display: flex;
-  align-items: stretch;
-}
-
-.market-item img {
-  height: 190px;
-  object-fit: cover;
-  border: none;
-  margin: 0px;
 }
 
 .market-item button {
@@ -288,31 +292,139 @@ button:hover {
   height: 30px;
   padding: 0px;
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 25px;
+  right: 25px;
+}
+
+.market-item img {
+  height: 155px;
+  object-fit: cover;
+  border: none;
+  margin: 0px;
 }
 
 .market-item .left-column,
 .market-item .right-column {
-  margin: 15px;
+  margin: 25px;
 }
 
 .market-item .left-column {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 27%;
+  width: 22%;
 }
 
 .market-item .right-column {
-  width: 73%;
+  display: flex;
+  flex-direction: column;
+  width: 78%;
   margin-left: 0px;
 }
 
 .market-item .row {
-  margin-bottom: 0px;
+  margin-bottom: 5px;
+  padding-bottom: 3px;
   width: auto;
   height: auto;
   display: flex;
+}
+
+/* Profile */
+
+.profile{
+  background-color: #e4f4f2;
+  border-radius: 20px;
+  margin: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 710px;
+  height: auto;
+}
+
+.profile-pic {
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 7px solid #5ec2b7;
+  background-color: #5ec2b7;
+  margin-bottom: 0px;
+}
+
+.profile button {
+  margin: 0px;
+  margin-left: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: auto;
+  height: auto;
+}
+
+.profile .section {
+  margin-bottom: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile .left-column {
+  width: 10%;
+  margin-right: 35px;
+  margin-bottom: 0px;
+}
+
+.profile .right-column {
+  width: 80%;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+}
+
+.profile .row {
+  margin-bottom: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.gallery {
+  margin-bottom: 25px;
+  border-radius: 20px;
+  padding: 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 126px 126px 126px 126px 126px;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+}
+
+/* Profile Item */
+
+.item {
+  background-color: #5ec2b7;
+  border-radius: 20px;
+  font-size: 30px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item img {
+  margin: 15px;
+  height: 96px;
+  width: 96px;
+  border: none;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.item p {
+  width: 96px;
+  color: white;
+  text-align: center;
+  word-break: break-word;
 }
