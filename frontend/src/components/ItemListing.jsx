@@ -1,13 +1,12 @@
 import React, { useCallback, useState } from "react";
 import NavBar from "./NavBar";
 import "../ItemListing.css";
-//import CurrencyInput from "react-currency-input-field";
+import CurrencyInput from "react-currency-input-field";
 import { useNavigate } from "react-router-dom";
-//import { useDropzone } from "react-dropzone";
+import { useDropzone } from "react-dropzone";
 
 function ProductListingPage({user, setUser}) {
 
-  /*
   // Define state variables to hold the product data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -105,16 +104,13 @@ function ProductListingPage({user, setUser}) {
     setImages([]);
     setValue(0);
   };
-  */
 
-  return;
-    {/*
+  return (
     <div class="search">
        <form onSubmit={(e) => handleSubmit(e, user)}>
            <h1>Post an Item!</h1>
-  <label for="keyword">Category:</label> */}
+           <label for="keyword">Category:</label>
            {/* <input type="text" id="keyword" name="keyword" required> */}
-           {/*}
            <select id="category" value={category} onChange={handleCategoryChange}>
              <option value="">Select a category</option>
              <option value="appliances">Appliances</option>
@@ -146,10 +142,9 @@ function ProductListingPage({user, setUser}) {
             disableAbbreviations />
 
            <label for="location">Description:</label>
-<textarea value={description} onChange={handleDescriptionChange} /> */}
+           <textarea value={description} onChange={handleDescriptionChange} />
 
            {/* This is a test for multiple preview images */}
-           {/*
            <div className="dropzone-container" {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
@@ -170,10 +165,7 @@ function ProductListingPage({user, setUser}) {
            <button type="submit">Submit</button>
        </form>
     </div>
-    */}
+  );
 }
 
 export default ProductListingPage;
-
-
-
