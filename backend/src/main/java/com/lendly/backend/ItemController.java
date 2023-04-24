@@ -2,6 +2,8 @@ package com.lendly.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import com.lendly.backend.model.Item;
 import java.util.List;
 
 @RestController
+@EnableAsync
 @RequestMapping("/api/items")
 @CrossOrigin(origins = {"http://frontend-dot-lendly-383321.wl.r.appspot.com", "https://frontend-dot-lendly-383321.wl.r.appspot.com"})
 public class ItemController {
@@ -25,11 +28,13 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @GetMapping
+    @Async
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
 
     @GetMapping("/{id}")
+    @Async
     public ResponseEntity<Item> getItemById(@PathVariable Long id) {
         return itemRepository.findById(id)
                 .map(ResponseEntity::ok)
@@ -37,19 +42,20 @@ public class ItemController {
     }
 
     @GetMapping("/name/{id}")
+    @Async
     public List<Item> getItemsByName(@PathVariable String id) {
         return itemRepository.findItemsByName(id);
-                // .map(ResponseEntity::ok)
-                // .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
+    @Async
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         Item savedItem = itemRepository.save(item);
         return ResponseEntity.ok(savedItem);
     }
 
     @PutMapping("/{id}")
+    @Async
     public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item) {
         return itemRepository.findById(id)
                 .map(existingItem -> {
@@ -61,6 +67,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
+    @Async
     public ResponseEntity<Object> deleteItem(@PathVariable Long id) {
         return itemRepository.findById(id)
                 .map(existingItem -> {

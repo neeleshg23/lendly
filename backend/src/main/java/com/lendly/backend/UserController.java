@@ -2,6 +2,8 @@ package com.lendly.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import com.lendly.backend.model.User;
 import java.util.List;
 
 @RestController
+@EnableAsync
 @RequestMapping("/api/users")
 @CrossOrigin(origins = {"http://frontend-dot-lendly-383321.wl.r.appspot.com", "https://frontend-dot-lendly-383321.wl.r.appspot.com"})
 public class UserController {
@@ -26,27 +29,28 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping
+    @Async
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     
     @GetMapping("/{email}")
+    @Async
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return userRepository.findByEmail(email)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
     @GetMapping("/userid/{email}")
+    @Async
     public int getUserIdByEmail(@PathVariable String email) {
         return userRepository.findUserIdByEmail(email);
     }
 
-    // added new User findUserByID(int userID)
-
     @GetMapping("/userbyid/{userID}")
+    @Async
     public ResponseEntity<User> getUserByID(@PathVariable Long userID) {
         return userRepository.findById(userID)
             .map(ResponseEntity::ok)
@@ -55,12 +59,14 @@ public class UserController {
     }
 
     @PostMapping
+    @Async
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
 
     @PutMapping("/{id}")
+    @Async
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         return userRepository.findById(id)
                 .map(existingUser -> {
@@ -72,6 +78,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @Async
     public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(existingUser -> {
@@ -82,6 +89,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/owned-items")
+    @Async
     public ResponseEntity<List<Item>> getOwnedItemsByUserId(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(user -> {
@@ -92,6 +100,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/borrowed-items")
+    @Async
     public ResponseEntity<List<Item>> getBorrowedItemsByUserId(@PathVariable Long id) {
         return userRepository.findById(id)
                 .map(user -> {
