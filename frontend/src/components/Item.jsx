@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
 import './../App.css';
 import image from "./../images/item_alt.png"
+import { useNavigate } from 'react-router-dom';
+const navigate = useNavigate();
 
-const Item = ({ itemName, itemPrice, itemtype }) => {
+const Item = ({ itemID, itemName, itemPrice, itemtype }) => {
+    const handleReturnItemClick = async () => {
+        const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/" + itemID,
+        {
+            method: "DELETE"
+        });
+
+        if(response.ok) {
+            navigate('/profile')
+        } else {
+            console.error("Failed to return item with ID " + itemID);
+        }
+    }
     return (
         <div className="item">
             <img src={image} />
             <p>{itemName}</p>
             <p><b>${itemPrice}</b></p>
             {itemtype !== "OWN" && (
-                <button style={{ marginBottom: 15 + "px" }}>Return Item</button>
+                <button onClick={handleReturnItemClick} style={{ marginBottom: 15 + "px" }}>Return Item</button>
             )}
         </div>
     );
@@ -45,6 +59,7 @@ const ItemWithData = ({ user, itemtype }) => {
                     itemName={item.name}
                     itemPrice={item.insurancePrice}
                     itemtype={itemtype}
+                    itemID={item.id}
                 />
             ))}
         </div>
