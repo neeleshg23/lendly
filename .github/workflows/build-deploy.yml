@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - dev_blake
+      - dev_rachel
 
 jobs:
   build_and_deploy:
