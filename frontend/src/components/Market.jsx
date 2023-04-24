@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import MarketItemWithData from "./MarketItem.jsx";
 import image from "./../images/rollerblades.jpg"
 
-const Market = ({ user, setUser }) => {
+const Market = ({ user, onLogout }) => {
     const location = useLocation();
     
     var search = new URLSearchParams(location.search).get("q");
@@ -36,7 +36,7 @@ const Market = ({ user, setUser }) => {
         <div>
             <h1>lend.ly</h1>
 
-            <NavBar user={user} setUser={setUser}/>
+            <NavBar user={user} onLogout={onLogout}/>
 
             {/*
             <div style={{width: 750 + 'px', margin: 'auto', overflowWrap: 'break-word', marginBottom: 20 + 'px'}}>

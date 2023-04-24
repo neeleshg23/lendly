@@ -5,7 +5,7 @@ import CurrencyInput from "react-currency-input-field";
 import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
-function ProductListingPage({ user, setUser }) {
+function ProductListingPage({ user, onLogout }) {
 
   // Define state variables to hold the product data
   const [name, setName] = useState("");
@@ -111,7 +111,7 @@ function ProductListingPage({ user, setUser }) {
     <div>
       <h1>lend.ly</h1>
 
-      <NavBar user={user} setUser={setUser}/>
+      <NavBar user={user} onLogout={onLogout}/>
 
       <div class="listing">
       <p style={{fontSize: 22 + 'px', marginBottom: 20 + 'px', textAlign: 'center'}}><b>Add Listing</b></p>
@@ -144,6 +144,7 @@ function ProductListingPage({ user, setUser }) {
             <option value="kitchenware">Kitchenware</option>
             <option value="shoes">Shoes</option>
             <option value="tools">Tools</option>
+            <option value="tools">Other</option>
           </select>
 
           <label for="currencyInput"><b>Item Insurance</b></label>

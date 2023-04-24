@@ -53,12 +53,12 @@ const MarketItem = ({ user, item }) => {
     const borrowItem = async () => {
         const body = {
             category: item.category,
-            itemDescription: "",
             insurancePrice: item.insurancePrice,
             status: true,
             ownerId: item.ownerId,
             borrowerId: user.id,
             name: item.name,
+            description: item.description,
         }
 
         const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/${item.id}`, {
@@ -92,11 +92,7 @@ const MarketItem = ({ user, item }) => {
                     <p><b>{itemOwner.displayName}</b></p>
                 </div>
                 <div className="row">
-                    <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>{item.description}</p>
                 </div>
                 {user &&
                 <div className="row">
