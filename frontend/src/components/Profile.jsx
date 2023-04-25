@@ -39,7 +39,7 @@ const Profile = ({ user, onLogout }) => {
             </div>
 
             <div className="profile">
-                <div className="section" style={{justifyContent: 'stretch', marginBottom: 15 + 'px'}}>
+                <div className="section" style={{justifyContent: 'stretch', marginBottom: 0 + 'px'}}>
                     <div className="row">
                         <p style={{fontSize: 22 + 'px', marginLeft: 5 + 'px'}}><b>Listings</b></p>
                         <button onClick={listing}>Create Item Listing</button>
@@ -50,45 +50,17 @@ const Profile = ({ user, onLogout }) => {
                     <ItemWithData user={user} itemType="OWN"/>
                 </div>
 
-                <div className="section" style={{justifyContent: 'stretch', marginBottom: 10 + 'px'}}>
+                <div className="section" style={{justifyContent: 'stretch', marginTop: 25 + 'px', marginBottom: 0 + 'px'}}>
                     <div className="row">
                         <p style={{fontSize: 22 + 'px', marginLeft: 5 + 'px'}}><b>Borrowed Items</b></p>
                     </div>
                 </div>
 
-                <div className="gallery" style={{marginBottom: 0 + 'px'}}>
+                <div className="gallery" style={{marginTop: 0 + 'px'}}>
                     <ItemWithData user={user} itemType="BORROW"/>
                 </div>
 
             </div>
-
-            {/*
-            <div className="row">
-                <div className = "profile">
-                    <div className="profile-pic"></div>
-                    <div className = "userinfo">
-                        <div className="username">Display name</div>
-                        <div className="location">Location</div>
-                    </div>
-                    <div className="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-            </div>
-
-            <div className="row">
-                <div>
-                    <button>Create Item Listing</button>
-                </div>
-            </div>
-
-            <h3>Owned Items</h3>
-            <div className="gallery">
-                <ItemWithData user={user} itemtype="OWN"/>
-            </div>
-            <h3>Borrowed Items</h3>
-            <div className="gallery">
-                <ItemWithData user={user} itemtype="BORROW"/>
-            </div>
-            */}
         </div>
     )
 }

@@ -16,17 +16,17 @@ import toysImage from "./../images/toys.png";
 import vehicleImage from "./../images/toys.png";
 
 const itemImages = {
-    "Appliances": appliancesImage,
-    "Books": booksImage,
-    "Clothing": clothingImage,
-    "Electronics": electronicsImage,
-    "Furniture": furnitureImage,
-    "Kitchen": kitchenImage,
-    "Other": otherImage,
-    "Stationery": stationeryImage,
-    "Tools": toolsImage,
-    "Toys": toysImage,
-    "Vehicle": vehicleImage
+    "appliances": appliancesImage,
+    "books": booksImage,
+    "clothing": clothingImage,
+    "electronics": electronicsImage,
+    "furniture": furnitureImage,
+    "kitchen": kitchenImage,
+    "other": otherImage,
+    "stationery": stationeryImage,
+    "tools": toolsImage,
+    "toys": toysImage,
+    "vehicle": vehicleImage
 }
 
 const MarketItem = ({ setBorrowedItem, user, item }) => {
@@ -93,7 +93,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         <div className="market-item">
             <div className="left-column">
                 {/* content for the left column goes here */}
-                <img src={itemImages[item.category] ?? itemImages["Other"]}/>
+                <img src={itemImages[item.category]}/>
             </div>
             <div className="right-column">
                 {/* content for the right column goes here */}
@@ -102,7 +102,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>{itemOwner.displayName}</b></p>
+                    <p><b>{`${itemOwner.displayName} [ Contact: ${itemOwner.email} ] `}</b></p>
                 </div>
                 <div className="row">
                     <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>{item.description}</p>

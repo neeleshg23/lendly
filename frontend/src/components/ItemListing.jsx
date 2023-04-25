@@ -137,7 +137,7 @@ function ProductListingPage({ user, onLogout }) {
             required
           >
             <option value="" disabled selected>Select a category</option>
-            <option value="appliance">Appliances</option>
+            <option value="appliances">Appliances</option>
             <option value="stationery">Arts, Craft & Sewing</option>
             <option value="books">Books</option>
             <option value="clothing">Clothing, Shoes & Jewelry</option>

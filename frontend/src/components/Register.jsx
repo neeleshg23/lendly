@@ -85,7 +85,6 @@ const Register = ({ setUser }) => {
                     placeholder="Email"
                     value={state.email}
                     onChange={handleChange}
-                    maxlength="40"
                     required
                   />
                   <input

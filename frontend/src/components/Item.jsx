@@ -15,17 +15,17 @@ import toysImage from "./../images/toys.png";
 import vehicleImage from "./../images/toys.png";
 
 const itemImages = {
-    "Appliances": appliancesImage,
-    "Books": booksImage,
-    "Clothing": clothingImage,
-    "Electronics": electronicsImage,
-    "Furniture": furnitureImage,
-    "Kitchen": kitchenImage,
-    "Other": otherImage,
-    "Stationery": stationeryImage,
-    "Tools": toolsImage,
-    "Toys": toysImage,
-    "Vehicle": vehicleImage
+    "appliances": appliancesImage,
+    "books": booksImage,
+    "clothing": clothingImage,
+    "electronics": electronicsImage,
+    "furniture": furnitureImage,
+    "kitchen": kitchenImage,
+    "other": otherImage,
+    "stationery": stationeryImage,
+    "tools": toolsImage,
+    "toys": toysImage,
+    "vehicle": vehicleImage
 }
 
 const Item = ({ setReturnedItem, itemCategory, itemID, itemName, itemPrice, itemType }) => {
@@ -40,10 +40,16 @@ const Item = ({ setReturnedItem, itemCategory, itemID, itemName, itemPrice, item
     }
     return (
         <div className="item">
-            <img src={itemImages[itemCategory] ?? itemImages["Other"]}/>
-            <p style={{fontSize: 17 + 'px'}}><b>{itemName}</b></p>
-            <p style={{marginBottom: 15 +'px'}}>${itemPrice}</p>
-            <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
+            <div className="left-column">
+                {/* content for the left column goes here */}
+                <img src={itemImages[itemCategory] ?? itemImages["Other"]}/>
+            </div>
+            <div className="right-column">
+                {/* content for the right column goes here */}
+                    <p><b>{itemName}</b></p>
+                    <p>${itemPrice}</p>
+                    <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
+            </div>
         </div>
     );
 };

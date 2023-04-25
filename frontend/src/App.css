@@ -320,12 +320,12 @@ button:disabled:hover {
 }
 
 .gallery {
-  margin-bottom: 25px;
+  margin-top: 15px;
   border-radius: 20px;
   padding: 0px;
   width: 100%;
   display: grid;
-  grid-template-columns: 126px 126px 126px 126px 126px;
+  grid-template-columns: 345px 345px;
   grid-gap: 20px;
   grid-auto-flow: row;
 }
@@ -334,43 +334,39 @@ button:disabled:hover {
 
 .item {
   position: relative;
-  background-color: #5ec2b7;
+  background-color: #9dd9d2;
   border-radius: 20px;
   font-size: 30px;
   height: auto;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .item img {
-  margin: 15px;
-  height: 96px;
-  width: 96px;
+  height: 100px;
+  width: 100px;
   border: none;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .item p {
-  width: 96px;
   color: white;
-  text-align: center;
   word-break: break-word;
   margin-bottom: 5px;
 }
 
 .item button {
   margin: 0px;
+  margin-left: auto;
   padding-top: 6px;
   padding-bottom: 6px;
-  width: 96px;
+  width: auto;
   height: auto;
   background-color: #2CA6A4;
   position: absolute;
   bottom: 15px;
+  right: 15px;
 }
 
 .item button:hover {
@@ -383,6 +379,31 @@ button:disabled:hover {
 
 .item .delete:hover {
   background-color: #D42929;
+}
+
+.item .left-column,
+.item .right-column {
+  margin: 15px;
+}
+
+.item .left-column {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.item .right-column {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin-left: 0px;
+}
+
+.item .row {
+  margin-bottom: 5px;
+  width: auto;
+  height: auto;
+  display: flex;
 }
 
 /* Listing */
