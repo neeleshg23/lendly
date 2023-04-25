@@ -4,7 +4,7 @@ import './../App.css';
 import image from "./../images/rollerblades.jpg"
 import { getUserFromLocalStorage } from "./User";
 
-const MarketItem = ({ setBorrowedItem, user, item }) => {
+const MarketItem = ({ user, item }) => {
     // Fetch item owner
     const [itemOwner, setItemOwner] = useState({
         id: '',
@@ -59,7 +59,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { setBorrowedItem(true); }
+        if (response.ok) { window.location.reload(false); }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -120,7 +120,11 @@ const MarketItemWithData = ({ user, keyword }) => {
                     marketItemData.forEach(marketItem => {
                         // Remove items that are already borrowed
                         // AND items that are owned by the user
-                        if (marketItem.status == true || (user && marketItem.ownerId == user.id)) {
+                        if (marketItem.status == true ) {
+                            const index = marketItemData.indexOf(marketItem);
+                            marketItemData.splice(index, 1);
+                        }
+                        else if (user && marketItem.ownerId == user.id) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
@@ -158,7 +162,11 @@ const MarketItemWithData = ({ user, keyword }) => {
                     marketItemData.forEach(marketItem => {
                         // Remove items that are already borrowed
                         // AND items that are owned by the user
-                        if (marketItem.status == true || (user && marketItem.ownerId == user.id)) {
+                        if (marketItem.status == true) {
+                            const index = marketItemData.indexOf(marketItem);
+                            marketItemData.splice(index, 1);
+                        }
+                        else if (user && marketItem.ownerId == user.id) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
@@ -181,14 +189,13 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, [borrowedItem]);
+    }, []);
 
     return (
         
         <div>
             {marketItemData.map((item) => (
                 <MarketItem
-                    setBorrowedItem={setBorrowedItem}
                     user={user}
                     item={item}
                 />
