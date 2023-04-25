@@ -123,6 +123,7 @@ function ProductListingPage({ user, onLogout }) {
             placeholder="Item Name"
             value={name}
             onChange={handleNameChange}
+            maxlength="25"
             required
           />
 
@@ -161,6 +162,7 @@ function ProductListingPage({ user, onLogout }) {
             allowDecimals
             decimalsLimit="2"
             disableAbbreviations 
+            maxlength="7"
             required
           />
 
@@ -169,6 +171,7 @@ function ProductListingPage({ user, onLogout }) {
             value={description} 
             onChange={handleDescriptionChange} 
             placeholder="Insert description here..."
+            maxlength="250"
             required
           />
 

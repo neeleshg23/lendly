@@ -122,7 +122,7 @@ button:disabled {
 }
 
 button:disabled:hover {
-  color: #5EC2B7
+  background-color: #5EC2B7
 }
 
 /* Login / Register */
@@ -372,6 +372,14 @@ button:disabled:hover {
 
 .item button:hover {
   background-color: #30919C
+}
+
+.item button .delete {
+  background-color: #E74C3B;
+}
+
+.item button .delete:hover {
+  background-color: #D42929;
 }
 
 /* Listing */
