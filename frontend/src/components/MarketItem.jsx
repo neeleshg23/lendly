@@ -4,8 +4,7 @@ import './../App.css';
 import image from "./../images/rollerblades.jpg"
 import { getUserFromLocalStorage } from "./User";
 
-const MarketItem = ({ user, item }) => {
-    // Fetch item owner
+const MarketItem = ({ setBorrowedItem, user, item }) => {
     const [itemOwner, setItemOwner] = useState({
         id: '',
         email:'',
@@ -29,7 +28,6 @@ const MarketItem = ({ user, item }) => {
             if (response.ok) { 
                 const owner = await response.json(); 
                 setItemOwner(owner);
-                console.log(owner);
             }
             else { console.error("Error retrieving owner."); }
         }
@@ -59,7 +57,7 @@ const MarketItem = ({ user, item }) => {
         });
 
         // Check if retrieval was successful
-        if (response.ok) { window.location.reload(false); }
+        if (response.ok) { setBorrowedItem(true); }
         else { console.error("Error retrieving owner."); }
     }
 
@@ -83,7 +81,7 @@ const MarketItem = ({ user, item }) => {
                 </div>
                 {user &&
                 <div className="row">
-                    <button onClick={borrowItem}>Borrow</button>
+                    <button onClick={borrowItem} disabled={!user}>{user ? `Borrow` : `You listed this item`}</button>
                 </div>
                 }
             </div>
@@ -103,107 +101,53 @@ const MarketItemWithData = ({ user, keyword }) => {
         const fetchMarketItemData = async () => {
             setBorrowedItem(false); // reset state
 
-            if (keyword === "") { 
-                const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items`, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
+            var fetchLink = ``;
+            if (keyword === "") { fetchLink = `https://backend-dot-lendly-383321.wl.r.appspot.com/api/items`; }
+            else { fetchLink = `https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/name/${keyword}`; }
+
+            const response = await fetch(fetchLink, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const items = await response.json();
+                console.log(items);
+
+                // Remove borrowed items
+                displayItems = items;
+                items.forEach(item => {
+                    if (item.status == true) {
+                        const index = items.indexOf(item);
+                        displayItems.splice(index, 1);      // remove from items to be displayed
+                    }
                 });
 
-                // Check if retrieval was successful
-                if (response.ok) {
-                    const marketItemData = await response.json();
-                    console.log(marketItemData);
-
-                    marketItemData.forEach(marketItem => {
-                        // Remove items that are already borrowed
-                        // AND items that are owned by the user
-                        if (marketItem.status == true ) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                        else if (user && marketItem.ownerId == user.id) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                        else if (user && marketItem.borrowerId == user.id) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                    });
-
-                    if (marketItemData.length > 0) {
-                        setMarketItemData(marketItemData);
-                    }
-                    else {
-                        console.error('No results found');
-                        setMarketItemData([]);
-                        alert("No items found, please search again.");
-                    }
-                }
+                if (displayItems.length > 0) {
+                    setMarketItemData(displayItems);
+                } 
                 else {
-                    console.error('No results found');
                     setMarketItemData([]);
                     alert("No items found, please search again.");
                 }
             }
             else {
-                const response = await fetch(`https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/name/${keyword}`, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                // Check if any items match results
-                if (response.ok) {
-                    const marketItemData = await response.json();
-                    console.log(marketItemData);
-
-                    marketItemData.forEach(marketItem => {
-                        // Remove items that are already borrowed
-                        // AND items that are owned by the user
-                        if (marketItem.status == true) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                        else if (user && marketItem.ownerId == user.id) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                        else if (user && marketItem.borrowerId == user.id) {
-                            const index = marketItemData.indexOf(marketItem);
-                            marketItemData.splice(index, 1);
-                        }
-                    });
-
-                    if (marketItemData.length > 0) {
-                        setMarketItemData(marketItemData);
-                    }
-                    else {
-                        console.error('No results found');
-                        setMarketItemData([]);
-                        alert("No items found, please search again.");
-                    }
-                }
-                else {
-                    console.error('No results found');
-                    setMarketItemData([]);
-                    alert("No items found, please search again.");
-                }
+                setMarketItemData([]);
+                alert("No items found, please search again.");
             }
         };
         fetchMarketItemData();
-    }, [location]);
+    }, [location, borrowedItem]);
 
     return (
         
         <div>
             {marketItemData.map((item) => (
                 <MarketItem
+                    setBorrowedItem={setBorrowedItem}
                     user={user}
                     item={item}
                 />
