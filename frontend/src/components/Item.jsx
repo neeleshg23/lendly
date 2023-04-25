@@ -1,7 +1,32 @@
 import React, { useEffect, useState } from "react";
 import './../App.css';
-import image from "./../images/item_alt.png"
 import { getUserFromLocalStorage } from "./User";
+
+import appliancesImage from "./../images/appliances.png";
+import booksImage from "./../images/books.png";
+import clothingImage from "./../images/clothing.png";
+import electronicsImage from "./../images/electronics.png";
+import furnitureImage from "./../images/furniture.png";
+import kitchenImage from "./../images/kitchen.png";
+import otherImage from "./../images/other.png";
+import stationeryImage from "./../images/stationery.png";
+import toolsImage from "./../images/tools.png";
+import toysImage from "./../images/toys.png";
+import vehicleImage from "./../images/toys.png";
+
+const itemImages = {
+    "Appliances": appliancesImage,
+    "Books": booksImage,
+    "Clothing": clothingImage,
+    "Electronics": electronicsImage,
+    "Furniture": furnitureImage,
+    "Kitchen": kitchenImage,
+    "Other": otherImage,
+    "Stationery": stationeryImage,
+    "Tools": toolsImage,
+    "Toys": toysImage,
+    "Vehicle": vehicleImage
+}
 
 const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
     const handleReturnItemClick = async () => {
@@ -15,7 +40,7 @@ const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
     }
     return (
         <div className="item">
-            <img src={image}/>
+            <img src={itemImages[itemName] ?? itemImages["Other"]}/>
             <p style={{fontSize: 17 + 'px'}}><b>{itemName}</b></p>
             <p style={{marginBottom: 15 +'px'}}>${itemPrice}</p>
             <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>

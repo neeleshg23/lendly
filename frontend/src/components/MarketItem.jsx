@@ -1,8 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import './../App.css';
-import image from "./../images/rollerblades.jpg"
 import { getUserFromLocalStorage } from "./User";
+
+import appliancesImage from "./../images/appliances.png";
+import booksImage from "./../images/books.png";
+import clothingImage from "./../images/clothing.png";
+import electronicsImage from "./../images/electronics.png";
+import furnitureImage from "./../images/furniture.png";
+import kitchenImage from "./../images/kitchen.png";
+import otherImage from "./../images/other.png";
+import stationeryImage from "./../images/stationery.png";
+import toolsImage from "./../images/tools.png";
+import toysImage from "./../images/toys.png";
+import vehicleImage from "./../images/toys.png";
+
+const itemImages = {
+    "Appliances": appliancesImage,
+    "Books": booksImage,
+    "Clothing": clothingImage,
+    "Electronics": electronicsImage,
+    "Furniture": furnitureImage,
+    "Kitchen": kitchenImage,
+    "Other": otherImage,
+    "Stationery": stationeryImage,
+    "Tools": toolsImage,
+    "Toys": toysImage,
+    "Vehicle": vehicleImage
+}
 
 const MarketItem = ({ setBorrowedItem, user, item }) => {
     const [itemOwner, setItemOwner] = useState({
@@ -68,7 +93,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         <div className="market-item">
             <div className="left-column">
                 {/* content for the left column goes here */}
-                <img src={image}/>
+                <img src={itemImages[itemName] ?? itemImages["Other"]}/>
             </div>
             <div className="right-column">
                 {/* content for the right column goes here */}

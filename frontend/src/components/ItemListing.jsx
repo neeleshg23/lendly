@@ -137,15 +137,17 @@ function ProductListingPage({ user, onLogout }) {
             required
           >
             <option value="" disabled selected>Select a category</option>
-            <option value="appliances">Appliances</option>
+            <option value="appliance">Appliances</option>
+            <option value="stationery">Arts, Craft & Sewing</option>
             <option value="books">Books</option>
-            <option value="clothing">Clothing</option>
+            <option value="clothing">Clothing, Shoes & Jewelry</option>
             <option value="electronics">Electronics</option>
             <option value="furniture">Furniture</option>
-            <option value="kitchenware">Kitchenware</option>
-            <option value="shoes">Shoes</option>
+            <option value="kitchen">Kitchen & Dining</option>
             <option value="tools">Tools</option>
-            <option value="tools">Other</option>
+            <option value="toys">Toys, Movies & Video Games</option>
+            <option value="vehicle">Vehicle</option>
+            <option value="other">Other</option>
           </select>
 
           <label for="currencyInput"><b>Item Insurance</b></label>
