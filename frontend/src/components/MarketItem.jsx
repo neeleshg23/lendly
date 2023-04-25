@@ -97,7 +97,7 @@ const MarketItemWithData = ({ user, keyword }) => {
     const [marketItemData, setMarketItemData] = useState([]);
     const [borrowedItem, setBorrowedItem] = useState(false);
 
-    // useEffect(() => { if (!user) { user = getUserFromLocalStorage(); } }, [user]);
+    user = getUserFromLocalStorage();
 
     useEffect(() => {
         const fetchMarketItemData = async () => {
@@ -120,7 +120,7 @@ const MarketItemWithData = ({ user, keyword }) => {
                     marketItemData.forEach(marketItem => {
                         // Remove items that are already borrowed
                         // AND items that are owned by the user
-                        if (marketItem.status == true || marketItem.ownerId == user.id) {
+                        if (marketItem.status == true || (user && marketItem.ownerId == user.id)) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
@@ -158,7 +158,7 @@ const MarketItemWithData = ({ user, keyword }) => {
                     marketItemData.forEach(marketItem => {
                         // Remove items that are already borrowed
                         // AND items that are owned by the user
-                        if (marketItem.status == true || marketItem.ownerId == user.id) {
+                        if (marketItem.status == true || (user && marketItem.ownerId == user.id)) {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
@@ -181,7 +181,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, [location, borrowedItem]);
+    }, [borrowedItem]);
 
     return (
         

@@ -29,7 +29,7 @@ const ItemWithData = ({ user, itemType }) => {
     const [itemData, setItemData] = useState([]);
     const [returnedItem, setReturnedItem] = useState(false);
 
-    useEffect(() => { if (!user) { user = getUserFromLocalStorage(); } }, [user]);
+    user = getUserFromLocalStorage();
 
     useEffect(() => {
         const fetchItemData = async () => {
