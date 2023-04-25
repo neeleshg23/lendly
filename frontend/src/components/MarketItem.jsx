@@ -87,7 +87,8 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
     }
 
     // Whether the user listed the item
-    const userOwnsItem = (user.id === item.ownerId);
+    var userOwnsItem = false;
+    if (user) { userOwnsItems = (user.id === item.ownerId); }
 
     return (
         <div className="market-item">
