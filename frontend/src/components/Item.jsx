@@ -35,18 +35,21 @@ const ItemWithData = ({ user, itemType }) => {
         const fetchItemData = async () => {
             setReturnedItem(false); // reset state
 
-            const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + user.email);
-            const userJson = await userFetch.json(); // userFetch response is JSON
-            const id = userJson.id; // accessing id value
+            if(user)
+            {
+                const userFetch = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + user.email);
+                const userJson = await userFetch.json(); // userFetch response is JSON
+                const id = userJson.id; // accessing id value
 
-            if (itemType == "OWN") {
-                const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + id + "/owned-items");
-                const itemData = await response.json();
-                setItemData(itemData);
-            } else {
-                const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + id + "/borrowed-items");
-                const itemData = await response.json();
-                setItemData(itemData);
+                if (itemType == "OWN") {
+                    const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + id + "/owned-items");
+                    const itemData = await response.json();
+                    setItemData(itemData);
+                } else {
+                    const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/users/" + id + "/borrowed-items");
+                    const itemData = await response.json();
+                    setItemData(itemData);
+                }
             }
         };
         fetchItemData();

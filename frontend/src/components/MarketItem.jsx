@@ -42,7 +42,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
             category: item.category,
             insurancePrice: item.insurancePrice,
             status: true,
-            ownerId: item.ownerId,
+            ownerId: 0,
             borrowerId: user.id,
             name: item.name,
             description: item.description,
@@ -97,7 +97,7 @@ const MarketItemWithData = ({ user, keyword }) => {
     const [marketItemData, setMarketItemData] = useState([]);
     const [borrowedItem, setBorrowedItem] = useState(false);
 
-    useEffect(() => { if (!user) { user = getUserFromLocalStorage(); } }, [user]);
+    // useEffect(() => { if (!user) { user = getUserFromLocalStorage(); } }, [user]);
 
     useEffect(() => {
         const fetchMarketItemData = async () => {
@@ -115,6 +115,7 @@ const MarketItemWithData = ({ user, keyword }) => {
                 // Check if retrieval was successful
                 if (response.ok) {
                     const marketItemData = await response.json();
+                    console.log(marketItemData);
 
                     marketItemData.forEach(marketItem => {
                         // Remove items that are already borrowed
