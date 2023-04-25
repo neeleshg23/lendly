@@ -9,7 +9,7 @@ In a first terminal:
 
 In a second terminal:
 - `cd frontend`
-- `npm inbstall .`
+- `npm install .`
 - `npm start`
 
 Postman API testing:
@@ -19,10 +19,11 @@ Postman API testing:
 - After importing, you'll see the 'Lendly' collection in the left sidebar. Click on the collection and start testing the API endpoints.
 
 Database connection:
-- Ensure your device's IP address has been added to the list of authorized hosts in [Google Cloud Dashboard](https://console.cloud.google.com).
-- Either start it from [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy ALWAYS`
-- Stop it in the [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy NEVER`
-- Advanced settings: Google Cloud Shell or `gcloud sql connect lendly-db --user=root`
+- Start it from [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy ALWAYS`
+- Stop it from [Google Cloud Dashboard](https://console.cloud.google.com) or `gcloud sql instances patch lendly-db --activation-policy NEVER`
+- Advanced settings: [Google Cloud Shell](https://console.cloud.google.com) or `gcloud sql connect lendly-db --user=root`
 
 Deployment steps:
 - Start App Engine instance in [App Engine Settings within Google Cloud Dashboard](https://console.cloud.google.com/appengine/settings)
+- Deploy on push
+- Stop App Engine instance in [App Engine Settings within Google Cloud Dashboard](https://console.cloud.google.com/appengine/settings)
