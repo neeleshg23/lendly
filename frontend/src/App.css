@@ -1,140 +1,54 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
 .App {
-  text-align: center;
+  justify-content: center;
   background-color: white;
   font-family: Calibri;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+html {
+  overflow-y: scroll;
 }
 
-.profile {
-  display: flex;
-  align-items: center;
+body { 
+    background-color: white; 
 }
-
-.userinfo {
-  margin-left: 20px;
-}
-
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #ddd;
-}
-
-.rating {
-  font-size: 24px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.username {
-  font-size: 36px;
-  margin-right: 10px;
-}
-
-.location {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.tab-button {
-  font-size: 24px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.tab-button.active {
-  border-bottom-color: #4CAF50;
-}
-
-.create-listing {
-  font-size: 24px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.gallery {
-  display: flexbox;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 -10px;
-}
-
-.item {
-  width: 20%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: grey;
-  box-shadow: 0 0 5px #ddd;
-}
-
-.item img {
-  display: block;
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.item-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.item-price {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-/*******************************/
-/* Login + Registration styles */
 
 h1 {
   color: #5EC2B7;
   text-align: center;
+  font-family: calibri;
   font-size: 50px;
 }
 
 h2 {
+  color: black;
   text-align: center;
   font-family: Arial Rounded MT Bold;
   font-size: 35px;
-  margin: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 h3 {
+  color: white;
   text-align: center;
   font-family: Arial Rounded MT Bold;
   font-size: 20px;
   margin: 8px;
-  color: white;
 }
 
 p {
+  color: black;
+  font-family: calibri;
   font-size: 14px;
-  margin: 5px;
+  text-align: left;
+  margin: 0px;
 }
 
 a {
-  color: #5EC2B7;
+  color: #2CA6A4;
   margin: 5px;
+  font-family: calibri;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
@@ -146,12 +60,72 @@ a:hover {
 
 img {
   width: 100%;
-  border: 5px solid #DAF0ED;
+  border: 5px solid #DAF0ED; 
   border-radius: 10px;
   margin-bottom: 15px;
 }
 
-/* two-toned box */
+/* Inputs */
+
+form {
+  margin: 0px;
+  display: contents;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=submit],
+button,
+select,
+textarea {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px;
+  margin: 8px;
+  border: none;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: none;
+  width: 97%;
+  height: 100px;
+  font-family: calibri;
+  font-size: 16px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+input[type=submit],
+button, 
+select {
+  background-color: #5EC2B7;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover,
+button:hover,
+option:hover {
+  background-color: #2CA6A4;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;  
+}
+
+button:disabled:hover {
+  background-color: #5EC2B7
+}
+
+/* Login / Register */
 
 .two-colored-box {
   margin: auto;
@@ -163,10 +137,8 @@ img {
   align-items: stretch;
 }
 
-/* columns inside two-toned box */
-
-.left-column,
-.right-column {
+.two-colored-box .left-column,
+.two-colored-box .right-column {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -176,60 +148,294 @@ img {
   justify-content: center;
 }
 
-.left-column {
+.two-colored-box .left-column {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
 
-.right-column {
+.two-colored-box .right-column {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-/* form submission buttons */
+/* Navbar */
 
-.button {
+.navbar {
+  border-radius: 15px;
+  background-color: #DAF0ED;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 750px;
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.navbar button {
+  float: left;
+  width: 80px;
+  margin-right: 0px;
+}
+
+.search {
+  width: 400px;
+  margin-left: auto;
+  display: flex;
+  margin-right: 8px;
+  align-self: right;
+}
+
+.search input[type=text],
+.search button {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.search input[type=text] {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.navbar .search button{
+  width: 40px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+/* Market */
+
+.market-item {
+  position: relative;
+  background-color: #e4f4f2;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 750px;
+  height: auto;
+  display: flex;
+}
+
+.market-item button {
+  margin: 0px;
+  margin-left: auto;
+  width: auto;
+  height: 30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+.market-item img {
+  height: 155px;
+  object-fit: cover;
+  border: none;
+  margin: 0px;
+}
+
+.market-item .left-column,
+.market-item .right-column {
+  margin: 25px;
+}
+
+.market-item .left-column {
+  display: flex;
+  justify-content: center;
+  width: 22%;
+}
+
+.market-item .right-column {
+  display: flex;
+  flex-direction: column;
+  width: 78%;
+  margin-left: 0px;
+}
+
+.market-item .row {
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+/* Profile */
+
+.profile{
+  background-color: #e4f4f2;
+  border-radius: 20px;
+  margin: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 710px;
+  height: auto;
+}
+
+.profile-pic {
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 7px solid #5ec2b7;
+  background-color: #5ec2b7;
+  margin-bottom: 0px;
+}
+
+.profile button {
+  margin: 0px;
+  margin-left: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: auto;
+  height: auto;
+}
+
+.profile .section {
+  margin-bottom: 25px;
   width: 100%;
-  background-color: #5EC2B7;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile .left-column {
+  width: 10%;
+  margin-right: 35px;
+  margin-bottom: 0px;
+}
+
+.profile .right-column {
+  width: 80%;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+}
+
+.profile .row {
+  margin-bottom: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.gallery {
+  margin-top: 15px;
+  border-radius: 20px;
+  padding: 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 345px 345px;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+}
+
+/* Profile Item */
+
+.item {
+  position: relative;
+  background-color: #9dd9d2;
+  border-radius: 20px;
+  font-size: 30px;
+  height: auto;
+  width: 100%;
+  display: flex;
+}
+
+.item img {
+  height: 100px;
+  width: 100px;
+  border: none;
+  object-fit: cover;
+  margin-bottom: 0px;
+}
+
+.item p {
   color: white;
-  padding: 12px;
-  margin: 8px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  word-break: break-word;
+  margin-bottom: 5px;
 }
 
-input[type=text] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px;
-  display: inline-block;
-  border: none;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-input[type=password] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px;
-  display: inline-block;
-  border: none;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #5EC2B7;
-  color: white;
-  padding: 12px;
-  margin: 8px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
+.item button {
+  margin: 0px;
+  margin-left: auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: auto;
+  height: auto;
   background-color: #2CA6A4;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.item button:hover {
+  background-color: #30919C;
+}
+
+.item .delete {
+  background-color: #E74C3B;
+}
+
+.item .delete:hover {
+  background-color: #D42929;
+}
+
+.item .left-column,
+.item .right-column {
+  margin: 15px;
+}
+
+.item .left-column {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.item .right-column {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin-left: 0px;
+}
+
+.item .row {
+  margin-bottom: 5px;
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+/* Listing */
+
+.listing{
+  background-color: #e4f4f2;
+  border-radius: 20px;
+  margin: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 710px;
+  height: auto;
+}
+
+.listing form {
+  margin: auto;
+  margin-bottom: 5px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing input,
+.listing button,
+.listing select, 
+.listing textarea{
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.listing label {
+  font-size: 20px;
+  align-self: left;
+  margin-bottom: 5px;
 }

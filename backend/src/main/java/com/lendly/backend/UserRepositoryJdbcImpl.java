@@ -76,6 +76,23 @@ public class UserRepositoryJdbcImpl implements UserRepository {
         }
     }
 
+    // @Override
+    // public int findUserIdByEmail(String email) {
+    //     String sql = "SELECT id FROM Users WHERE UserID = ?";
+    //     // try {
+    //         int userID = jdbcTemplate.query(sql, USER_ROW_MAPPER, email);
+    //         return userID;
+    //     // } catch (EmptyResultDataAccessException e) {
+    //     //     return Optional.empty();
+    //     // }
+    // }
+
+    @Override
+    public int findUserIdByEmail(String email) {
+        String sql = "SELECT UserID FROM Users WHERE Email = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, email);
+    }
+
     @Override
     public void deleteById(Long id) {
         String sql = "DELETE FROM Users WHERE UserID = ?";

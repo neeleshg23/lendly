@@ -1,44 +1,56 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './../Rachel.css';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './../App.css';
 
-const NavBar = ({ user }) => {
-
+const NavBar = ({ user, onLogout }) => {
+    const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        var searchQuery = new URLSearchParams(location.search).get("q");
+        if(searchQuery) { 
+            setSearchInput(searchQuery); 
+        }
+    }, []);
 
     // Home
     const goHome = () => {
-        console.log("Clicked: Home");
-        if (user) navigate('/profile');
-        else navigate('/market');
+        navigate('/profile');
     };
 
     // Logout
     const logout = () => {
-        console.log("Clicked: Logout");
-        // Do logout functionality
+        console.log("Logged out");
+        onLogout();
         navigate('/');
     };
 
-    /****************************************/
-
-    const [searchInput, setSearchInput] = useState("");
-
     // Search
     const search = () => {
-        console.log("Clicked: Search");
-        if (searchInput === "") navigate("/market");
-        else navigate(`/market?q=${searchInput}`);
+        if (searchInput === "") { navigate("/market"); }
+        else { 
+            var search = searchInput;
+            search = search.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@'"\+\?><\[\]]/g,"");
+            search = search.replace(/\s{2,}/g," ");
+            search = search.toLowerCase();
+
+            const searchQuery = search.split(" ");
+            setSearchInput(searchQuery[0]);
+            navigate(`/market?q=${searchQuery[0]}`); 
+        }
     };
 
     return (
         <div>
-            <div class="navbar">
-                <button style={{width: 45 + 'px'}} onClick={goHome}><i class="fa fa-home" style={{fontSize: 18 + 'px'}}></i></button>
+            <div className="navbar">
+                {user &&
+                <button style={{width: 40 + 'px'}} onClick={goHome}><i className="fa fa-home" style={{fontSize: 18 + 'px'}}></i></button>
+                }
                 <button onClick={logout}>Log Out</button>
-                <div class="search">
+                <div className="search">
                     <input type="text" placeholder="Search.." onChange={(e) => setSearchInput(e.target.value)} value={searchInput}></input>
-                    <button onClick={search}><i class="fa fa-search"></i></button>
+                    <button onClick={search}><i className="fa fa-search"></i></button>
                 </div>
             </div>
         </div>

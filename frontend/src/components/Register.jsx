@@ -20,9 +20,9 @@ const Register = ({ setUser }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const { email, password, displayName, location, rating } = state;
-  
+
     const user = {
       email,
       password,
@@ -30,7 +30,7 @@ const Register = ({ setUser }) => {
       location,
       rating,
     };
-  
+
     const response = await fetch('https://backend-dot-lendly-383321.wl.r.appspot.com/api/users', {
       method: 'POST',
       headers: {
@@ -40,13 +40,13 @@ const Register = ({ setUser }) => {
       body: JSON.stringify(user),
     });
 
-  
+
     const contentType = response.headers.get('content-type');
     console.log("contentType:"+contentType)
     if (contentType && contentType.indexOf('application/json') !== -1) {
       const responseData = await response.json();
       console.log('Server response:', responseData);
-  
+
       if (response.ok) {
         console.log('User created successfully');
         setUser(user);
@@ -69,8 +69,8 @@ const Register = ({ setUser }) => {
           <h1>lend.ly</h1>
       </div>
 
-      <div class="two-colored-box">
-          <div class="left-column">
+      <div className="two-colored-box">
+          <div className="left-column">
           {/* content for the left column goes here */}
               <img src={image}/>
               <h3>trade, lend, wear, share.</h3>
@@ -100,6 +100,7 @@ const Register = ({ setUser }) => {
                     placeholder="Display Name"
                     value={state.displayName}
                     onChange={handleChange}
+                    maxlength="30"
                     required
                   />
                   <input
@@ -108,6 +109,7 @@ const Register = ({ setUser }) => {
                     placeholder="Location"
                     value={state.location}
                     onChange={handleChange}
+                    maxlength="30"
                     required
                   />
                   <input type="submit" value="Register" />
