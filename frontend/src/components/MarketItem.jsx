@@ -103,7 +103,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    {user && <p><b>{itemOwner.displayName}</b>{` [Contact: `}<a href={`mailto:${itemOwner.email}`}>{itemOwner.email}</a>{`]`}</p>}
+                    {user && <p><b>{itemOwner.displayName}</b>{` (`}<a href={`mailto:${itemOwner.email}`}>{itemOwner.email}</a>{`)`}</p>}
                 </div>
                 <div className="row">
                     <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>{item.description}</p>
