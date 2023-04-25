@@ -1,4 +1,4 @@
-/* @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"; */
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 .App {
   justify-content: center;
@@ -121,6 +121,10 @@ button:disabled {
   cursor: not-allowed;  
 }
 
+button:disabled:hover {
+  color: #5EC2B7
+}
+
 /* Login / Register */
 
 .two-colored-box {
@@ -213,11 +217,11 @@ button:disabled {
 
 .market-item button {
   margin: 0px;
-  margin-top: 10px;
   margin-left: auto;
-  width: 75px;
+  width: auto;
   height: 30px;
-  padding: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   position: absolute;
   bottom: 25px;
   right: 25px;
