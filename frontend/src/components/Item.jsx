@@ -28,7 +28,7 @@ const itemImages = {
     "Vehicle": vehicleImage
 }
 
-const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
+const Item = ({ setReturnedItem, itemCategory, itemID, itemName, itemPrice, itemType }) => {
     const handleReturnItemClick = async () => {
         const response = await fetch("https://backend-dot-lendly-383321.wl.r.appspot.com/api/items/" + itemID,
         {
@@ -40,7 +40,7 @@ const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
     }
     return (
         <div className="item">
-            <img src={itemImages[itemName] ?? itemImages["Other"]}/>
+            <img src={itemImages[itemCategory] ?? itemImages["Other"]}/>
             <p style={{fontSize: 17 + 'px'}}><b>{itemName}</b></p>
             <p style={{marginBottom: 15 +'px'}}>${itemPrice}</p>
             <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
@@ -84,6 +84,7 @@ const ItemWithData = ({ user, itemType }) => {
                 <Item
                     setReturnedItem={setReturnedItem}
                     itemName={item.name}
+                    itemCategory={item.category}
                     itemPrice={item.insurancePrice}
                     itemType={itemType}
                     itemID={item.id}

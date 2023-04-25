@@ -93,7 +93,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         <div className="market-item">
             <div className="left-column">
                 {/* content for the left column goes here */}
-                <img src={itemImages[itemName] ?? itemImages["Other"]}/>
+                <img src={itemImages[item.category] ?? itemImages["Other"]}/>
             </div>
             <div className="right-column">
                 {/* content for the right column goes here */}

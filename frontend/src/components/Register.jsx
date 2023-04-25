@@ -85,6 +85,7 @@ const Register = ({ setUser }) => {
                     placeholder="Email"
                     value={state.email}
                     onChange={handleChange}
+                    maxlength="40"
                     required
                   />
                   <input
@@ -101,6 +102,7 @@ const Register = ({ setUser }) => {
                     placeholder="Display Name"
                     value={state.displayName}
                     onChange={handleChange}
+                    maxlength="30"
                     required
                   />
                   <input
@@ -109,6 +111,7 @@ const Register = ({ setUser }) => {
                     placeholder="Location"
                     value={state.location}
                     onChange={handleChange}
+                    maxlength="30"
                     required
                   />
                   <input type="submit" value="Register" />
