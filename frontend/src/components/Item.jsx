@@ -17,7 +17,7 @@ const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
         <div className="item">
             <img src={image}/>
             <p style={{fontSize: 17 + 'px'}}><b>{itemName}</b></p>
-            <p>${itemPrice}</p>
+            <p style={{marginBottom: 15 +'px'}}>${itemPrice}</p>
             {itemType !== "OWN" && (
                 <button onClick={handleReturnItemClick} style={{marginBottom: 15 +'px'}}>Return Item</button>
             )}
