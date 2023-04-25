@@ -25,5 +25,5 @@ Database connection:
 
 Deployment steps:
 - Start App Engine instance in [App Engine Settings within Google Cloud Dashboard](https://console.cloud.google.com/appengine/settings)
-- Deploy on push
+- Deploys begin on push
 - Stop App Engine instance in [App Engine Settings within Google Cloud Dashboard](https://console.cloud.google.com/appengine/settings)
