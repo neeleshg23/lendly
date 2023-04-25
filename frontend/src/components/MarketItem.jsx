@@ -128,6 +128,10 @@ const MarketItemWithData = ({ user, keyword }) => {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
+                        else if (user && marketItem.borrowerId == user.id) {
+                            const index = marketItemData.indexOf(marketItem);
+                            marketItemData.splice(index, 1);
+                        }
                     });
 
                     if (marketItemData.length > 0) {
@@ -170,6 +174,10 @@ const MarketItemWithData = ({ user, keyword }) => {
                             const index = marketItemData.indexOf(marketItem);
                             marketItemData.splice(index, 1);
                         }
+                        else if (user && marketItem.borrowerId == user.id) {
+                            const index = marketItemData.indexOf(marketItem);
+                            marketItemData.splice(index, 1);
+                        }
                     });
 
                     if (marketItemData.length > 0) {
@@ -189,7 +197,7 @@ const MarketItemWithData = ({ user, keyword }) => {
             }
         };
         fetchMarketItemData();
-    }, []);
+    }, [location]);
 
     return (
         
