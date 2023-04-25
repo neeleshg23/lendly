@@ -102,7 +102,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
                     <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>${item.insurancePrice}</b></p>
                 </div>
                 <div className="row">
-                    <p><b>{`${itemOwner.displayName} [ Contact: ${itemOwner.email} ] `}</b></p>
+                    {user && <p><b>{itemOwner.displayName}</b>{ `[Contact: `}<a href={`mailto:${itemOwner.email}`}/>{`]`}</p>}
                 </div>
                 <div className="row">
                     <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>{item.description}</p>
@@ -116,7 +116,6 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         </div>
     );
 };
-
 
 const MarketItemWithData = ({ user, keyword }) => {
     const location = useLocation(); 

@@ -48,7 +48,7 @@ const Item = ({ setReturnedItem, itemCategory, itemID, itemName, itemPrice, item
                 {/* content for the right column goes here */}
                     <p><b>{itemName}</b></p>
                     <p>${itemPrice}</p>
-                    <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
+                    <button className={(itemType === "OWN") ? "delete" : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? <i className="fa fa-trash"/> : 'Return Item'}</button>
             </div>
         </div>
     );
