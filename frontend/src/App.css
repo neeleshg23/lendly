@@ -377,11 +377,11 @@ button:disabled:hover {
   background-color: #30919C;
 }
 
-.item button .delete {
+.item .delete {
   background-color: #E74C3B;
 }
 
-.item button .delete:hover {
+.item .delete:hover {
   background-color: #D42929;
 }
 
