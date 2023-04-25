@@ -333,6 +333,7 @@ button:disabled:hover {
 /* Profile Item */
 
 .item {
+  position: relative;
   background-color: #5ec2b7;
   border-radius: 20px;
   font-size: 30px;
@@ -367,11 +368,13 @@ button:disabled:hover {
   padding-bottom: 6px;
   width: 96px;
   height: auto;
-  background-color: #2CA6A4
+  background-color: #2CA6A4;
+  position: absolute;
+  bottom: 15px;
 }
 
 .item button:hover {
-  background-color: #30919C
+  background-color: #30919C;
 }
 
 .item button .delete {

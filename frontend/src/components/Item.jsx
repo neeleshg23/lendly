@@ -18,7 +18,7 @@ const Item = ({ setReturnedItem, itemID, itemName, itemPrice, itemType }) => {
             <img src={image}/>
             <p style={{fontSize: 17 + 'px'}}><b>{itemName}</b></p>
             <p style={{marginBottom: 15 +'px'}}>${itemPrice}</p>
-            <button className={(itemType === "OWN") ? 'delete' : null} onClick={handleReturnItemClick} style={{marginBottom: 15 +'px'}}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
+            <button className={(itemType === "OWN") ? 'delete' : null} onClick={handleReturnItemClick}>{(itemType === "OWN") ? 'Delete' : 'Return Item'}</button>
         </div>
     );
 };
