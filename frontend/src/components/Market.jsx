@@ -9,28 +9,10 @@ const Market = ({ user, onLogout }) => {
     const location = useLocation();
     
     var search = new URLSearchParams(location.search).get("q");
-    
-    if (!search) 
-    { search = "";}
-    else {
-        /*
-        search = search.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()@'"\+\?><\[\]]/g,"");
-        search = search.replace(/\s{2,}/g," ");
-        search = search.toLowerCase();
-        // resultsText = "Results for: " + search;
-        */
-    }
-
-    //const searchQuery = search.split(" ");
-    //const keyword = searchQuery[0];
-    const keyword = search;
+    if (!search) { search = "";}
     console.log(`Searched: ${search}`);
 
-    /* Fetch items that match keyword, then add it to results array
-    const results = new Array();
-    searchQuery.forEach(searchItem => {
-    });
-    */
+    const keyword = search;
 
     return (
         <div>
@@ -38,42 +20,7 @@ const Market = ({ user, onLogout }) => {
 
             <NavBar user={user} onLogout={onLogout}/>
 
-            {/*
-            <div style={{width: 750 + 'px', margin: 'auto', overflowWrap: 'break-word', marginBottom: 20 + 'px'}}>
-                <p style={{fontSize: 22 + 'px', textAlign: 'center'}}>{noResults}</p>
-            </div>
-            */}
-
-            <MarketItemWithData user={user} keyword={keyword} />
-
-            {/*
-            <div className="market-item">
-                <div className="left-column">
-                    <img src={image}/>
-                </div>
-                <div className="right-column">
-                    <div className="row">
-                        <p style={{fontSize: 22 + 'px'}}>Item Name</p>
-                        <p style={{fontSize: 22 + 'px', marginLeft: "auto"}}><b>$$$</b></p>
-                    </div>
-                    <div className="row">
-                        <p><b>Display Name</b></p>
-                        <p><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 10 + 'px'}}></i> <b>5.0</b></p>
-                    </div>
-                    <div className="row">
-                        <p style={{textAlign: 'justify', textJustify: 'inter-word'}}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                            nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>
-                    <div className="row">
-                        <button>Borrow</button>
-                    </div>
-                </div>
-            </div>
-            */}
-                
+            <MarketItemWithData user={user} keyword={keyword} />   
         </div>
     )
 }

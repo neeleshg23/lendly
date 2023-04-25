@@ -1,9 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
 import './../App.css';
 import CurrencyInput from "react-currency-input-field";
 import { useNavigate } from "react-router-dom";
-import { useDropzone } from "react-dropzone";
 
 function ProductListingPage({ user, onLogout }) {
 
@@ -11,10 +10,8 @@ function ProductListingPage({ user, onLogout }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [images, setImages] = useState([]);
   const prefix = '$';
   const [value, setValue] = useState(0);
-  const [files, setFiles] = useState([]);
 
   // for navigation to next page
   const navigate = useNavigate();
@@ -32,15 +29,6 @@ function ProductListingPage({ user, onLogout }) {
     setCategory(event.target.value);
   };
 
-  const handleImageChange = (event) => {
-    const fileList = event.target.files;
-    const imagesArray = [];
-    for (let i = 0; i < fileList.length; i++) {
-      imagesArray.push(fileList[i]);
-    }
-    setImages(imagesArray);
-  };
-
   // Handler for currency input
   const handleChange = (e) => {
     e.preventDefault();
@@ -50,15 +38,6 @@ function ProductListingPage({ user, onLogout }) {
   };
   // Needed function for currency
   const handleOnBlur = () => setValue(Number(value).toFixed(2));
-
-  // For multiple images and preview 
-  const onDrop = useCallback((acceptedFiles) => {
-    setFiles([...files, ...acceptedFiles.map((file) => Object.assign(file, {
-      preview: URL.createObjectURL(file)
-    }))]);
-  }, [files]);
-  // for image drop zone
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
 
   // Submit event handler 
   const handleSubmit = async (event, user) => {
@@ -103,7 +82,6 @@ function ProductListingPage({ user, onLogout }) {
     setName("");
     setDescription("");
     setCategory("");
-    setImages([]);
     setValue(0);
   };
 
@@ -128,7 +106,6 @@ function ProductListingPage({ user, onLogout }) {
           />
 
           <label for="keyword"><b>Item Category</b></label>
-          {/* <input type="text" id="keyword" name="keyword" required> */}
           <select 
             id="category" 
             value={category} 
@@ -176,26 +153,6 @@ function ProductListingPage({ user, onLogout }) {
             maxlength="250"
             required
           />
-
-          {/* This is a test for multiple preview images */}
-          {/*
-          <div className="dropzone-container" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? (
-              <p>Drop it like its hot (; </p>
-            ) : (
-              <p>Drag and drop some files here, or click to select files</p>
-            )}
-            <div>
-              {files.map((file) => (
-                <div key={file.name}>
-                  <img src={file.preview} alt="preview" />
-                  <div>{file.name}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          */}
 
           <button type="submit" style={{marginBottom: 0 +'px'}}>Submit</button>
         </form>

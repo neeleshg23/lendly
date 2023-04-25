@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import './../App.css';
 import NavBar from "./NavBar";
 import ItemWithData from "./Item.jsx";
@@ -29,7 +28,6 @@ const Profile = ({ user, onLogout }) => {
                     {/* content for the right column goes here */}
                         <div className="row">
                             {user && user.displayName && <p style={{fontSize: 22 + 'px'}}>{user.displayName}</p>}
-                            {/*<p style={{fontSize: 22 + 'px'}}><i className="fa fa-star" style={{color: '#fcb900', marginLeft: 15 + 'px'}}></i> <b>5.0</b></p>*/}
                         </div>
                         <div className="row">
                             {user && user.location && <p><b>{user.location}</b></p>}
