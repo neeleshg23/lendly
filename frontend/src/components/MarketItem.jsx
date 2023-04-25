@@ -61,6 +61,8 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
         else { console.error("Error retrieving owner."); }
     }
 
+    const userOwnsItem = (user.id === itemOwner.id);
+
     return (
         <div className="market-item">
             <div className="left-column">
@@ -81,7 +83,7 @@ const MarketItem = ({ setBorrowedItem, user, item }) => {
                 </div>
                 {user &&
                 <div className="row">
-                    <button onClick={borrowItem} disabled={!user}>{user ? `Borrow` : `You listed this item`}</button>
+                    <button onClick={borrowItem} disabled={!userOwnsItem}>{userOwnsItem ? `Borrow` : `You listed this item`}</button>
                 </div>
                 }
             </div>
@@ -117,14 +119,8 @@ const MarketItemWithData = ({ user, keyword }) => {
                 const items = await response.json();
                 console.log(items);
 
-                // Remove borrowed items
-                var displayItems = items;
-                items.forEach(item => {
-                    if (item.status == true) {
-                        const index = items.indexOf(item);
-                        displayItems.splice(index, 1);      // remove from items to be displayed
-                    }
-                });
+                // Remove items that are borrowed
+                const displayItems = items.filter(item => item.status === false);
 
                 if (displayItems.length > 0) {
                     setMarketItemData(displayItems);
