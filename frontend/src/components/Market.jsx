@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import './../App.css';
 import NavBar from "./NavBar";
 import MarketItemWithData from "./MarketItem.jsx";
-import image from "./../images/rollerblades.jpg"
 
 const Market = ({ user, onLogout }) => {
     const location = useLocation();

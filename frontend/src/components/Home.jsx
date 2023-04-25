@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './../Rachel.css';
 import image from "./../images/rollerblades.jpg"
 
 const Home = () => {
