@@ -118,7 +118,7 @@ const MarketItemWithData = ({ user, keyword }) => {
                 console.log(items);
 
                 // Remove borrowed items
-                displayItems = items;
+                var displayItems = items;
                 items.forEach(item => {
                     if (item.status == true) {
                         const index = items.indexOf(item);
